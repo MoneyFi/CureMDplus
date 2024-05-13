@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import cureLogo from '../../assets/icons/Logo_Azul.png'
 import cureLogoBco from '../../assets/icons/Logo_bco.png'
+import { TbMenu } from "react-icons/tb";
 
 const NavbarLanding = () => {
     const [isFixed, setIsFixed] = useState(false)
@@ -34,17 +35,20 @@ const NavbarLanding = () => {
         {
             !isFixed ? 
             (
-                <div className='w-[250px]'>
+                <div className='w-[250px] max-[500px]:w-[200px]'>
             <img alt='logo' src={cureLogo}/>
             </div>
             )
             :
-           ( <div className='w-[250px]'>
+           ( <div className='w-[250px] max-[500px]:w-[200px]'>
             <img alt='logo' src={cureLogoBco}/>
         </div>
             )
         }
-        <div>
+        <div className='min-[800px]:hidden flex items-center justify-center p-2'>
+        <TbMenu size={25} />
+        </div>
+        <div className='max-[800px]:hidden'>
             <a className='px-3 py-1 font-semibold text-xl'>Productos</a>
             <a className='px-3 py-1 font-semibold text-xl'>Sobre nosotros</a>
             <a className='px-3 py-1 font-semibold text-xl'>Contacto</a>
