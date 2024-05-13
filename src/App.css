@@ -1,3 +1,7 @@
-#root{
-    padding: 0%;
+#landing{
+    background-image: url(./assets/bakground/bglanding.png);
+    background-size: cover;
+    
+    
 }
+
