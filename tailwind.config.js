@@ -19,6 +19,18 @@ export default {
       'varela': ['Varela Round', 'sans-serif'],
     }
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      const layout = {
+        ".background": {
+          background: "#F7F7F7",
+          width: "100%",
+          minHeight: "100vh",
+          padding: 0,
+        },
+      };
+      addComponents(layout);
+    },
+  ],
 }
 
