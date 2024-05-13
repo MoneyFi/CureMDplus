@@ -1,12 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import NavbarLanding from '../../Components/Navbar/NavbarLanding'
+import FooterLanding from '../../Components/Footer/FooterLanding'
 
 const LandingLayout = () => {
   return (
-    <div>
-        <header>navbar</header>
+    <div className='layout background flex flex-col items-center justify-between'>
+        <NavbarLanding/>
         <Outlet/>
-        <footer>Footer</footer>
+        <FooterLanding/>
     </div>
   )
 }

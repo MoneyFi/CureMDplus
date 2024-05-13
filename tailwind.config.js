@@ -22,9 +22,8 @@ export default {
   plugins: [
     function ({ addComponents }) {
       const layout = {
-        ".bglight": {
+        ".background": {
           background: "#F7F7F7",
-          color: "black",
           width: "100%",
           minHeight: "100vh",
         },
