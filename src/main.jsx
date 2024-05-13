@@ -8,6 +8,6 @@ import {router} from './routes/router.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <RouterProvider router={router}/>,
+    <RouterProvider router={router}/>
   </Provider>
 )
