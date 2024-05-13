@@ -7,6 +7,18 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      const layout = {
+        ".bglight": {
+          background: "#F7F7F7",
+          color: "black",
+          width: "100%",
+          minHeight: "100vh",
+        },
+      };
+      addComponents(layout);
+    },
+  ],
 }
 
