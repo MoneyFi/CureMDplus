@@ -4,7 +4,7 @@ import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 const FooterLanding = () => {
   return (
-    <footer className='w-full bg-primary-blue text-white min-h-[30vh] flex items-center justify-around max-[800px]:flex-col'>
+    <footer id='footer' className='w-full bg-primary-blue text-white min-h-[30vh] flex items-center justify-around max-[800px]:flex-col'>
         <div className='w-[300px] max-[500px]:w-[250px] mb-5'> 
             <img alt='logo_blanco' src={cureLogoBlanco}/>
         </div>

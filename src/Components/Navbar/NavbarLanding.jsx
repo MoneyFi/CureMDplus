@@ -49,9 +49,9 @@ const NavbarLanding = () => {
         <TbMenu size={25} />
         </div>
         <div className='max-[800px]:hidden'>
-            <a className='px-3 py-1 font-semibold text-xl'>Productos</a>
-            <a className='px-3 py-1 font-semibold text-xl'>Sobre nosotros</a>
-            <a className='px-3 py-1 font-semibold text-xl'>Contacto</a>
+            <a  href='#products'  className='px-3 py-1 font-semibold text-xl'>Productos</a>
+            <a  href='#publicity'  className='px-3 py-1 font-semibold text-xl'>Sobre nosotros</a>
+            <a  href='#footer'  className='px-3 py-1 font-semibold text-xl'>Contacto</a>
         </div>
     </header>
   )

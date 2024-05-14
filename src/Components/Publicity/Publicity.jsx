@@ -4,7 +4,7 @@ import app from '../../assets/icons/cureMDmobile.png'
 
 const Publicity = () => {
   return (
-    <div id='landing' className='w-full min-h-[100vh] flex justify-center items-center flex-wrap p-[3em]'>
+    <div id='publicity' className='w-full min-h-[100vh] flex justify-center items-center flex-wrap p-[3em]'>
       <div className='w-[100%] md:w-1/2 lg:w-1/3 px-4'>
         <img src={mobile} alt="" className='w-full md:max-w-xs lg:max-w-sm mx-auto mb-8 md:mb-0' id='mobile' />
       </div>

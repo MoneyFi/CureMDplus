@@ -3,3 +3,12 @@
     background-size: cover;
 }
 
+#publicity{
+    background-image: url(./assets/bakground/bglanding.png);
+    background-size: cover;
+}
+
+
+html {
+    scroll-behavior: smooth;
+  }
