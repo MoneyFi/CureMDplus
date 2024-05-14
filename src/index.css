@@ -6,3 +6,7 @@
     border: 5px solid;
     border-radius: 25px;
 }
+
+input:focus::placeholder {
+    color: transparent;
+}
