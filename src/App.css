@@ -1,6 +1,6 @@
 #landing{
-    background-image: url(./assets/bakground/bglanding.png);
-    background-size: cover;
+    /* background-image: url(./assets/bakground/bglanding.png); */
+    /* background-size: cover; */
 }
 
 #publicity{
@@ -12,3 +12,9 @@
 html {
     scroll-behavior: smooth;
   }
+
+
+#testimonials{
+    background-image: url(./assets/bakground/Testimonials.png);
+    background-size: cover;
+}
