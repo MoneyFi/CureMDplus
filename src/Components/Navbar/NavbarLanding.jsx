@@ -5,7 +5,7 @@ import { TbMenu } from "react-icons/tb";
 
 const NavbarLanding = () => {
     const [isFixed, setIsFixed] = useState(false)
-    const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur- [50%] bg-opacity-70 text-white shadow"
+    const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70  shadow text-white"
 
     useEffect(()=>{
         const handleScroll = () => {
@@ -30,21 +30,13 @@ const NavbarLanding = () => {
 
 
   return (
-    <header className={!isFixed? 'flex items-center justify-between w-full p-3 fixed z-20 text-primary-blue ' : `${glass} flex items-center justify-between w-full fixed p-3 z-20`}>
+    <header className={!isFixed? 'flex items-center justify-between w-full p-3 fixed z-20 text-white ' : `${glass} flex items-center justify-between w-full fixed p-3 z-20`}>
         
-        {
-            !isFixed ? 
-            (
-                <div className='w-[220px] max-[500px]:w-[200px]'>
-            <img alt='logo' src={cureLogo}/>
-            </div>
-            )
-            :
-           ( <div className='w-[220px] max-[500px]:w-[200px]'>
+       
+           <div className='w-[220px] max-[500px]:w-[200px]'>
             <img alt='logo' src={cureLogoBco}/>
         </div>
-            )
-        }
+            
         <div className='min-[800px]:hidden flex items-center justify-center p-2'>
         <TbMenu size={25} />
         </div>
@@ -57,7 +49,7 @@ const NavbarLanding = () => {
 
         <div className='max-[800px]:hidden'>
             <a  href='#products'  className='px-3 py-1 font-regular text-md'>Ingresar</a>
-            <a  href='#publicity'  className={`px-3 py-1 font-regular text-md rounded ${isFixed? "bg-[#283E94]" : "bg-primary-skyblue text-white"}`}>Contactanos</a>
+            <a  href='#publicity'  className={`px-3 py-1 font-regular text-md rounded bg-primary-skyblue text-white`}>Contactanos</a>
           
         </div>
     </header>
