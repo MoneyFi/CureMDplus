@@ -5,7 +5,7 @@ import { TbMenu } from "react-icons/tb";
 
 const NavbarLanding = () => {
     const [isFixed, setIsFixed] = useState(false)
-    const glass = "bg-primary-blue text-white"
+    const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur- [50%] bg-opacity-70 text-white shadow"
 
     useEffect(()=>{
         const handleScroll = () => {
@@ -35,12 +35,12 @@ const NavbarLanding = () => {
         {
             !isFixed ? 
             (
-                <div className='w-[250px] max-[500px]:w-[200px]'>
+                <div className='w-[220px] max-[500px]:w-[200px]'>
             <img alt='logo' src={cureLogo}/>
             </div>
             )
             :
-           ( <div className='w-[250px] max-[500px]:w-[200px]'>
+           ( <div className='w-[220px] max-[500px]:w-[200px]'>
             <img alt='logo' src={cureLogoBco}/>
         </div>
             )
@@ -49,9 +49,16 @@ const NavbarLanding = () => {
         <TbMenu size={25} />
         </div>
         <div className='max-[800px]:hidden'>
-            <a  href='#products'  className='px-3 py-1 font-semibold text-xl'>Productos</a>
-            <a  href='#publicity'  className='px-3 py-1 font-semibold text-xl'>Sobre nosotros</a>
-            <a  href='#footer'  className='px-3 py-1 font-semibold text-xl'>Contacto</a>
+            <a  href='#products'  className='px-3 py-1 font-regular text-md'>Productos</a>
+            <a  href='#publicity'  className='px-3 py-1 font-regular text-md'>Sobre nosotros</a>
+            <a  href='#footer'  className='px-3 py-1 font-regular text-md'>Contacto</a>
+            <a  href='#footer'  className='px-3 py-1 font-regular text-md'>FAQs</a>
+        </div>
+
+        <div className='max-[800px]:hidden'>
+            <a  href='#products'  className='px-3 py-1 font-regular text-md'>Ingresar</a>
+            <a  href='#publicity'  className={`px-3 py-1 font-regular text-md rounded ${isFixed? "bg-[#283E94]" : "bg-primary-skyblue text-white"}`}>Contactanos</a>
+          
         </div>
     </header>
   )
