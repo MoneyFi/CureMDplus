@@ -1,23 +1,42 @@
-import React from 'react'
+import { useState } from 'react'
+import logo from '../../assets/icons/logo.png'
+import Detail from './Detail';
 
 const Product = ({ product, index }) => {
+    function formatearMonto(numero) {
+        return numero.toLocaleString('es-AR', {
+            style: 'currency',
+            currency: 'ARS'
+        });
+    }
+    const [detail, setDetail] = useState(false)
+    const handleDetail = () => {
+        setDetail(!detail)
+    }
+
     return (
-        <>
-            <div className='font-sans text-[3.7em] flex gap-2 justify-center items-center text-secondary-blue my-6'>
-                <p>{product.title.split(' ')[0]}</p>
-                <p className='font-extrabold'>{product.title.split(' ')[1]}</p>
-            </div>
-            <article className='flex flex-col justify-between items-center py-5 px-10 w-[30em] h-[49em] bg-[#4073B4] text-white rounded-3xl' key={index}>
-                <div>
-                    <div style={{ lineHeight: '1.23em' }} className='text-[1.23em] text-pretty min-w-[100%] font-sans font-normal '>{product.text.split('_').map((l) => (
-                        <li className='my-1'>{l}</li>
-                    ))}</div>
+        <article className='flex flex-col justify-around items-center py-5 px-10 w-[340px] h-[450px] bg-white text-[#000000] rounded-xl text-sm font-roboto shadow-2xl' key={index}>
+            <header className='flex flex-col justify-center items-start text-2xl w-full gap-2'>
+                <div className='text-primary-blue flex items-center gap-2'>
+                    <img src={logo} alt="" width={55} className='rounded-full' />
+                    <span>{product.title.split(' ')[0]}<br/><b>{product.title.split(' ')[1]}</b></span>
                 </div>
-                <div>
-                    <button className='text-primary-blue bg-white px-12 py-3 rounded-3xl font-bold text-[1.4em] hover:bg-primary-blue hover:text-white transition-all'>Comprar</button>
-                </div>
-            </article>
-        </>
+                <span className='font-bold font-sans self-center'>{formatearMonto(product.price)}</span>
+            </header>
+            <hr className='w-full text-primary-blue' />
+            <div className='pt-4 text-pretty min-w-[100%] h-60 font-roboto font-light '>{product.essential.split('_').map((l) => (
+                <li className='my-1'>{l}</li>
+            ))}</div>
+            <footer className='flex justify-center items-center gap-3'>
+                <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all'>Ver Mas</button>
+                <button className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all'>Contactanos</button>
+            </footer>
+            {
+                detail ?
+                <Detail product={product} format={formatearMonto} handleDetail={handleDetail}/>
+                : ""
+            }
+        </article>
     )
 }
 
