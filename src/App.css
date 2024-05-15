@@ -12,3 +12,9 @@
 html {
     scroll-behavior: smooth;
   }
+
+
+#testimonials{
+    background-image: url(./assets/bakground/Testimonials.png);
+    background-size: cover;
+}
