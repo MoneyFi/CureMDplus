@@ -2,6 +2,7 @@ import React from 'react'
 import AboutCards from './AboutCards'
 import logo from '../../assets/icons/Logo_Azul.png'
 import { ImQuotesRight } from "react-icons/im";
+import { BsImageFill } from "react-icons/bs";
 
 
 
@@ -38,7 +39,7 @@ const About = () => {
                 Equipo de CureMD
             </p>
         </div>
-        <ul className='w-full min-h-auto flex items-center justify-around mt-20'>
+        <ul className='w-full  flex items-center justify-around mt-20 max-[1000px]:flex-col max-[1000px]:mt-0 max-[800px]:justify-start'>
             {
                 data.map((el,i)=>{
                     return(
