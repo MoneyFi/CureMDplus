@@ -10,7 +10,7 @@ const Detail = ({ product, format, handleDetail }) => {
     }
     return (
         <section className='fixed w-screen h-screen backdrop-blur-sm top-0 right-0 z-30 flex justify-center items-center'>
-            <article className='flex flex-nowrap w-[850px] md:w-[960px] bg-white h-[659px] rounded-lg overflow-hidden shadow-xl'>
+            <article className='flex flex-nowrap w-[90%] bg-white h-[80vh]  rounded-lg overflow-hidden shadow-xl max-[600px]:h-[90vh]'>
                 <div style={style} className='w-[0%] md:w-[50%]'></div>
                 <div className='w-[100%] h-full md:w-[50%] flex flex-col justify-around items-center py-5 px-10 text-[#000000] text-sm font-roboto gap-4'>
                     <header className='flex flex-col justify-center items-start text-2xl w-full'>
@@ -22,6 +22,7 @@ const Detail = ({ product, format, handleDetail }) => {
                         <span className='mt-[-.3em] font-bold font-sans self-center'>{format(product.price)}</span>
                     </header>
                     <hr className='w-full text-primary-blue' />
+                    <div className='w-full h-[500px] overflow-y-scroll '>
                     <div className='text-pretty min-w-[100%] font-roboto font-light px-8 text-[12.5px]'>
                         {product.essential.split('_').map((l) => (
                             <li>{l}</li>
@@ -30,8 +31,10 @@ const Detail = ({ product, format, handleDetail }) => {
                             <li>{l}</li>
                         ))}
                     </div>
-                    <footer className='flex flex-col justify-center items-center gap-2'>
-                        <button className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all'>Comprar</button>
+
+                    </div>
+                    <footer className='flex flex-col justify-center items-center gap-2 max-[600px]:w-full'>
+                        <button className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Comprar</button>
                         <span>Terminos y Condiciones</span>
                     </footer>
                 </div>
