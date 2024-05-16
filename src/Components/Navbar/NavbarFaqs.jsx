@@ -1,0 +1,56 @@
+import React, { useEffect, useState } from 'react'
+import cureLogo from '../../assets/icons/Logo_Azul.png'
+import cureLogoBco from '../../assets/icons/Logo_bco.png'
+import { TbMenu } from "react-icons/tb";
+import { Link } from 'react-router-dom'
+
+const NavbarFaqs = () => {
+    const [isFixed, setIsFixed] = useState(false)
+    const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70  shadow text-white"
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Verifica la posición actual del scroll
+            const scrollPosition = window.scrollY;
+
+            // Establece si la barra de navegación debe estar fija o no
+            setIsFixed(scrollPosition > 80); // Puedes ajustar el valor según tus necesidades
+        };
+
+        // Agrega un event listener para manejar el scroll
+        window.addEventListener('scroll', handleScroll);
+
+
+        // Limpia el event listener cuando el componente se desmonta
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+
+
+    }, [])
+
+
+    return (
+        <header className={!isFixed ? 'flex items-center justify-between bg-primary-blue w-full p-3 fixed z-20 text-white ' : `${glass} flex items-center justify-between w-full fixed p-3 z-20`}>
+            <div className='w-[220px] max-[500px]:w-[200px]'>
+                <img alt='logo' src={cureLogoBco} />
+            </div>
+            <div className='min-[800px]:hidden flex items-center justify-center p-2'>
+                <TbMenu size={25} />
+            </div>
+            <div className='max-[800px]:hidden'>
+                <Link to='/#products' className='px-3 py-1 font-regular text-md'>Productos</Link>
+                <Link to='/#publicity' className='px-3 py-1 font-regular text-md'>Sobre nosotros</Link>
+                <Link to='/#footer' className='px-3 py-1 font-regular text-md'>Contacto</Link>
+                <Link to='/faqs' className='px-3 py-1 font-regular text-md'>FAQs</Link>
+            </div>
+
+            <div className='max-[800px]:hidden'>
+                <Link to='#products' className='px-3 py-1 font-regular text-md'>Ingresar</Link>
+                <Link to='#publicity' className={`px-3 py-1 font-regular text-md rounded bg-primary-skyblue text-white`}>Contactanos</Link>
+            </div>
+        </header>
+    )
+}
+
+export default NavbarFaqs;
