@@ -3,33 +3,24 @@ import AboutCards from './AboutCards'
 import logo from '../../assets/icons/Logo_Azul.png'
 import { ImQuotesRight } from "react-icons/im";
 import { BsImageFill } from "react-icons/bs";
+import Carrusel from './Carrusel';
+import logoBco from '../../assets/icons/Logo_bco.png'
 
 
 
 
 
 const About = () => {
-    const data = [
-        {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
-        },
-        {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
-        },
-         {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
-        }
-    ]
+    
   return (
-    <div className='layout background flex items-center justify-between flex-col' id='testimonials'>
+    <div className='layout background flex items-center justify-between flex-col ' id='testimonials'>
 
-        <div className='bg-white rounded w-[80%] p-4 shadow  relative mt-10'>
+        <div className='bg-white rounded w-[80%] min-h-[220px]  shadow  relative mt-10 flex items-center justify-between overflow-hidden max-[900px]:flex-col max-[800px]:min-h-[500px] max-[500px]:w-[98%]'>
+        <div className='w-[300px] h-[280px] bg-primary-blue flex items-center justify-center max-[800px]:w-full '>
+            <img src={logoBco} alt="" className='w-[220px]' />
+        </div>
+
+        <div className='w-[70%] flex flex-col p-4 max-[800px]:w-full'>
             <h4 className='font-semibold text-primary-blue text-xl'>Sobre nosotros</h4>
         <div className='py-2'>
                 <ImQuotesRight  size={25} color='#283E94'/>
@@ -38,20 +29,11 @@ const About = () => {
             <p className='bg-white p-4 rounded-[15px] self-end font-semibold not-italic  text-primary-blue'>
                 Equipo de CureMD
             </p>
-        </div>
-        <ul className='w-full  flex items-center justify-around mt-20 max-[1000px]:flex-col max-[1000px]:mt-0 max-[800px]:justify-start'>
-            {
-                data.map((el,i)=>{
-                    return(
-                        <AboutCards key={i} index={i}/>
-                    )
-                })
-            }
-        </ul>
-        <div className='w-full h-[150px] bg-white flex items-center justify-end px-4'>
-            <div className='w-[250px]'>
-                <img alt='logo' src={logo} />
             </div>
+        </div>
+        <Carrusel/>
+        <div className='w-full h-[150px] bg-white flex items-center justify-end px-4 max-[700px]:h-[120px]'>
+           
         </div>
     </div>
   )
