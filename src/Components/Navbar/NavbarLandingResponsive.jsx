@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { IoMdClose } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 const NavbarLandingResponsive = ({open, setOpen}) => {
     useEffect(()=>{
@@ -13,10 +14,10 @@ const NavbarLandingResponsive = ({open, setOpen}) => {
        <IoMdClose size={15} color='white' />
        </button>
        <div className='flex flex-col p-2 items-start justify-center'>
-        <a className='font-semibold p-2'>Productos</a>
-        <a className='font-semibold p-2'>Sobre nosotros</a>
-        <a className='font-semibold p-2' href="">Contacto</a>
-        <a className='font-semibold p-2' href="">FAQs</a>
+        <a className='font-semibold p-2' href='#products'>Productos</a>
+        <a className='font-semibold p-2' href='#publicity'>Sobre nosotros</a>
+        <a className='font-semibold p-2' href='#footer'>Contacto</a>
+        <Link className='font-semibold p-2' to="/faqs">FAQs</Link>
        </div>
 
        <div className='flex flex-col p-2 items-center justify-center w-full p-2'>
