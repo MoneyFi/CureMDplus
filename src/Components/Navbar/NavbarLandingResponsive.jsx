@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { IoMdClose } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavbarLandingResponsive = ({open, setOpen}) => {
+  const { pathname } = useLocation()
     useEffect(()=>{
 
     },[open])
@@ -14,13 +15,15 @@ const NavbarLandingResponsive = ({open, setOpen}) => {
        <IoMdClose size={15} color='white' />
        </button>
        <div className='flex flex-col p-2 items-start justify-center'>
+        {pathname === '/faqs' ? <Link className='font-semibold p-2' to="/">Home</Link> :
+        <>
         <a className='font-semibold p-2' href='#products'>Productos</a>
         <a className='font-semibold p-2' href='#publicity'>Sobre nosotros</a>
         <a className='font-semibold p-2' href='#footer'>Contacto</a>
         <Link className='font-semibold p-2' to="/faqs">FAQs</Link>
+        </>}
        </div>
-
-       <div className='flex flex-col p-2 items-center justify-center w-full p-2'>
+       <div className='flex flex-col p-2 items-center justify-center w-full'>
         <a className='w-full bg-primary-blue p-1 rounded-[20px] text-white font-semibold mb-2'>Ingresar</a>
         <a className='w-full bg-primary-blue p-1 rounded-[20px] text-white font-semibold'>Contactanos</a>
        </div>

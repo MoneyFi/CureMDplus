@@ -4,29 +4,31 @@ import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 const FooterLanding = () => {
   return (
-    <footer id='footer' className='w-full bg-primary-blue text-white min-h-[30vh] flex items-center justify-around max-[800px]:flex-col'>
-        <div className='w-[300px] max-[500px]:w-[250px] mb-5'> 
-            <img alt='logo_blanco' src={cureLogoBlanco}/>
+    <footer id='footer' className='w-full bg-primary-blue text-white min-h-[30vh] flex flex-col items-center gap-5 justify-center px-5 md:justify-between md:flex-row md:px-10'>
+      <article className='w-screen flex flex-col md:flex-row items-center justify-around md:justify-center gap-2'>
+        <div className='w-[170px] md:w-[600px]'>
+          <img alt='logo_blanco' src={cureLogoBlanco} />
         </div>
-        <article className='w-[600px] flex flex-col items-center justify-center max-[800px]:w-full'>
-    <h4 className="text-2xl  py-1 max-[600px]:text-2xl max-[400px]:text-xl">
-      Tu alternativa <strong>accesible</strong> para una 
-    </h4>
-    <h4 className='text-2xl py-1 max-[600px]:text-2xl max-[400px]:text-xl'>
-    cobertura <strong>integral de salud</strong> 
-    </h4>
-    </article>
-    <article className='p-2 flex flex-col '>
-        <h4 className='p-1'>Whatsapp</h4>
-        <h4 className='p-1'>contact@curemd.io</h4>
-        <div className='p-1 flex items-center justify-start'>
-            <FaInstagram  className='ml-1' size={25}/>
-            <FaFacebookF className='ml-1'  size={25}/>
-            <FaTwitter className='ml-1'  size={25}/>
-            <FaLinkedin className='ml-1'  size={25}/>
-
+        <h4 className="text-sm md:text-2xl w-3/4 md:w-full text-center">
+          Tu alternativa <strong>accesible</strong> para una cobertura <strong>integral de salud</strong>
+        </h4>
+      </article>
+      <article className='flex justify-between md:justify-end md:gap-5 items-start w-full md:w-2/4'>
+        <div className='flex flex-col items-center justify-start'>
+          <span className='font-bold text-[#686868] mb-1'>Contactos</span>
+          <p className='text-sm'>(+54) 9 11 1234-5678</p>
+          <p className='text-sm'>contact@curemd.io</p>
         </div>
-    </article>
+        <div className='flex flex-col items-center justify-start gap-2'>
+          <span className='font-bold text-[#686868]'>Siguenos</span>
+          <div className='flex items-center justify-center'>
+            <FaInstagram className='ml-1' size={25} />
+            <FaFacebookF className='ml-1' size={25} />
+            <FaTwitter className='ml-1' size={25} />
+            <FaLinkedin className='ml-1' size={25} />
+          </div>
+        </div>
+      </article>
     </footer>
   )
 }
