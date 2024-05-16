@@ -3,9 +3,11 @@ import cureLogo from '../../assets/icons/Logo_Azul.png'
 import cureLogoBco from '../../assets/icons/Logo_bco.png'
 import { TbMenu } from "react-icons/tb";
 import { Link } from 'react-router-dom'
+import NavbarLandingResponsive from './NavbarLandingResponsive';
 
 const NavbarLanding = () => {
     const [isFixed, setIsFixed] = useState(false)
+    const [open,setOpen]=useState(false)
     const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70  shadow text-white"
 
     useEffect(()=>{
@@ -38,9 +40,20 @@ const NavbarLanding = () => {
             <img alt='logo' src={cureLogoBco}/>
         </div>
             
-        <div className='min-[800px]:hidden flex items-center justify-center p-2'>
+        <button 
+        onClick={()=>setOpen(!open)}
+        className='min-[800px]:hidden flex items-center justify-center p-2 relative'>
         <TbMenu size={25} />
-        </div>
+
+        {
+          open === true?
+        (<div className='absolute'>
+          <NavbarLandingResponsive open={open} setOpen={setOpen}/>
+        </div>)
+        :
+        null
+        }
+        </button>
         <div className='max-[800px]:hidden'>
             <a  href='#products'  className='px-3 py-1 font-regular text-md'>Productos</a>
             <a  href='#publicity'  className='px-3 py-1 font-regular text-md'>Sobre nosotros</a>
