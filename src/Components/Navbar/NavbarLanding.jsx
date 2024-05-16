@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import cureLogo from '../../assets/icons/Logo_Azul.png'
 import cureLogoBco from '../../assets/icons/Logo_bco.png'
 import { TbMenu } from "react-icons/tb";
+import { Link } from 'react-router-dom'
 
 const NavbarLanding = () => {
     const [isFixed, setIsFixed] = useState(false)
@@ -44,7 +45,7 @@ const NavbarLanding = () => {
             <a  href='#products'  className='px-3 py-1 font-regular text-md'>Productos</a>
             <a  href='#publicity'  className='px-3 py-1 font-regular text-md'>Sobre nosotros</a>
             <a  href='#footer'  className='px-3 py-1 font-regular text-md'>Contacto</a>
-            <a  href='#footer'  className='px-3 py-1 font-regular text-md'>FAQs</a>
+            <Link to='/faqs'  className='px-3 py-1 font-regular text-md'>FAQs</Link>
         </div>
 
         <div className='max-[800px]:hidden'>
