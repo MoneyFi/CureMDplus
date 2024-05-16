@@ -10,7 +10,7 @@ const Detail = ({ product, format, handleDetail }) => {
     }
     return (
         <section className='fixed w-screen h-screen backdrop-blur-sm top-0 right-0 z-30 flex justify-center items-center'>
-            <article className='flex flex-nowrap w-[90%] bg-white h-[90vh]  rounded-lg overflow-hidden shadow-xl '>
+            <article className='flex flex-nowrap w-[80%] bg-white h-[90vh]  rounded-lg overflow-hidden shadow-xl max-[600px]:w-[90%] '>
                 <div style={style} className='w-[0%] md:w-[50%]'></div>
                 <div className='w-[100%] h-full md:w-[50%] flex flex-col justify-around items-center py-5 px-10 text-[#000000] text-sm font-roboto gap-4'>
                     <header className='flex flex-col justify-center items-start text-2xl w-full'>
