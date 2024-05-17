@@ -34,9 +34,8 @@ const Carrusel = () => {
     ]
     // 0 ml 644 mr 644   
   return (
-    <div className=' w-full h-[50vh]  flex items-center justify-center max-[700px]:mt-[40px]'>
-    <div className='overflow-hidden w-full relative'>   
-    <ul className={`w-[1200px] flex items-center justify-around mt-20  ${count === 1 ? 'ml-[800px] duration-1000' : count === 2 ? 'mr-[0px] duration-1000' : 'mr-[800px] duration-1000' }`}>
+    <div className=' w-full h-[50vh]   relative flex items-center justify-center max-[700px]:mt-[40px]'>
+    <ul className={`w-[1200px] flex items-center justify-around mt-20  absolute ${count === 1 ? 'ml-[800px] duration-1000' : count === 2 ? 'mr-[0px] duration-1000' : 'mr-[800px] duration-1000' }`}>
             {
                 data.map((el,i)=>{
                     return(
@@ -45,7 +44,7 @@ const Carrusel = () => {
                 })
             }
     </ul>
-    </div>
+
     </div>
   )
 }
