@@ -2,12 +2,12 @@ import './App.css'
 import video from './assets/bakground/video.mp4'
 
 function App() {
-  const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur- [50%] bg-opacity-70 text-white shadow"
+  const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70 text-white shadow"
 
 
   return (
     <section className="flex flex-col items-center justify-center w-full h-[100vh] relative" id='landing'>
-      <video autoPlay loop muted className='w-full h-full object-cover border blur-sm'> 
+      <video autoPlay loop muted className='w-full h-full object-cover '> 
       <source src={video} type="video/mp4" />
     </video>
 

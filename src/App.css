@@ -4,8 +4,9 @@
 }
 
 #publicity{
-    background-image: url(./assets/bakground/bglanding.png);
-    background-size: cover;
+    
+background: rgb(22,85,164);
+background: linear-gradient(132deg, rgba(22,85,164,1) 25%, rgba(35,159,216,1) 70%, rgba(74,176,196,1) 100%);
 }
 
 

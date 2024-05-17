@@ -38,7 +38,7 @@ const Products = () => {
                     <Product key={index} product={product} />
                 ))}
             </div>
-            <button className='py-2 px-8 bg-primary-blue text-white text-base md:text-2xl font-roboto font-bold rounded-lg shadow-2xl hover:bg-secondary-blue'>Agenda una cita con nuestros profesionales</button>
+            {/* <button className='py-2 px-8 bg-primary-blue text-white text-base md:text-2xl font-roboto font-bold rounded-lg shadow-2xl hover:bg-secondary-blue'>Agenda una cita con nuestros profesionales</button> */}
         </div>
     )
 }

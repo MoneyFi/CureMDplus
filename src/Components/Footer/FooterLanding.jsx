@@ -7,7 +7,7 @@ const FooterLanding = () => {
     <footer id='footer' className='w-full bg-primary-blue text-white min-h-[30vh] flex flex-col items-center gap-5 justify-center px-5 md:justify-between md:flex-row md:px-10'>
       <article className='w-screen flex flex-col md:flex-row items-center justify-around md:justify-center gap-2'>
         <div className='w-[170px] md:w-[600px]'>
-          <img alt='logo_blanco' src={cureLogoBlanco} />
+          <img alt='logo_blanco' src={cureLogoBlanco} className='w-full' />
         </div>
         <h4 className="text-sm md:text-2xl w-3/4 md:w-full text-center">
           Tu alternativa <strong>accesible</strong> para una cobertura <strong>integral de salud</strong>

@@ -9,7 +9,7 @@ import logoBco from '../../assets/icons/Logo_bco.png'
 const About = () => {
     
   return (
-    <div className='layout background flex items-center justify-between flex-col ' id='testimonials'>
+    <div className='layout background flex items-center justify-between flex-col  overflow-hidden' id='testimonials'>
 
         <div className='bg-white rounded w-[70%] h-[200px]  shadow  relative mt-10 flex items-center justify-between overflow-hidden max-[900px]:flex-col max-[800px]:min-h-[500px] max-[500px]:w-[98%]'>
         <div className='w-[300px] h-[280px] bg-primary-blue flex items-center justify-center max-[800px]:w-full '>
