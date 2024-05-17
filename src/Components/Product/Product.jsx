@@ -24,7 +24,7 @@ const Product = ({ product, index }) => {
             <header className='flex flex-col justify-center items-start text-2xl w-full gap-2'>
                 <div className='text-primary-blue flex items-center gap-2'>
                     <img src={logo} alt="" width={55} className='rounded-full' />
-                    <span>{product.title.split(' ')[0]}<br/><b>{product.title.split(' ')[1]}</b></span>
+                    <span>{product.title.split(' ')[0]} <b>{product.title.split(' ')[1]}</b></span>
                 </div>
                 <span className='font-bold font-sans self-center'>{formatearMonto(product.price)}</span>
             </header>
