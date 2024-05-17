@@ -7,7 +7,7 @@ function App() {
 
   return (
     <section className="flex flex-col items-center justify-center w-full h-[100vh] relative" id='landing'>
-      <video autoPlay loop muted className='w-full h-full object-cover '> 
+      <video autoPlay loop muted className='w-full h-full object-cover object-[89%] md:object-[100%]'>
       <source src={video} type="video/mp4" />
     </video>
 

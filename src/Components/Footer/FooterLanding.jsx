@@ -15,12 +15,12 @@ const FooterLanding = () => {
       </article>
       <article className='flex justify-between md:justify-end md:gap-5 items-start w-full md:w-2/4'>
         <div className='flex flex-col items-center justify-start'>
-          <span className='font-bold text-[#686868] mb-1'>Contactos</span>
+          <span className='font-bold text-[#838080] mb-1'>Contacto</span>
           <p className='text-sm'>(+54) 9 11 1234-5678</p>
           <p className='text-sm'>contact@curemd.io</p>
         </div>
         <div className='flex flex-col items-center justify-start gap-2'>
-          <span className='font-bold text-[#686868]'>Siguenos</span>
+          <span className='font-bold text-[#838080]'>Siguenos</span>
           <div className='flex items-center justify-center'>
             <FaInstagram className='ml-1' size={25} />
             <FaFacebookF className='ml-1' size={25} />
