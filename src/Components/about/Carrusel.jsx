@@ -17,29 +17,29 @@ const Carrusel = () => {
 
     const data = [
         {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
+            nombre: " María González",
+            img: 'https://randomuser.me/api/portraits/women/82.jpg',
+            testimony: 'Desde que uso CureMD, gestionar mis citas médicas es más fácil. La app me permite acceder a mis registros y comunicarme con mis médicos en un solo lugar.'
         },
         {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
+            nombre: "Javier Martínez",
+            img: 'https://randomuser.me/api/portraits/men/85.jpg',
+            testimony: 'CureMD ha facilitado mucho mi vida. Antes, organizar mis consultas médicas y tratamientos era complicado. Ahora, con la app, puedo gestionar todo desde mi teléfono.'
         },
          {
-            nombre: "Maria Nishi",
-            img: '',
-            testimony: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis vero facilis inventore quod, quis at id voluptates alias hic necessitatibus, totam possimus soluta placeat eos blanditiis mollitia! Deserunt, obcaecati illo?'
+            nombre: "Laura Fernández",
+            img: 'https://randomuser.me/api/portraits/women/3.jpg',
+            testimony: 'CureMD ha cambiado cómo manejo mi salud. La app me permite tener mis registros médicos siempre accesibles y comunicarme fácilmente con mi equipo médico.'
         }
     ]
     // 0 ml 644 mr 644   
   return (
     <div className=' w-[100%] relative h-[50vh] overflow-hidden flex items-center justify-center max-[700px]:mt-[40px]'>
-    <ul className={`w-[966px] flex items-center justify-around mt-20 absolute  ${count === 1 ? 'ml-[644px] duration-1000' : count === 2 ? 'mr-[0px] duration-1000' : 'mr-[644px] duration-1000' }`}>
+    <ul className={`w-[1200px] flex items-center justify-around mt-20 absolute  ${count === 1 ? 'ml-[800px] duration-1000' : count === 2 ? 'mr-[0px] duration-1000' : 'mr-[800px] duration-1000' }`}>
             {
                 data.map((el,i)=>{
                     return(
-                        <AboutCards key={i} index={i}/>
+                        <AboutCards nombre={el.nombre} img={el.img} testimony={el.testimony} key={i} index={i}/>
                     )
                 })
             }

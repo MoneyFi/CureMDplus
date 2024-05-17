@@ -1,8 +1,4 @@
-import React from 'react'
-import AboutCards from './AboutCards'
-import logo from '../../assets/icons/Logo_Azul.png'
 import { ImQuotesRight } from "react-icons/im";
-import { BsImageFill } from "react-icons/bs";
 import Carrusel from './Carrusel';
 import logoBco from '../../assets/icons/Logo_bco.png'
 
