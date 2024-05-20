@@ -7,7 +7,18 @@ function App() {
 
   return (
     <section className="flex flex-col items-center justify-center w-full h-[100vh] relative" id='landing'>
-      <video autoPlay loop muted controls={false}  className='w-full h-full object-cover object-[89%] md:object-[100%]'>
+      <video 
+       autoPlay 
+       loop 
+       muted 
+       playsInline
+       className='w-full h-full object-cover object-[89%] md:object-[100%]'
+       controls={false} 
+       disablePictureInPicture
+       preload='auto'
+       controlsList="nodownload nofullscreen noremoteplayback"
+       style={{ pointerEvents: 'none' }}
+      >
       <source src={video} type="video/mp4" />
     </video>
 
