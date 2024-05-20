@@ -18,7 +18,7 @@ const NavbarLandingResponsive = ({open, setOpen}) => {
         {pathname === '/faqs' ? <Link className='font-semibold p-2' to="/">Home</Link> :
         <>
         <a className='font-semibold p-2' href='#products'>Productos</a>
-        <a className='font-semibold p-2' href='#publicity'>Sobre nosotros</a>
+        <a className='font-semibold p-2' href='#testimonials'>Sobre nosotros</a>
         <a className='font-semibold p-2' href='#footer'>Contacto</a>
         <Link className='font-semibold p-2' to="/faqs">FAQs</Link>
         </>}
