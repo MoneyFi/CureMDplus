@@ -2,6 +2,7 @@ import { useState } from 'react'
 import logo from '../../assets/icons/logo.png'
 import Detail from './Detail';
 import Form from '../Form/Form'
+import Payment from '../Payment/Payment';
 
 const Product = ({ product, index }) => {
     function formatearMonto(numero) {
@@ -12,6 +13,11 @@ const Product = ({ product, index }) => {
     }
     const [detail, setDetail] = useState(false)
     const [form, setForm] = useState(false)
+    const [pay, setPay] = useState(false)
+
+    const handlePay = () => {
+        setPay(!pay)
+    }
     const handleForm = () => {
         setForm(!form)
     }
@@ -34,14 +40,15 @@ const Product = ({ product, index }) => {
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
                 <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
-                <button onClick={handleForm} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Contactanos</button>
+                <button onClick={handlePay} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
             </footer>
             {
                 detail ?
                 <Detail product={product} format={formatearMonto} handleDetail={handleDetail}/>
                 : ""
             }
-            {form && <Form handleForm={handleForm}/>}
+            {/* {form && <Form handleForm={handleForm}/>} */}
+            {pay && <Payment price={product.price} handlePay={handlePay} formatearMonto={formatearMonto}/>}
         </article>
     )
 }
