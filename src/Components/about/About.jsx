@@ -31,7 +31,7 @@ const About = () => {
             <Count/>
         </div>
         <Carrusel/>
-        <div className='w-full h-[150px] bg-white flex items-center justify-end px-4 max-[700px]:h-[120px]'>
+        <div className='w-full h-[120px] bg-white flex items-center justify-end px-4 max-[700px]:h-[120px]'>
            
         </div>
     </div>
