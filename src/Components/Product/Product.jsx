@@ -34,7 +34,9 @@ const Product = ({ product, index }) => {
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
                 <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
-                <button onClick={handleForm} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Contactanos</button>
+                <a href='https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0tOoZxaU7yeeX48y8aBwvZ6l4FFfN3YA9aD7NaXbQPDsoKbLejzCaueba50kN5ksMbpAEDvKUp' 
+                target='_blank'
+                className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Contactanos</a>
             </footer>
             {
                 detail ?
