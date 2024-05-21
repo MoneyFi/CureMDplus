@@ -24,7 +24,7 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
     }, [paymentOptions, handleType, price])
     return (
         <section className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm z-50'>
-            <article className='w-2/4 bg-white rounded-lg flex flex-col justify-around items-center shadow-2xl px-12 py-8 gap-3'>
+            <article className='w-2/4 bg-white rounded-lg flex flex-col justify-around items-center shadow-2xl px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
                 <div className='w-full flex justify-between'>
                     <div className='self-center'><span className='w-3/4 font-varela text-xl text-secondary-blue'>OPCIONES DE PAGO</span></div>
                     <div><button className='text-white w-5 h-5 flex justify-center items-center text-center rounded-full bg-[#df0d0d]' onClick={handlePay}>x</button></div>

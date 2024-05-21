@@ -2,7 +2,7 @@ import { useState } from 'react'
 import logo from '../../assets/icons/logo.png'
 import Detail from './Detail';
 import Form from '../Form/Form'
-import Payment from '../Payment/Payment';
+import Payment from '../../pages/Payments/Payment/Payment';
 
 const Product = ({ product, index }) => {
     function formatearMonto(numero) {
