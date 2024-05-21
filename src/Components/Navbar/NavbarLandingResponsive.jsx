@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { IoMdClose } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
+import { changeForm } from '../../features/formSlice/formSlice';
+import { useDispatch } from 'react-redux';
 
 const NavbarLandingResponsive = ({open, setOpen}) => {
   const { pathname } = useLocation()
+  const dispatch = useDispatch()
     useEffect(()=>{
 
     },[open])
@@ -24,7 +27,7 @@ const NavbarLandingResponsive = ({open, setOpen}) => {
         </>}
        </div>
        <div className='flex flex-col p-2 items-center justify-center w-full'>
-        <a className='w-full bg-primary-blue p-1 rounded-[20px] text-white font-semibold mb-2'>Ingresar</a>
+        <button onClick={()=>dispatch(changeForm(true))} className='w-full bg-primary-blue p-1 rounded-[20px] text-white font-semibold mb-2'>Ingresar</button>
         <a className='w-full bg-primary-blue p-1 rounded-[20px] text-white font-semibold'>Contactanos</a>
        </div>
     </div>

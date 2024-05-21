@@ -4,12 +4,15 @@ import cureLogoBco from '../../assets/icons/Logo_bco.png'
 import { TbMenu } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom'
 import NavbarLandingResponsive from './NavbarLandingResponsive';
+import { useDispatch } from 'react-redux';
+import { changeForm } from '../../features/formSlice/formSlice'
 
 const NavbarLanding = () => {
   const [isFixed, setIsFixed] = useState(false)
   const [open, setOpen] = useState(false)
   const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70  shadow text-white"
   const { pathname } = useLocation()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +71,9 @@ const NavbarLanding = () => {
       </div>
 
       <div className='max-[800px]:hidden'>
-        <a href='#products' className='px-3 py-1 font-regular text-md'>Ingresar</a>
+        <button
+        onClick={() => dispatch(changeForm(true))}
+        className='px-3 py-1 font-regular text-md'>Ingresar</button>
         <a href='#publicity' className={`px-3 py-1 font-regular text-md rounded bg-[#239FD8] text-white`}>Contactanos</a>
 
       </div>
