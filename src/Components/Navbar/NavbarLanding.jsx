@@ -62,7 +62,7 @@ const NavbarLanding = () => {
             <a href='#products' className='px-3 py-1'>Productos</a>
             <a href='#testimonials' className='px-3 py-1'>Sobre nosotros</a>
             <a href='#footer' className='px-3 py-1'>Contacto</a>
-            <Link to='/faqs' className='px-3 py-1'>FAQs</Link>
+            <a href='#faqs' className='px-3 py-1'>FAQs</a>
           </>
         )}
       </div>

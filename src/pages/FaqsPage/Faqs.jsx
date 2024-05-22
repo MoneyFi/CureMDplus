@@ -29,7 +29,7 @@ const Faqs = () => {
     ]
 
     return (
-        <div className='w-screen min-h-screen bg-white flex flex-col justify-start items-center pt-28 pb-6'>
+        <div className='w-screen min-h-screen bg-white flex flex-col justify-start items-center pt-28 pb-6' id='faqs'>
             <h1 className='text-3xl font-bold text-center text-primary-blue py-5 font-varela'>¿Tienes preguntas?</h1>
             <h3 className='text-xl text-[#a09d9d] text-center font-roboto'>Preguntas frecuentes</h3>
             <article className='w-full h-full flex flex-col justify-center items-center gap-5 px-12 my-4'>

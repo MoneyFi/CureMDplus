@@ -20,7 +20,7 @@ const NavbarLandingResponsive = ({open, setOpen}) => {
         <a className='font-semibold p-2' href='#products'>Productos</a>
         <a className='font-semibold p-2' href='#testimonials'>Sobre nosotros</a>
         <a className='font-semibold p-2' href='#footer'>Contacto</a>
-        <Link className='font-semibold p-2' to="/faqs">FAQs</Link>
+        <a className='font-semibold p-2' href='#faqs'>FAQs</a>
         </>}
        </div>
        <div className='flex flex-col p-2 items-center justify-center w-full'>
