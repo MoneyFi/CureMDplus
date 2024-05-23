@@ -10,8 +10,10 @@ const TermsConditions = () => {
       </div>
 
       <article>
-      <h3 className='font-bold text-xl text-primary-blue'>Condiciones generales</h3>
-      <h4 className='font-bold text-sm py-2'>Terminos de uso - CureMD Plus</h4>
+      <h3 className='font-bold text-3xl text-primary-blue'>Terminos y condiciones</h3>
+      <div>
+        <h4 className=' font-bold py-2 text-primary-blue'>Condiciones generales - Polizas colectivas y generales</h4>
+      </div>
       </article>
 
       <article>
