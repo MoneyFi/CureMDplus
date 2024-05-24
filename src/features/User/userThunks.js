@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const base_s3 = "CureMD_Argentina_TEST";
-const apiCallRegister = "https://curemd.io/CureMD_Argentina_TEST/rest_apis_argentina.php";
+const apiCallRegisterTest = "https://curemd.io/CureMD_Argentina_TEST/rest_apis_argentina.php?action=Add_user";
 
 export const registerUserThunk = createAsyncThunk(
   "registerUser",
@@ -50,11 +50,10 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
 
-      const { data } = await axios.post(apiCallRegister, uploadData, {
+      const { data } = await axios.post(apiCallRegisterTest, uploadData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             otherHeader: 'foo',
-            'Access-Control-Allow-Origin': '*'
         }
       });
       console.log(data);
