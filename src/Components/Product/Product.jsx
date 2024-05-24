@@ -35,8 +35,8 @@ const Product = ({ product, index }) => {
                 <span className='font-bold font-sans self-center'>{formatearMonto(product.price)}</span>
             </header>
             <hr className='w-full text-primary-blue' />
-            <div className='pt-4 text-pretty min-w-[100%] h-60 font-roboto font-light '>{product.essential.split('_').map((l) => (
-                <li className='my-1'>{l}</li>
+            <div className='pt-4 text-pretty min-w-[100%] h-60 font-roboto font-light '>{product.essential.split('_').map((l,index) => (
+                <li className='my-1' key={index}>{l}</li>
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
                 <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
