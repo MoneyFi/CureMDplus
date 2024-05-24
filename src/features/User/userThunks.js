@@ -47,6 +47,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("age", body.age);
       uploadData.append("dob", body.dob);
       uploadData.append("gender", body.gender);
+      uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
 
       const { data } = await axios.post(apiCallRegister, uploadData, {

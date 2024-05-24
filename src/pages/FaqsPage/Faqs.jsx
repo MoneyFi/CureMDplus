@@ -6,7 +6,7 @@ const Faqs = () => {
     const faqs = [
         {
             title: "¿Qué es CureMD+?",
-            content: "CureMD+ es una compañía de seguros médicos que ofrece planes de salud accesibles y completos para la comunidad. Nuestra misión es brindar a las personas la cobertura que necesitan para proteger su salud y bienestar sin tener que preocuparse por los altos costos."
+            content: "CureMD+ es una compañía que comercializa un seguro de salud a travez de Federacíon Patronal. Nuestra misión es brindar a las personas la cobertura que necesitan para proteger su salud y bienestar sin tener que preocuparse por los altos costos."
         },
         {
             title: "¿Qué tipo de planes de seguro médico ofrece CureMD+?",

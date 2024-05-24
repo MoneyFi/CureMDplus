@@ -31,7 +31,8 @@ const Register = ({ handleAction }) => {
         password:"",
         gender:"",
         dob:"",
-        age:""
+        age:"",
+        cuil:""
     })
 
     const handleForm = (e) => {
@@ -94,6 +95,10 @@ const Register = ({ handleAction }) => {
                 <div className='flex flex-col justify-center items-left w-full'>
                     <label htmlFor="lastname" className='text-varela text-secondary-blue'>Apellido</label>
                     <input placeholder='Ej: Peréz' type="text" name="lastname" id="lastname" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' onChange={handleForm} />
+                </div>
+                <div className='flex flex-col justify-center items-left w-full'>
+                    <label htmlFor="cuil" className='text-varela text-secondary-blue'>Cuil</label>
+                    <input placeholder='Ej: 23-34567856-9' type="text" name="cuil" id="cuil" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' onChange={handleForm} />
                 </div>
                 <div className='flex flex-col justify-center items-left w-full'>
                     <label htmlFor="gender" className='text-varela text-secondary-blue'>Genero</label>
@@ -169,7 +174,7 @@ const Register = ({ handleAction }) => {
                     <FaGoogle />
                     Google
                 </button> */}
-                <p className='text-roboto text-[#969696] text-sm text-center'>Al registrarse, usted acepta nuestros <a href="#" className='text-[#000000] font-bold font-roboto'>Terminos de Servicio</a> y <a href="#" className='text-[#000000] font-bold font-roboto'>Politicas de Privacidad</a></p>
+                <p className='text-roboto text-[#969696] text-sm text-center'>Al registrarse, usted acepta nuestros <a href="#" className='text-[#000000] font-bold font-roboto'>Terminos y Condiciones</a></p>
             </article>
         </form>
         /* </section> */
