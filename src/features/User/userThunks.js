@@ -53,7 +53,6 @@ export const registerUserThunk = createAsyncThunk(
       const { data } = await axios.post(`${apiCallTest}?action=Add_user`, uploadData, {
         headers: {
             'Content-Type': 'multipart/form-data',
-            otherHeader: 'foo',
         }
       });
       console.log(data);
