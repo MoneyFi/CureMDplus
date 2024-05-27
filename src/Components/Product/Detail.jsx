@@ -1,6 +1,7 @@
 import React from 'react'
 import doctores from '../../assets/doctores.png'
 import logo from '../../assets/icons/logo.png'
+import { MdCancel } from "react-icons/md";
 
 const Detail = ({ product, format, handleDetail }) => {
     const style = {
@@ -14,7 +15,9 @@ const Detail = ({ product, format, handleDetail }) => {
                 <div style={style} className='w-[0%] md:w-[50%]'></div>
                 <div className='w-[100%] h-full md:w-[50%] flex flex-col justify-around items-center py-5 px-10 text-[#000000] text-sm font-roboto gap-4'>
                     <header className='flex flex-col justify-center items-start text-2xl w-full'>
-                        <button onClick={handleDetail} className='self-end text-white text-sm w-8 h-8 flex justify-center items-center text-center rounded-full bg-[#df0d0d]'>x</button>
+                        <button onClick={handleDetail} className='self-end text-sm w-8 h-8 flex justify-center items-center text-center text-[#df0d0d]'>
+                            <MdCancel size={25}/>
+                        </button>
                         <div className='text-primary-blue flex items-center gap-2'>
                             <img src={logo} alt="" width={55} className='rounded-full' />
                             <span className='flex gap-1 w-full'>{product.title.split(' ')[0]}<b>{product.title.split(' ')[1]}</b></span>
