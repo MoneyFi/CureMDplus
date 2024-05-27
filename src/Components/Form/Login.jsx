@@ -1,18 +1,62 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Logo from '../../assets/icons/Logo_bco.png'
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUserThunk } from '../../features/User/userThunks';
+import { changeForm } from '../../features/formSlice/formSlice';
 
 const Login = ({ handleAction }) => {
     const [showPass1, setShowPass1] = useState(false);
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    const { response, status } = useSelector(state => state.user)
+    const [body, setBody] = useState({
+        email: "",
+        password: ""
+    })
+
+    const [error, setError] = useState(null)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setBody({
+            ...body,
+            [name]: value
+        });
+        setError(null)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await dispatch(loginUserThunk(body));
+        setLoading(true)
+    }
 
     const toggleShowPass1 = () => {
         setShowPass1(!showPass1);
         document.getElementById("password").type = showPass1 ? "password" : "text";
     };
 
+    useEffect(() => {
+        if(loading){
+            if(response === 'fail_password') {
+                setError('Contraseña incorrecta')
+                setLoading(false)
+            }
+            if(response === 'fail_email') {
+                setError('Email incorrecto')
+                setLoading(false)
+            }
+            else {
+                dispatch(changeForm(false))
+                setLoading(false)
+            }
+        }
+    },[response])
+
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40 overflow-x-auto'>
-            <form onSubmit={(e) => e.preventDefault()} className='flex flex-col min-w-[250px]:full max-w-[460px] justify-start items-center bg-white text-black rounded-2xl shadow-lg z-50'>
+            <form onSubmit={handleSubmit} className='flex flex-col min-w-[250px]:full max-w-[460px] justify-start items-center bg-white text-black rounded-2xl shadow-lg z-50'>
                 <div className='text-3xl w-full bg-primary-blue text-white flex justify-center items-center h-28 pt-5 rounded-t-lg'>
                     <div>
                         <img src={Logo} alt="logo" className='w-60' />
@@ -21,12 +65,12 @@ const Login = ({ handleAction }) => {
                 <article className='w-full h-full py-4 px-10 flex flex-col justify-center items-left text-lg text-roboto gap-2 bg-none'>
                     <div className='flex flex-col justify-center items-left w-full'>
                         <label htmlFor="email" className='text-varela text-secondary-blue'>Correo Electronico</label>
-                        <input type="email" name="email" id="email" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' />
+                        <input onChange={handleChange} type="email" name="email" id="email" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' />
                     </div>
                     <div className='flex flex-col justify-center items-left w-full'>
                         <label htmlFor="password" className='text-varela text-secondary-blue'>Contraseña</label>
                         <div className='flex justify-center items-center w-full gap-1'>
-                            <input type="password" name="password" id="password" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' />
+                            <input onChange={handleChange} type="password" name="password" id="password" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' />
                             <button
                                 className='w-auto h-9 text-white rounded border border-secondary-blue bg-secondary-blue px-2 py-1'
                                 onClick={toggleShowPass1}>{showPass1 ?

@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import Logo from '../../assets/icons/Logo_bco.png'
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUserThunk } from '../../features/User/userThunks';
 
 const Register = ({ handleAction }) => {
     const [showPass1, setShowPass1] = useState(false);
     const [showPass2, setShowPass2] = useState(false);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const { response, status } = useSelector(state => state.user);
+    const [loading, setLoading] = useState(false);
 
     const toggleShowPass1 = () => {
         setShowPass1(!showPass1);
@@ -78,8 +80,26 @@ const Register = ({ handleAction }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(registerUserThunk(body))
-        alert('Formulario Enviado')
+        setLoading(true)
     }
+
+    useEffect(() => {
+        if(loading){
+            if(response === 'fail') {
+                alert('Hubo un error en el servidor, porfavor intentelo de nuevo')
+                setLoading(false)
+            }
+            if(response === 'repeat') {
+                alert('El email ya se encuentra registrado')
+                setLoading(false)
+            }
+            else {
+                alert('Usuario registrado con exito, ya puedes iniciar sesión')
+                setLoading(false)
+                handleAction()
+            }
+        }
+    },[response])
 
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40'>

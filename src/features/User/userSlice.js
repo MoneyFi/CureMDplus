@@ -23,11 +23,12 @@ export const userSlice = createSlice({
         })
         .addCase(registerUserThunk.fulfilled, (state, payload) => {
             state.status = 'success';
-            state.response = payload;
+            state.response = payload.payload;
         })
         .addCase(registerUserThunk.rejected, (state, payload) => {
             state.status = 'failure';
             state.error = payload;
+            state.response = payload.payload.response;
         })
     // Login
         .addCase(loginUserThunk.pending, (state) => {
@@ -35,15 +36,16 @@ export const userSlice = createSlice({
         })
         .addCase(loginUserThunk.fulfilled, (state, payload) => {
             state.status = 'success';
-            state.response = payload.response;
-            state.user_id = payload.user_id;
-            state.token = payload.token;
-            state.data = payload.data_user;
-            state.role = payload.role;
+            state.response = payload.payload.response;
+            state.user_id = payload.payload.user_id;
+            state.token = payload.payload.token;
+            state.data = payload.payload.data_user;
+            state.role = payload.payload.role;
         })
         .addCase(loginUserThunk.rejected, (state, payload) => {
             state.status = 'failure';
             state.error = payload;
+            state.response = payload.payload.response;
         })
   },
 });
