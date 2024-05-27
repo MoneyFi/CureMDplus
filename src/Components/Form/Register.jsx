@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Logo from '../../assets/icons/Logo_bco.png'
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
