@@ -2,6 +2,7 @@ import React from 'react'
 import doctores from '../../assets/doctores.png'
 import logo from '../../assets/icons/logo.png'
 import { MdCancel } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Detail = ({ product, format, handleDetail }) => {
     const style = {
@@ -38,7 +39,7 @@ const Detail = ({ product, format, handleDetail }) => {
                     </div>
                     <footer className='flex flex-col justify-center items-center gap-2 max-[600px]:w-full'>
                         <button className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Comprar</button>
-                        <span>Terminos y Condiciones</span>
+                        <Link to='/terminosycondiciones'>Terminos y Condiciones</Link>
                     </footer>
                 </div>
             </article>
