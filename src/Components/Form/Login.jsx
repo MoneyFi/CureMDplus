@@ -40,16 +40,16 @@ const Login = ({ handleAction }) => {
     useEffect(() => {
         if(loading){
             if(response === 'fail_password') {
-                setError('Contraseña incorrecta')
                 setLoading(false)
+                setError('Contraseña incorrecta')
             }
             if(response === 'fail_email') {
-                setError('Email incorrecto')
                 setLoading(false)
+                setError('Email incorrecto')
             }
             if(response === 'success') {
-                dispatch(changeForm(false))
                 setLoading(false)
+                dispatch(changeForm(false))
             }
         }
     },[status])
@@ -84,6 +84,7 @@ const Login = ({ handleAction }) => {
                     <p className='text-roboto text-[#969696] text-sm text-center'>No tienes una cuenta? <span onClick={handleAction} className='text-[#000000] font-bold font-roboto cursor-pointer'>Registrate</span></p>
                     <hr className='w-full border-[#E0E0E0] my-2' />
                     <button type='submit' className='w-full bg-secondary-blue text-white font-bold font-sans text-lg rounded-lg py-2 transition-all hover:bg-primary-blue focus:bg-primary-blue'>Iniciar Sesion</button>
+                    {error && <p className='text-roboto text-[#a73131] text-sm text-center'>{error}</p>}
                     {/* <p className='text-roboto text-[#969696] text-sm text-center'>o tambien puedes ingresar con:</p>
                     <button className='w-full bg-white text-[#000000] text-center flex justify-center items-center gap-3 border border-[#E0E0E0] font-bold font-sans text-lg rounded-lg py-2 max-h-[2.4em] transition-all hover:bg-secondary-blue hover:text-white'>
                         <FaGoogle />

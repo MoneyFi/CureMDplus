@@ -94,8 +94,8 @@ const Register = ({ handleAction }) => {
                 setLoading(false)
             }
             if(response === 'success') {
-                alert('Usuario registrado con exito, ya puedes iniciar sesión')
                 setLoading(false)
+                alert('Usuario registrado con exito, ya puedes iniciar sesión')
                 handleAction()
             }
         }
