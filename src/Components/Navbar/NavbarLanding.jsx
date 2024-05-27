@@ -39,8 +39,8 @@ const NavbarLanding = () => {
   return (
     <header className={!isFixed ? `flex items-center justify-around w-[100vw] py-3 font-light  max-[800px]:justify-between fixed z-20 text-white px-4 ${pathname === '/faqs' ? 'bg-primary-blue' : ''} ` : `${glass} flex items-center justify-around font-light w-[100vw] fixed max-[800px]:justify-between py-3 px-4 z-20`}>
 
-      <div className='w-[220px] max-[500px]:w-[200px]'>
-        <a href='#landing'><img alt='logo' src={cureLogoBco} /></a>
+      <div className='w-[170px] overflow-hidden'>
+        <a href='#landing'><img alt='logo' src={cureLogoBco} className='mt-5' /></a>
       </div>
 
       <button
