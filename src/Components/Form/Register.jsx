@@ -93,13 +93,13 @@ const Register = ({ handleAction }) => {
                 alert('El email ya se encuentra registrado')
                 setLoading(false)
             }
-            else {
+            if(response === 'success') {
                 alert('Usuario registrado con exito, ya puedes iniciar sesión')
                 setLoading(false)
                 handleAction()
             }
         }
-    },[response])
+    },[status])
 
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40'>

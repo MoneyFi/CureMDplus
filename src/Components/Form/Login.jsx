@@ -47,12 +47,12 @@ const Login = ({ handleAction }) => {
                 setError('Email incorrecto')
                 setLoading(false)
             }
-            else {
+            if(response === 'success') {
                 dispatch(changeForm(false))
                 setLoading(false)
             }
         }
-    },[response])
+    },[status])
 
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40 overflow-x-auto'>
@@ -71,13 +71,13 @@ const Login = ({ handleAction }) => {
                         <label htmlFor="password" className='text-varela text-secondary-blue'>Contraseña</label>
                         <div className='flex justify-center items-center w-full gap-1'>
                             <input onChange={handleChange} type="password" name="password" id="password" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' />
-                            <button
-                                className='w-auto h-9 text-white rounded border border-secondary-blue bg-secondary-blue px-2 py-1'
+                            <span
+                                className='w-auto h-9 text-white rounded border border-secondary-blue bg-secondary-blue px-2 py-1 cursor-pointer'
                                 onClick={toggleShowPass1}>{showPass1 ?
                                     <FaEye />
                                     :
                                     <FaEyeSlash />
-                                }</button>
+                                }</span>
                         </div>
                     </div>
                     <hr className='w-full border-[#E0E0E0] my-2' />
