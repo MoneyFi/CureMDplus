@@ -1,12 +1,11 @@
-import React, { useEffect, useId } from 'react'
+import React from 'react'
 import { goCuotas } from '../../../API/Payment/payment'
 import Anual from './Anual'
 import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
 import uuid from 'react-uuid'
-import { useNavigate } from 'react-router-dom'
+
 
 const Payment = ({ handlePay, price, formatearMonto }) => {
-    const navigate = useNavigate()
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
         discount: 'true'
@@ -35,7 +34,7 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
     const goCuotasHandler = ()=>{
         const id = uuid()
         goCuotas({
-            amount_in_cents: 150001,
+            amount_in_cents: amount,
             order_reference_id: id,
             phone_number: 2235490825
         })
