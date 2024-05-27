@@ -13,7 +13,7 @@ const Faq = ({ title, content, list }) => {
                     {open ? <IoMdArrowDropupCircle /> : <IoMdArrowDropdownCircle />}
                 </button>
             </div>
-            <div className={'w-full text-xs md:text-sm px-3  text-pretty font-roboto' + (open ? ' h-full' : ' h-0')}><p>{content}</p>{list && list.split('-').map((l) => (<li>{l}</li>))}</div>
+            <div className={'w-full text-xs md:text-sm px-3  text-pretty font-roboto' + (open ? ' h-full' : ' h-0')}><p>{content}</p>{list && list.split('-').map((l,i) => (<li key={i}>{l}</li>))}</div>
         </article>
     )
 }

@@ -1,4 +1,9 @@
 import React from 'react'
+import { goCuotas } from '../../../API/Payment/payment'
+import Anual from './Anual'
+import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
+import uuid from 'react-uuid'
+
 
 const Payment = ({ handlePay, price, formatearMonto }) => {
     const [paymentOptions, setPaymentOptions] = React.useState({
@@ -13,6 +18,8 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
         })
     }
 
+    
+
     React.useEffect(() => {
         if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
             setAmount(price - (price * 0.1))
@@ -22,6 +29,16 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
             setAmount(price)
         }
     }, [paymentOptions, handleType, price])
+
+
+    const goCuotasHandler = ()=>{
+        const id = uuid()
+        goCuotas({
+            amount_in_cents: amount,
+            order_reference_id: id,
+            phone_number: 2235490825
+        })
+    }
     return (
         <section className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm z-50'>
             <article className='w-2/4 bg-white rounded-lg flex flex-col justify-around items-center shadow-2xl px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
@@ -36,13 +53,7 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
                     <button onClick={handleType} value={'mensual'} className={`px-3 py-2 rounded-md shadow font-sans font-bold w-28 ${paymentOptions.type === 'mensual' ? 'bg-secondary-blue text-white' : ''}`}>MENSUAL</button>
                 </div>
                 {paymentOptions.type === 'anual' &&
-                    <div className='w-full flex flex-col gap-2 justify-center items-center'>
-                        <span className='font-roboto font-light'>A pagar en:</span>
-                        <select className='w-full shadow px-3 py-1 text-secondary-blue font-sans font-bold bg-white text-center rounded-lg cursor-pointer' name="discount" defaultValue={paymentOptions.discount} id="" onChange={(e) => setPaymentOptions({ ...paymentOptions, discount: e.target.value })}>
-                            <option value='true'>PAGO UNICO</option>
-                            <option value='false'>CUOTAS</option>
-                        </select>
-                    </div>
+                    <Anual paymentOptions={paymentOptions} setPaymentOptions={setPaymentOptions} discount={paymentOptions.discount}/>
                 }
                 <div className='flex flex-col justify-center items-center gap-1'>
                     <span className='font-varela text-secondary-blue text-lg'>TOTAL A PAGAR:</span>
@@ -55,24 +66,28 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
                 {paymentOptions.discount === 'true' && paymentOptions.type === 'anual' &&
                     <>
                         <button className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
-                            <img src="https://logotipoz.com/wp-content/uploads/2021/10/version-horizontal-large-logo-mercado-pago.webp" alt="" width={130} />
+                            <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>
-                        <button className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
-                            <img src="https://d2r9epyceweg5n.cloudfront.net/stores/419/170/rte/logo_rosa11.png" alt="" width={100} />
+                        <button 
+                        onClick={()=>goCuotasHandler()}
+                        className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
+                            <img src={GO_CUOTAS_LOGO} alt="" width={100} />
                         </button>
                     </>
                 }
                 {paymentOptions.discount === 'false' && paymentOptions.type === 'anual' &&
                     <>
-                        <button className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
-                            <img src="https://d2r9epyceweg5n.cloudfront.net/stores/419/170/rte/logo_rosa11.png" alt="" width={100} />
+                        <button 
+                        onClick={()=>goCuotasHandler()}
+                        className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
+                            <img src={GO_CUOTAS_LOGO} alt="" width={100} />
                         </button>
                     </>
                 }
                 {paymentOptions.type === 'mensual' &&
                     <>
                         <button className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
-                            <img src="https://logotipoz.com/wp-content/uploads/2021/10/version-horizontal-large-logo-mercado-pago.webp" alt="" width={130} />
+                            <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>
                     </>
                 }
