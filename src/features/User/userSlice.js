@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerUserThunk } from "./userThunks";
+import { loginUserThunk, registerUserThunk } from "./userThunks";
 
 const initialState = {
     user: null, //Aca iria el token de inicion de sesion o el id del user.
@@ -24,6 +24,19 @@ export const userSlice = createSlice({
             state.response = payload;
         })
         .addCase(registerUserThunk.rejected, (state, payload) => {
+            state.status = 'failure';
+            state.error = payload;
+        })
+    // Login
+        .addCase(loginUserThunk.pending, (state) => {
+            state.status = 'pending';
+        })
+        .addCase(loginUserThunk.fulfilled, (state, payload) => {
+            state.status = 'success';
+            state.token = payload.token;
+            state.role = payload.role;
+        })
+        .addCase(loginUserThunk.rejected, (state, payload) => {
             state.status = 'failure';
             state.error = payload;
         })

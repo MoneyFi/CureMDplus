@@ -10,3 +10,8 @@
 input:focus::placeholder {
     color: transparent;
 }
+
+#root {
+    max-width: 100vw;
+    overflow-x: hidden;
+}

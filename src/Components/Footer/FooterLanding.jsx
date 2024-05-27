@@ -9,7 +9,7 @@ const FooterLanding = () => {
         <div className='w-[170px] md:w-[200px]'>
           <img alt='logo_blanco' src={cureLogoBlanco} className='w-full' />
         </div>
-        <h4 className="text-sm md:text-xl w-[450px]  text-center">
+        <h4 className="text-xs md:text-xl w-full  text-center">
           Tu alternativa <strong>accesible</strong> para una cobertura <strong>integral de salud</strong>
         </h4>
       </article>
