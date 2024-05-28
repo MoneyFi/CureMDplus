@@ -4,7 +4,6 @@ import video from './assets/bakground/video.mp4'
 function App() {
   const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70 text-white shadow"
 
-
   return (
     <section className="flex flex-col items-center justify-center w-full h-[100vh] relative" id='landing'>
       <video 
@@ -42,7 +41,6 @@ function App() {
     </h3>
     </article>
     </div>
-   
     </section>
   )
 }

@@ -21,31 +21,31 @@ export const userSlice = createSlice({
         .addCase(registerUserThunk.pending, (state) => {
             state.status = 'pending';
         })
-        .addCase(registerUserThunk.fulfilled, (state, payload) => {
+        .addCase(registerUserThunk.fulfilled, (state, action) => {
             state.status = 'success';
-            state.response = payload.payload;
+            state.response = action.payload;
         })
-        .addCase(registerUserThunk.rejected, (state, payload) => {
+        .addCase(registerUserThunk.rejected, (state, action) => {
             state.status = 'failure';
-            state.error = payload;
-            state.response = payload.payload.response;
+            state.error = action;
+            state.response = action.payload.response;
         })
     // Login
         .addCase(loginUserThunk.pending, (state) => {
             state.status = 'pending';
         })
-        .addCase(loginUserThunk.fulfilled, (state, payload) => {
+        .addCase(loginUserThunk.fulfilled, (state, action) => {
             state.status = 'success';
-            state.response = payload.payload.response;
-            state.user_id = payload.payload.user_id;
-            state.token = payload.payload.token;
-            state.data = payload.payload.data_user;
-            state.role = payload.payload.role;
+            state.response = action.payload.response;
+            state.user_id = action.payload.user_id;
+            state.token = action.payload.token;
+            state.data = action.payload.data_user;
+            state.role = action.payload.role;
         })
-        .addCase(loginUserThunk.rejected, (state, payload) => {
+        .addCase(loginUserThunk.rejected, (state, action) => {
             state.status = 'failure';
-            state.error = payload;
-            state.response = payload.payload.response;
+            state.error = action;
+            state.response = action.payload.response;
         })
   },
 });
