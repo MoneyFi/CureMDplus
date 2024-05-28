@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { loginUserThunk, registerUserThunk } from "./userThunks";
 
 const initialState = {
-    user: null, //Aca iria el token de inicion de sesion o el id del user.
+    token: null, //Aca iria el token de inicion de sesion.
+    user_id: null, //Aca iria el id del user.
+    data: null, //Aca iria metadata del user.
     role: null, //Aca iria el rol del usuario cuando inicia sesion.
     status: null, //El status de la peticion (pending - success - failure)
     error: '', //Si recibimos un error
@@ -21,11 +23,12 @@ export const userSlice = createSlice({
         })
         .addCase(registerUserThunk.fulfilled, (state, payload) => {
             state.status = 'success';
-            state.response = payload;
+            state.response = payload.payload;
         })
         .addCase(registerUserThunk.rejected, (state, payload) => {
             state.status = 'failure';
             state.error = payload;
+            state.response = payload.payload.response;
         })
     // Login
         .addCase(loginUserThunk.pending, (state) => {
@@ -33,12 +36,16 @@ export const userSlice = createSlice({
         })
         .addCase(loginUserThunk.fulfilled, (state, payload) => {
             state.status = 'success';
-            state.token = payload.token;
-            state.role = payload.role;
+            state.response = payload.payload.response;
+            state.user_id = payload.payload.user_id;
+            state.token = payload.payload.token;
+            state.data = payload.payload.data_user;
+            state.role = payload.payload.role;
         })
         .addCase(loginUserThunk.rejected, (state, payload) => {
             state.status = 'failure';
             state.error = payload;
+            state.response = payload.payload.response;
         })
   },
 });
