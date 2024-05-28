@@ -34,7 +34,7 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
     const goCuotasHandler = ()=>{
         const id = uuid()
         goCuotas({
-            amount_in_cents: amount,
+            amount_in_cents: amount * 100,
             order_reference_id: id,
             phone_number: 2235490825
         })
