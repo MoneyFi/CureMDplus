@@ -3,6 +3,8 @@ import Logo from '../../assets/icons/Logo_bco.png'
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUserThunk } from '../../features/User/userThunks';
+import { createToast } from '../../features/toastSlice/toastSlice'
+import { Link } from 'react-router-dom';
 
 const Register = ({ handleAction }) => {
     const [showPass1, setShowPass1] = useState(false);
@@ -22,19 +24,19 @@ const Register = ({ handleAction }) => {
     }
 
     const [body, setBody] = useState({
-        name:"",
-        lastname:"",
-        email:"",
-        mobile_number:"",
-        adreess:"",
-        country:"",
-        country_code:"",
-        city:"",
-        password:"",
-        gender:"",
-        dob:"",
-        age:"",
-        cuil:""
+        name: null,
+        lastname: null,
+        email: null,
+        mobile_number: null,
+        adreess: null,
+        country: null,
+        country_code: null,
+        city: null,
+        password: null,
+        gender: null,
+        dob: null,
+        age: null,
+        cuil: null
     })
 
     const handleForm = (e) => {
@@ -68,7 +70,7 @@ const Register = ({ handleAction }) => {
     };
 
     const samePassword = (e) => {
-        if(e.target.value !== body.password) {
+        if (e.target.value !== body.password) {
             return setDiferentPass("Contraseña Distinta")
         } else {
             return setDiferentPass(null)
@@ -84,22 +86,26 @@ const Register = ({ handleAction }) => {
     }
 
     useEffect(() => {
-        if(loading){
-            if(response === 'fail') {
-                alert('Hubo un error en el servidor, porfavor intentelo de nuevo')
+        if (loading) {
+            if (response === 'fail') {
+                dispatch(createToast('Hubo un error en el servidor, porfavor intentelo de nuevo'))
                 setLoading(false)
             }
-            if(response === 'repeat') {
-                alert('El email ya se encuentra registrado')
+            if (response === 'repeat') {
+                dispatch(createToast('El email ya se encuentra registrado'))
                 setLoading(false)
             }
-            if(response === 'success') {
+            if (response === 'success') {
+                setLoading(false);
+                dispatch(createToast('Usuario registrado con exito, ya puedes iniciar sesión'));
+                handleAction();
+            }
+            else {
+                dispatch(createToast('Hubo un error en el servidor, porfavor intentelo de nuevo'))
                 setLoading(false)
-                alert('Usuario registrado con exito, ya puedes iniciar sesión')
-                handleAction()
             }
         }
-    },[status])
+    }, [status])
 
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40'>
@@ -188,13 +194,13 @@ const Register = ({ handleAction }) => {
                 <hr className='w-full border-[#E0E0E0] my-2' />
                 <p className='text-roboto text-[#969696] text-sm text-center'>Ya tienes una cuenta? <span onClick={handleAction} className='text-[#000000] font-bold font-roboto cursor-pointer'>Inicia Sesion</span></p>
                 <hr className='w-full border-[#E0E0E0] my-2' />
-                <button type='submit' className='w-full bg-secondary-blue text-white font-bold font-sans text-lg rounded-lg py-2 transition-all hover:bg-primary-blue focus:bg-primary-blue '>Registrarse</button>
+                <button disabled={!Object.values(body).every(value => value !== null && value !== "")} type='submit' className='w-full bg-secondary-blue text-white font-bold font-sans text-lg rounded-lg py-2 transition-all hover:bg-primary-blue focus:bg-primary-blue disabled:bg-alternate'>Registrarse</button>
                 {/* <p className='text-roboto text-[#969696] text-sm text-center'>o tambien puedes registrarte con:</p>
                 <button className='w-full bg-white text-[#000000] text-center flex justify-center items-center gap-3 border border-[#E0E0E0] font-bold font-sans text-lg rounded-lg py-2 max-h-[2.4em] transition-all hover:bg-secondary-blue hover:text-white'>
                     <FaGoogle />
                     Google
                 </button> */}
-                <p className='text-roboto text-[#969696] text-sm text-center'>Al registrarse, usted acepta nuestros <a href="#" className='text-[#000000] font-bold font-roboto'>Terminos y Condiciones</a></p>
+                <p className='text-roboto text-[#969696] text-sm text-center'>Léa nuestros <Link to="/terminosycondiciones" className='text-[#000000] font-bold font-roboto'>Terminos y Condiciones</Link></p>
             </article>
         </form>
         /* </section> */
