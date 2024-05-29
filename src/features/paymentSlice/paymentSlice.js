@@ -2,13 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const paymentSlice = createSlice({
   name: "payment",
-  initialState: true,
+  initialState: {
+    price: null,
+    plan: null
+  },
   reducers: {
     paymentGocuotas: (state, action) => {
         
     },
+    priceToPay: (state, action) => {
+      state.price = action.payload
+    },
+    planToPay: (state, action) => {
+      state.plan = action.payload.split(" ")[1].toLowerCase()
+    },
   },
 });
 
-export const { paymentGocuotas } = paymentSlice.actions;
+export const { paymentGocuotas, priceToPay, planToPay } = paymentSlice.actions;
 export default paymentSlice.reducer;

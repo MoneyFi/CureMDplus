@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { changeForm } from '../../features/formSlice/formSlice';
 import { useNavigate } from 'react-router-dom';
 import { changePay } from '../../features/formSlice/paySlice';
+import { priceToPay, planToPay } from '../../features/paymentSlice/paymentSlice';
 
 const Product = ({ product, index }) => {
     const navigate = useNavigate()
@@ -22,8 +23,10 @@ const Product = ({ product, index }) => {
     const [pay, setPay] = useState(false)
 
     const handlePay = () => {
-        dispatch(changePay({amount: product.price, plan: product.title}))
-        navigate('/register')
+        // dispatch(changePay({amount: product.price, plan: product.title}))
+        dispatch(priceToPay(product.price))
+        dispatch(planToPay(product.title))
+        navigate('/payment')
     }
     const handleForm = () => {
         setForm(!form)
