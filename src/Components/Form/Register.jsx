@@ -14,7 +14,20 @@ const Register = ({ handleAction }) => {
     const dispatch = useDispatch();
     const { response, status } = useSelector(state => state.user);
     const [loading, setLoading] = useState(false);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({
+        name: 'Este campo es obligatorio',
+        lastname: 'Este campo es obligatorio',
+        email: 'Este campo es obligatorio',
+        mobile_number: 'Este campo es obligatorio',
+        adreess: 'Este campo es obligatorio',
+        country: 'Este campo es obligatorio',
+        city: 'Este campo es obligatorio',
+        password: 'Este campo es obligatorio',
+        'password_repeat': 'Este campo es obligatorio',
+        gender: 'Este campo es obligatorio',
+        dob: 'Este campo es obligatorio',
+        cuil: 'Este campo es obligatorio'
+    });
 
     const toggleShowPass1 = () => {
         setShowPass1(!showPass1);
@@ -42,6 +55,14 @@ const Register = ({ handleAction }) => {
         age: null,
         cuil: null
     })
+
+    const samePassword = (value) => {
+        if (value === '') return 'Este campo es obligatorio'
+        if (value !== body.password) {
+            return "Contraseña Distinta"
+        }
+        return null
+    }
 
     const handleForm = (e) => {
         const { name, value } = e.target;
@@ -121,17 +142,19 @@ const Register = ({ handleAction }) => {
                 [name]: samePassword(value)
             })
         }
-    };
-
-    const samePassword = (value) => {
-        if (value !== body.password) {
-            return "Contraseña Distinta"
-        } else {
-            return null
+        if (name === 'password') {
+            setErrors({
+                ...errors,
+                [name]: null
+            })
         }
-    }
-
-    const [diferentPass, setDiferentPass] = useState(null)
+        if (name === 'gender') {
+            setErrors({
+                ...errors,
+                [name]: null
+            })
+        }
+    };
 
     const handleSubmit = async (e) => {
         localStorage.setItem('mail',body.email)
@@ -195,7 +218,10 @@ const Register = ({ handleAction }) => {
                     <input placeholder='Ej: 23345678569' type="text" name="cuil" id="cuil" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' onChange={handleForm} />
                 </div>
                 <div className='flex flex-col justify-center items-left w-full'>
+                    <div className='flex justify-between items-center w-full'>
                     <label htmlFor="gender" className='text-varela text-secondary-blue'>Genero</label>
+                        {errors.gender && <span className='text-xs text-[#c71313] font-roboto font-light'>{errors.gender}</span>}
+                    </div>
                     <select name="gender" id="gender" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black bg-white' defaultValue="" onChange={handleForm} >
                         <option disabled value="">Elegi tu genero</option>
                         <option value="male">Masculino</option>
@@ -252,7 +278,10 @@ const Register = ({ handleAction }) => {
                     </div>
                 </div>
                 <div className='flex flex-col justify-center items-left w-full'>
+                    <div className='flex justify-between items-center w-full'>
                     <label htmlFor="password" className='text-varela text-secondary-blue'>Contraseña</label>
+                        {errors.password && <span className='text-xs text-[#c71313] font-roboto font-light'>{errors.password}</span>}
+                    </div>
                     <div className='flex justify-center items-center w-full gap-1'>
                         <input placeholder='******' type="password" name="password" id="password" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' onChange={handleForm} />
                         <span
@@ -285,8 +314,8 @@ const Register = ({ handleAction }) => {
                 <p className='text-roboto text-[#969696] text-sm text-center'>Ya tienes una cuenta? <span onClick={handleAction} className='text-[#000000] font-bold font-roboto cursor-pointer'>Inicia Sesion</span></p>
                 <hr className='w-full border-[#E0E0E0] my-2' />
                 <button
-                    title={!Object.values(body).every(value => value !== null && value !== "") ? 'Complete el formulario' : !Object.values(errors).every(value => value !== null && value !== "") ? 'Corriga los errores del formulario' : ''}
-                    disabled={!Object.values(body).every(value => value !== null && value !== "") || !Object.values(errors).every(value => value !== null && value !== "")} type='submit' className='w-full bg-secondary-blue text-white font-bold font-sans text-lg rounded-lg py-2 transition-all hover:bg-primary-blue focus:bg-primary-blue disabled:bg-alternate'>Registrarse</button>
+                    title={!Object.values(body).every(value => value !== null && value !== "") ? 'Complete el formulario' : !Object.values(errors).every(value => value === null) ? 'Corriga los errores del formulario' : ''}
+                    disabled={!Object.values(errors).every(value => value === null)} type='submit' className='w-full bg-secondary-blue text-white font-bold font-sans text-lg rounded-lg py-2 transition-all hover:bg-primary-blue focus:bg-primary-blue disabled:bg-alternate'>Registrarse</button>
                 {/* <p className='text-roboto text-[#969696] text-sm text-center'>o tambien puedes registrarte con:</p>
                 <button className='w-full bg-white text-[#000000] text-center flex justify-center items-center gap-3 border border-[#E0E0E0] font-bold font-sans text-lg rounded-lg py-2 max-h-[2.4em] transition-all hover:bg-secondary-blue hover:text-white'>
                     <FaGoogle />
