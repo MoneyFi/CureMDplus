@@ -5,6 +5,7 @@ import LayoutPayment from "../pages/Payments/LayoutPayment";
 import Success from "../pages/Payments/Success";
 import Failure from "../pages/Payments/Failure";
 import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
+import RegisterClient from "../pages/Client/Register/RegisterClient";
 
 export const router = createBrowserRouter([
     {
@@ -34,5 +35,9 @@ export const router = createBrowserRouter([
     {
         path: '/terminosycondiciones',
         element: <TermsConditions/>
+    },
+    {
+        path: '/register',
+        element: <RegisterClient/>
     }
 ]);

@@ -4,6 +4,9 @@ import formReducer from '../features/formSlice/formSlice'
 import userReducer from '../features/User/userSlice'
 import paymentReducer from '../features/paymentSlice/paymentSlice'
 import toastReducer from '../features/toastSlice/toastSlice'
+import payFormReducer from '../features/formSlice/paySlice'
+
+
 
 
 export const store = configureStore({
@@ -12,7 +15,9 @@ export const store = configureStore({
    user: userReducer,
    form: formReducer,
    payment: paymentReducer,
-   toast: toastReducer
+   toast: toastReducer,
+   pay: payFormReducer
+   
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

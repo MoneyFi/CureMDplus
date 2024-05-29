@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import Logo from '../../assets/icons/Logo_bco.png'
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import {  FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUserThunk } from '../../features/User/userThunks';
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { Link } from 'react-router-dom';
+import { changePay } from '../../features/formSlice/paySlice';
 
 const Register = ({ handleAction }) => {
     const [showPass1, setShowPass1] = useState(false);
@@ -80,9 +81,14 @@ const Register = ({ handleAction }) => {
     const [diferentPass, setDiferentPass] = useState(null)
 
     const handleSubmit = async (e) => {
+        localStorage.setItem('mail',body.email)
+        localStorage.setItem('phone',body.mobile_number)
         e.preventDefault()
         await dispatch(registerUserThunk(body))
         setLoading(true)
+
+        // dispatch(changePay(true))
+
     }
 
     useEffect(() => {
@@ -109,11 +115,11 @@ const Register = ({ handleAction }) => {
 
     return (
         // <section className='flex flex-col items-center justify-center fixed h-screen w-screen backdrop-blur-sm z-40'>
-        <form onSubmit={handleSubmit} className='flex flex-col min-w-[250px]:full max-w-[460px] mt-60 justify-start items-center bg-white text-black rounded-2xl shadow-lg z-50'>
-            <div className='w-full bg-primary-blue text-white flex justify-center items-center py-2 rounded-t-lg'>
-                <img src={Logo} alt="logo" className='w-60' />
-            </div>
-            <article className='w-full h-full py-4 px-10 flex flex-col flex-wrap justify-center items-left text-base text-roboto gap-1 bg-none'>
+        <form onSubmit={handleSubmit} className='flex flex-col h-[90vh] min-w-[250px]:full max-w-[460px]  justify-start items-center bg-white text-black  shadow-lg z-50  overflow-y-scroll '>
+
+
+            <section>
+            <article className='w-full min-h-[100vh]   py-4 px-10  flex flex-col justify-center items-center text-base text-roboto gap-1 bg-none'>
                 <div className='flex flex-col justify-center items-left w-full'>
                     <label htmlFor="name" className='text-varela text-secondary-blue'>Nombre</label>
                     <input placeholder='Ej: Guillermo' type="text" name="name" id="name" className='w-full rounded border border-[#E0E0E0] px-2 py-1 focus:outline-secondary-blue font-sans text-black placeholder:text-[#969696]' onChange={handleForm} />
@@ -200,8 +206,9 @@ const Register = ({ handleAction }) => {
                     <FaGoogle />
                     Google
                 </button> */}
-                <p className='text-roboto text-[#969696] text-sm text-center'>Léa nuestros <Link to="/terminosycondiciones" className='text-[#000000] font-bold font-roboto'>Terminos y Condiciones</Link></p>
+                <p className='text-roboto text-[#969696] text-sm text-center mb-10'>Léa nuestros <Link to="/terminosycondiciones" className='text-[#000000] font-bold font-roboto'>Terminos y Condiciones</Link></p>
             </article>
+            </section>
         </form>
         /* </section> */
     )

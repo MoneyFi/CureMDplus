@@ -3,8 +3,14 @@ import logo from '../../assets/icons/logo.png'
 import Detail from './Detail';
 import Form from '../Form/Form'
 import Payment from '../../pages/Payments/Payment/Payment';
+import { useDispatch } from 'react-redux';
+import { changeForm } from '../../features/formSlice/formSlice';
+import { useNavigate } from 'react-router-dom';
+import { changePay } from '../../features/formSlice/paySlice';
 
 const Product = ({ product, index }) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     function formatearMonto(numero) {
         return numero.toLocaleString('es-AR', {
             style: 'currency',
@@ -16,7 +22,8 @@ const Product = ({ product, index }) => {
     const [pay, setPay] = useState(false)
 
     const handlePay = () => {
-        setPay(!pay)
+        dispatch(changePay({amount: product.price, plan: product.title}))
+        navigate('/register')
     }
     const handleForm = () => {
         setForm(!form)
@@ -40,7 +47,7 @@ const Product = ({ product, index }) => {
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
                 <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
-                <button onClick={handlePay} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
+                <button onClick={()=>handlePay()} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
             </footer>
             {
                 detail ?
@@ -48,7 +55,7 @@ const Product = ({ product, index }) => {
                 : ""
             }
             {/* {form && <Form handleForm={handleForm}/>} */}
-            {pay && <Payment price={product.price} handlePay={handlePay} formatearMonto={formatearMonto}/>}
+            {/* {pay && <Payment price={product.price} handlePay={handlePay} formatearMonto={formatearMonto}/>} */}
         </article>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { goCuotas } from '../../../API/Payment/payment'
+import { goCuotas, mercadoPago } from '../../../API/Payment/payment'
 import Anual from './Anual'
 import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
 import uuid from 'react-uuid'
@@ -39,12 +39,26 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
             phone_number: 2235490825
         })
     }
+
+    const mercadoPagoHandler = ()=>{
+        // const client_id = '';
+        mercadoPago({
+            amount: 1,
+            mail: 'nahuelcempellin@gmail.com',
+            producto: 'esencial',
+            facturacion: 'mensual'
+        })
+
+    }
+
     return (
-        <section className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm z-50'>
+        // <section className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm z-50'>
             <article className='w-2/4 bg-white rounded-lg flex flex-col justify-around items-center shadow-2xl px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
                 <div className='w-full flex justify-between'>
                     <div className='self-center'><span className='w-3/4 font-varela text-xl text-secondary-blue'>OPCIONES DE PAGO</span></div>
-                    <div><button className='text-white w-5 h-5 flex justify-center items-center text-center rounded-full bg-[#df0d0d]' onClick={handlePay}>x</button></div>
+                    <div>
+                        {/* <button className='text-white w-5 h-5 flex justify-center items-center text-center rounded-full bg-[#df0d0d]' onClick={handlePay}>x</button> */}
+                        </div>
                 </div>
                 <span className='text-roboto font-light'>Tipo de Plan:</span>
                 <div className='flex justify-center gap-5 rounded-md px-4 py-2 shadow'>
@@ -65,7 +79,9 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
                 <span className='text-roboto font-light'>Metodos de pago disponibles:</span>
                 {paymentOptions.discount === 'true' && paymentOptions.type === 'anual' &&
                     <>
-                        <button className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
+                        <button 
+                        onClick={()=>goCuotasHandler()}
+                        className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                             <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>
                         <button 
@@ -86,13 +102,15 @@ const Payment = ({ handlePay, price, formatearMonto }) => {
                 }
                 {paymentOptions.type === 'mensual' &&
                     <>
-                        <button className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
+                        <button 
+                        onClick={()=>mercadoPagoHandler()}
+                        className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                             <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>
                     </>
                 }
             </article>
-        </section>
+        
     )
 }
 

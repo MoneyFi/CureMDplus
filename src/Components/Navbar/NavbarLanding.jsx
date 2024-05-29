@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import cureLogo from '../../assets/icons/Logo_Azul.png'
 import cureLogoBco from '../../assets/icons/Logo_bco.png'
 import { TbMenu } from "react-icons/tb";
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import NavbarLandingResponsive from './NavbarLandingResponsive';
 import { useDispatch } from 'react-redux';
 import { changeForm } from '../../features/formSlice/formSlice'
