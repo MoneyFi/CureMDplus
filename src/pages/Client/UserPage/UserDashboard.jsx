@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../../assets/icons/Logo_Azul.png'
 import { FaPhoneAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const UserDashboard = () => {
@@ -13,7 +14,7 @@ const UserDashboard = () => {
                 <div className='w-[200px]'>
                     <img src={logo} alt='logo'/>
                 </div>
-                <p>Logout</p>
+                <Link to={'/'} className='text-sm font-bold text-primary-blue'>Logout</Link>
             </div>
 
 
