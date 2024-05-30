@@ -5,7 +5,7 @@ import LayoutPayment from "../pages/Payments/LayoutPayment";
 import Success from "../pages/Payments/Success";
 import Failure from "../pages/Payments/Failure";
 import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
-import UserDashboard from "../pages/UserPage/UserDashboard";
+import UserDashboard from "../pages/Client/UserPage/UserDashboard";
 import PaymentSection from "../pages/Client/PaymentSection/PaymentSection";
 import NewRegister from "../pages/Register/NewRegister";
 
