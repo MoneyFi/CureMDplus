@@ -19,9 +19,9 @@ const UserDashboard = () => {
 
 
             <div className='w-full flex flex-col items-center justify-center'>
-                <h3 className='font-bold text-xl text-primary-blue'>¡Bienvenido!</h3>
+                <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
 
-                <div className='p-4 shadow-lg rounded mt-10 '>
+                <div className='p-4  mt-10 '>
                 <p className='p-2'><strong className='text-primary-blue'>Titular: </strong> Nahuel Cempellin</p>
                     <p className='p-2'><strong className='text-primary-blue'>Fecha de compra: </strong> 30/5/2024</p>
                     <p className='p-2'><strong className='text-primary-blue'>Plan:</strong> Esencial</p>
