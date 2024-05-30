@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { goCuotas, mercadoPago } from '../../../API/Payment/payment'
 import Anual from './Anual'
 import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
@@ -7,7 +7,7 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const Payment = ({ prevStep, price, formatearMonto }) => {
+const Payment = ({ prevStep, price, formatearMonto, position, setPosition }) => {
     const { data } = useSelector(state => state.user)
     const { plan } = useSelector(state => state.payment)
     const nav = useNavigate()
@@ -43,6 +43,10 @@ const Payment = ({ prevStep, price, formatearMonto }) => {
 
     }
 
+    useEffect(()=>{
+
+    },[position, setPosition])
+
     React.useEffect(() => {
         if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
             setAmount(price - (price * 0.1))
@@ -54,14 +58,13 @@ const Payment = ({ prevStep, price, formatearMonto }) => {
     }, [paymentOptions, handleType, price])
 
     return (
-        <section className='w-screen h-screen flex justify-center items-center'>
-            <button className='absolute top-5 left-5 text-lg text-secondary-blue' onClick={() => nav(-1)}>Salir</button>
-            <article className='w-2/4 bg-white rounded-lg flex flex-col justify-around items-center shadow-2xl px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
+        <section className=' w-[600px]  flex justify-center items-center mt-10 '>
+            <article className='w-full bg-white rounded-lg flex flex-col justify-around items-center  px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
                 <div className='w-full flex justify-between'>
                     <div className='self-center'><span className='w-3/4 font-varela text-xl text-secondary-blue'>OPCIONES DE PAGO</span></div>
                     <div>
-                        <button className='text-secondary-blue flex justify-center items-center text-center' onClick={prevStep}>
-                            <FaRegArrowAltCircleLeft size={30}/>
+                        <button className='text-secondary-blue flex justify-center items-center text-center' onClick={()=>setPosition(1)}>
+                            Atras
                         </button>
                     </div>
                 </div>
