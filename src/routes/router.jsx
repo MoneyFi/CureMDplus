@@ -6,7 +6,6 @@ import Success from "../pages/Payments/Success";
 import Failure from "../pages/Payments/Failure";
 import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
 import UserDashboard from "../pages/Client/UserPage/UserDashboard";
-import PaymentSection from "../pages/Client/PaymentSection/PaymentSection";
 import NewRegister from "../pages/Register/NewRegister";
 
 export const router = createBrowserRouter([

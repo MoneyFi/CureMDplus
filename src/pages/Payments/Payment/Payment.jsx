@@ -7,10 +7,9 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const Payment = ({ prevStep, price, formatearMonto, position, setPosition }) => {
+const Payment = ({ price, formatearMonto, position, setPosition }) => {
     const { data } = useSelector(state => state.user)
     const { plan } = useSelector(state => state.payment)
-    const nav = useNavigate()
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
         discount: 'true'
@@ -34,14 +33,24 @@ const Payment = ({ prevStep, price, formatearMonto, position, setPosition }) => 
 
     const mercadoPagoHandler = () => {
         // const client_id = '';
+        if(paymentOptions.discount === 'true' && paymentOptions.type === 'anual'){
+            mercadoPago({
+                amount: 1, //Para testear
+                // amount: amount,
+                mail: data.email,
+                producto: plan,
+                facturacion: 'total'
+            })
+            return;
+        }
         mercadoPago({
-            amount: 1,
+            amount: 1, //Para testear
             // amount: price,
             mail: data.email,
             producto: plan,
             facturacion: 'mensual'
         })
-
+        return;
     }
 
     useEffect(()=>{
@@ -89,7 +98,7 @@ const Payment = ({ prevStep, price, formatearMonto, position, setPosition }) => 
                 {paymentOptions.discount === 'true' && paymentOptions.type === 'anual' &&
                     <>
                         <button
-                            onClick={() => goCuotasHandler()}
+                            onClick={() => mercadoPagoHandler()}
                             className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                             <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>

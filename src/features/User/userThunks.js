@@ -8,44 +8,53 @@ export const registerUserThunk = createAsyncThunk(
     try {
       const uploadData = new FormData();
       let userName =
-        body.name.toLowerCase().trim() +
+        body.nombre.toLowerCase().trim() +
         "." +
-        body.lastname.toLowerCase().trim();
+        body.apellido.toLowerCase().trim();
       const user_registration_geolocation = {
-        country: body.country,
-        country_code: body.country_code,
-        city: body.city,
+        country: body.pais,
+        country_code: "",
+        city: body.ciudad,
         postal: "",
         latitude: "",
         longitude: "",
       };
 
-      uploadData.append("name", body.name);
+      const dateNow = new Date();
+      const dob = new Date(body.fecha_de_nacimiento);
+      let age = dateNow.getFullYear() - dob.getFullYear();
+      const monthDiff = dateNow.getMonth() - dob.getMonth();
+      const dayDiff = dateNow.getDate() - dob.getDate();
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+          age--;
+      }
+
+      uploadData.append("name", body.nombre);
       uploadData.append("username", userName);
-      uploadData.append("lastName", body.lastname);
-      uploadData.append("email", body.email);
-      uploadData.append("address", body.address);
-      uploadData.append("mobile_number", body.mobile_number);
+      uploadData.append("lastName", body.apellido);
+      uploadData.append("email", body.mail);
+      uploadData.append("address", body.direccion);
+      uploadData.append("mobile_number", body.telefono);
       uploadData.append("role", "user");
       uploadData.append("photo", "false");
       uploadData.append(
         "valueOfCountryInCode",
-        body.country_code
+        ""
       );
-      uploadData.append("country", body.country);
+      uploadData.append("country", body.pais);
       uploadData.append(
         "user_registration_geolocation",
         JSON.stringify(user_registration_geolocation)
       );
       uploadData.append("fcm_token", "");
-      uploadData.append("city", body.city);
-      uploadData.append("password", body.password);
+      uploadData.append("city", body.ciudad);
+      uploadData.append("password", body.contraseña);
       uploadData.append("google", 0);
       uploadData.append("apple", 0);
       uploadData.append("facebook", 0);
-      uploadData.append("age", body.age);
-      uploadData.append("dob", body.dob);
-      uploadData.append("gender", body.gender);
+      uploadData.append("age", age);
+      uploadData.append("dob", body.fecha_de_nacimiento);
+      uploadData.append("gender", body.genero);
       uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
 
