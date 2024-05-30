@@ -35,7 +35,8 @@ const Payment = ({ prevStep, price, formatearMonto }) => {
     const mercadoPagoHandler = () => {
         // const client_id = '';
         mercadoPago({
-            amount: price,
+            amount: 1,
+            // amount: price,
             mail: data.email,
             producto: plan,
             facturacion: 'mensual'
