@@ -26,7 +26,7 @@ const Product = ({ product, index }) => {
         // dispatch(changePay({amount: product.price, plan: product.title}))
         dispatch(priceToPay(product.price))
         dispatch(planToPay(product.title))
-        navigate('/payment')
+        navigate('/register')
     }
     const handleForm = () => {
         setForm(!form)
