@@ -14,7 +14,7 @@ export const paymentSlice = createSlice({
       state.price = action.payload
     },
     planToPay: (state, action) => {
-      state.plan = action.payload.split(" ")[1].toLowerCase()
+      state.plan = action.payload
     },
   },
 });
