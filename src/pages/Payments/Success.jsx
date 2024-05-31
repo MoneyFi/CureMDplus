@@ -19,15 +19,15 @@ const Success = () => {
     }))
     createToast('Cargando datos de usuario...')
     setTimeout(() => {
+      dispatch(uploadData({}))
       nav('/myaccount')
-    })
+    }, 2000)
   }
 
   useEffect(() => {
     if (loading) {
       dispatch(registerUserThunk(upload))
       setTimeout(() => {
-        dispatch(uploadData({}))
         setLoading(false)
       }, 3000)
     }
