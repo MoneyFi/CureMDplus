@@ -51,13 +51,9 @@ const Login = ({ handleAction, nextStep, prevStep }) => {
             }
             if(response === 'success') {
                 dispatch(createToast('Inicio de sesion exitoso'))
-                if (pathname === '/payment'){
-                    setLoading(false)
-                    nextStep()
-                    return;
-                }
                 setLoading(false)
                 handleAction()
+                nav('/myaccount')
                 return;
             }
             dispatch(createToast('Hubo un fallo en el servidor, porfavor intentelo mas tarde'))

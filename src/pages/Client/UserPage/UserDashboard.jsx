@@ -1,11 +1,25 @@
 import React from 'react'
 import logo from '../../../assets/icons/Logo_Azul.png'
 import { FaPhoneAlt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IoIosLogOut } from "react-icons/io";
+import { logoutUser } from '../../../features/User/userSlice';
+import { createToast } from '../../../features/toastSlice/toastSlice';
 
 
 const UserDashboard = () => {
-    
+    const { data } = useSelector((state) => state.user);
+    const nav = useNavigate();
+    const dispatch = useDispatch()
+    const logout = () => {
+        dispatch(createToast('Cerrando sesion...'))
+        setTimeout(() => {
+            dispatch(logoutUser())
+            nav('/')
+            dispatch(createToast('Sesion cerrada'))
+        }, 3000)
+    }
     // Con el user_id se haria el fetch de los datos de la compra del producto
     // datos del plan, vigencia, denuncia siniestros, productor, vias de contacto
     return (
@@ -14,7 +28,10 @@ const UserDashboard = () => {
                 <div className='w-[200px]'>
                     <img src={logo} alt='logo'/>
                 </div>
-                <Link to={'/'} className='text-sm font-bold text-primary-blue'>Logout</Link>
+                <button onClick={logout} title='Cerrar Sesion' className='text-xs font-bold font-varela text-white bg-[#E8193E] px-6 py-2 flex justify-center items-center gap-2 rounded-2xl shadow-md'>
+                    <IoIosLogOut size={30}/>
+                    <p className='hidden md:block'>Cerrar Sesión</p>
+                </button>
             </div>
 
 
@@ -22,7 +39,7 @@ const UserDashboard = () => {
                 <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
 
                 <div className='p-4  mt-10 '>
-                <p className='p-2'><strong className='text-primary-blue'>Titular: </strong> Nahuel Cempellin</p>
+                <p className='p-2'><strong className='text-primary-blue'>Titular: </strong>{data.first_name + ' ' + data.last_Name}</p>
                     <p className='p-2'><strong className='text-primary-blue'>Fecha de compra: </strong> 30/5/2024</p>
                     <p className='p-2'><strong className='text-primary-blue'>Plan:</strong> Esencial</p>
                     <p className='p-2'><strong className='text-primary-blue'>Vigencia: </strong> 30 dias</p>
