@@ -6,15 +6,20 @@ const initialState = {
     user_id: null, //Aca iria el id del user.
     data: null, //Aca iria metadata del user.
     role: null, //Aca iria el rol del usuario cuando inicia sesion.
-    status: null, //El status de la peticion (pending - success - failure)
-    error: '', //Si recibimos un error
-    response: '' //Si esperamos una respuesta sin datos
+    status: null, //El status de la peticion (pending - success - failure).
+    upload: {}, //Aca se van a guardar los datos del usuario para luego de la compra registrarlo.
+    error: '', //Si recibimos un error.
+    response: '' //Si esperamos una respuesta sin datos.
 }
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    uploadData: (state, action) => {
+        state.upload = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
     // Register
@@ -50,5 +55,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { } = userSlice.actions;
+export const { uploadData } = userSlice.actions;
 export default userSlice.reducer;

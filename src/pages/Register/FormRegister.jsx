@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUserThunk, registerUserThunk } from '../../features/User/userThunks';
 import { createToast } from '../../features/toastSlice/toastSlice';
 import { Link } from 'react-router-dom';
+import { uploadData } from '../../features/User/userSlice';
 
 const FormRegister = ({ position, setPosition }) => {
 
@@ -31,11 +32,9 @@ const FormRegister = ({ position, setPosition }) => {
     }, [position, setPosition])
 
     const handleConfirmar = (e) => {
-        dispatch(registerUserThunk(data))
-        dispatch(createToast('Cargando...'))
-        setTimeout(() => {
-            setLoading(true)
-        }, 3000)
+        dispatch(uploadData(data));
+        dispatch(createToast('Cargando...'));
+        setPosition(2)
     }
 
     const dataHandler = (e) => {
@@ -45,26 +44,27 @@ const FormRegister = ({ position, setPosition }) => {
         })
     }
 
-    useEffect(() => {
-        if (loading) {
-            if (response === 'success') {
-                dispatch(loginUserThunk({ email: data.mail, password: data.contraseña }))
-                setPosition(2)
-                setLoading(false)
-                return;
-            }
-            if (response === 'repeat') {
-                dispatch(createToast('El correo ya se encuentra en uso'))
-                setLoading(false)
-                return;
-            }
-            if (response === 'failure') {
-                dispatch(createToast('Error en el servidor, intentelo mas tarde'))
-                setLoading(false)
-                return;
-            }
-        }
-    }, [loading])
+    //Este useEffect va a servir cuando tengamos la ruta para verificar que no exista el correo en la base
+    // useEffect(() => {
+    //     if (loading) {
+    //         if (response === 'success') {
+    //             dispatch(loginUserThunk({ email: data.mail, password: data.contraseña }))
+    //             setPosition(2)
+    //             setLoading(false)
+    //             return;
+    //         }
+    //         if (response === 'repeat') {
+    //             dispatch(createToast('El correo ya se encuentra en uso'))
+    //             setLoading(false)
+    //             return;
+    //         }
+    //         if (response === 'failure') {
+    //             dispatch(createToast('Error en el servidor, intentelo mas tarde'))
+    //             setLoading(false)
+    //             return;
+    //         }
+    //     }
+    // }, [loading])
 
 
 

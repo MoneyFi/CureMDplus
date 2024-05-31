@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const Payment = ({ price, formatearMonto, position, setPosition }) => {
-    const { data } = useSelector(state => state.user)
+    const { upload } = useSelector(state => state.user)
     const { plan } = useSelector(state => state.payment)
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
@@ -27,7 +27,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         goCuotas({
             amount_in_cents: amount * 100,
             order_reference_id: id,
-            phone_number: data.user_registration_input_phone_number
+            phone_number: upload.telefono
         })
     }
 
@@ -37,7 +37,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             mercadoPago({
                 amount: 1, //Para testear
                 // amount: amount,
-                mail: data.email,
+                mail: upload.mail,
                 producto: plan,
                 facturacion: 'total'
             })
@@ -46,7 +46,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         mercadoPago({
             amount: 1, //Para testear
             // amount: price,
-            mail: data.email,
+            mail: upload.mail,
             producto: plan,
             facturacion: 'mensual'
         })
