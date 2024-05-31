@@ -49,7 +49,7 @@ const FormRegister = ({ position, setPosition }) => {
         if (loading) {
             if (response === 'success') {
                 dispatch(loginUserThunk({ email: data.mail, password: data.contraseña }))
-                setPosition()
+                setPosition(2)
                 setLoading(false)
                 return;
             }
