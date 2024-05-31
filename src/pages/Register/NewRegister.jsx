@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 const NewRegister = () => {
     const payInformation = useSelector((state) => state.payment.price)
 
-    const [position, setPosition] = useState(2)
+    const [position, setPosition] = useState(1)
 
     useEffect(() => {
         console.log(payInformation)
