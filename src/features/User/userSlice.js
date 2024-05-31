@@ -18,6 +18,12 @@ export const userSlice = createSlice({
   reducers: {
     uploadData: (state, action) => {
         state.upload = action.payload;
+    },
+    logoutUser: (state) => {
+        state.token = null;
+        state.user_id = null;
+        state.data = null;
+        state.role = null;
     }
   },
   extraReducers: (builder) => {
@@ -55,5 +61,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { uploadData } = userSlice.actions;
+export const { uploadData, logoutUser } = userSlice.actions;
 export default userSlice.reducer;
