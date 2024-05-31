@@ -69,21 +69,21 @@ const FormRegister = ({ position, setPosition }) => {
 
 
     return (
-        <section className='flex flex-col  items-center justify-center' >
-            <div className='formLabel label'>
+        <section className='flex flex-col w-[400px]  items-center justify-center max-[800px]:mt-[120px] max-[400px]:w-[340px] ' >
+            <div className='formLabel label max-[800px]:flex-col'>
                 <div>
                     <input
                         name='nombre'
                         value={data.nombre}
                         onChange={(e) => dataHandler(e)}
-                        className='formLabel input' placeholder='Nombre:' />
+                        className='formLabel input max-[800px]:w-full max-[800px]:mb-[.5rem]' placeholder='Nombre:' />
                 </div>
                 <div>
                     <input
                         name='apellido'
                         value={data.apellido}
                         onChange={(e) => dataHandler(e)}
-                        className=' formLabel input' placeholder='Apellido:' />
+                        className=' formLabel input max-[800px]:w-full' placeholder='Apellido:' />
                 </div>
             </div>
 
@@ -117,8 +117,8 @@ const FormRegister = ({ position, setPosition }) => {
                     className='formLabel input w-full' placeholder='Correo electronico:' />
             </div>
 
-            <div className='formLabel label w-full '>
-                <div className='w-full'>
+            <div className='formLabel label w-full max-[800px]:flex-col '>
+                <div className='w-full max-[800px]:w-full max-[800px]:mb-[.5rem]'>
                     <input
                         onChange={(e) => dataHandler(e)}
                         name='cuil'
@@ -131,7 +131,7 @@ const FormRegister = ({ position, setPosition }) => {
                         name='genero'
                         defaultValue=""
                         onChange={(e) => dataHandler(e)}
-                        className='py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px]'>
+                        className='py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
                         <option disabled value="">Elegi tu genero</option>
                         <option value="male">Masculino</option>
                         <option value="female">Femenino</option>
@@ -141,20 +141,20 @@ const FormRegister = ({ position, setPosition }) => {
                 </div>
             </div>
 
-            <div className='formLabel label'>
-                <div>
+            <div className='formLabel label max-[800px]:flex-col'>
+                <div >
                     <input
                         onChange={(e) => dataHandler(e)}
                         name='pais'
                         value={data.pais}
-                        className='formLabel input' placeholder='Pais:' />
+                        className='formLabel input max-[800px]:w-full max-[800px]:mb-[.5rem]' placeholder='Pais:' />
                 </div>
                 <div>
                     <input
                         name='ciudad'
                         value={data.ciudad}
                         onChange={(e) => dataHandler(e)}
-                        className='formLabel input' placeholder='Ciudad:' />
+                        className='formLabel input max-[800px]:w-full max-[800px]:mb-[.5rem]' placeholder='Ciudad:' />
                 </div>
             </div>
 

@@ -68,11 +68,11 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
     }, [paymentOptions, handleType, price])
 
     return (
-        <section className=' w-[600px]  flex justify-center items-center mt-10 '>
+        <section className=' w-[600px]  flex justify-center items-center mt-10  max-[500px]:w-[500px] max-[425px]:w-[425px] max-[375px]:w-[375px]'>
             <article className='w-full bg-white rounded-lg flex flex-col justify-around items-center  px-12 py-8 gap-3 max-[800px]:w-[80%] max-[500px]:w-[90%]'>
-                <div className='w-full flex justify-between'>
+                <div className='w-full flex justify-between max-[400px]:flex-col-reverse'>
                     <div className='self-center'><span className='w-3/4 font-varela text-xl text-secondary-blue'>OPCIONES DE PAGO</span></div>
-                    <div>
+                    <div className='max-[400px]:mt-[-20px] max-[400px]:text-sm max-[400px]:p-2 max-[400px]:self-end'>
                         <button className='text-secondary-blue flex justify-center items-center text-center' onClick={()=>setPosition(1)}>
                             Atras
                         </button>
