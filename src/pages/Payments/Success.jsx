@@ -28,7 +28,8 @@ const Success = () => {
 
   useEffect(() => {
     if (loading) {
-      dispatch(registerUserThunk(upload))
+      // dispatch(registerUserThunk(upload))
+      dispatch(registerUserThunk(register))
       setTimeout(() => {
         setLoading(false)
       }, 3000)

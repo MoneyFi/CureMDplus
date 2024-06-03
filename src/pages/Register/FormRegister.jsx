@@ -33,6 +33,8 @@ const FormRegister = ({ position, setPosition }) => {
 
     const handleConfirmar = (e) => {
         dispatch(uploadData(data));
+        const registerdata = JSON.stringify(data)
+        localStorage.setItem('register',registerdata)
         dispatch(createToast('Cargando...'));
         setPosition(2)
     }
@@ -42,9 +44,6 @@ const FormRegister = ({ position, setPosition }) => {
             ...data,
             [e.target.name]: e.target.value
         })
-
-        const registerdata = JSON.stringify(data)
-        localStorage.setItem('register',registerdata)
     }
 
     //Este useEffect va a servir cuando tengamos la ruta para verificar que no exista el correo en la base
