@@ -31,6 +31,24 @@ export default {
       };
       addComponents(layout);
     },
+    function ({ addComponents }) {
+      const formLabel = {
+        ".label": {
+          display: 'flex',
+          padding: '.3em',
+          width: '100%'
+        },
+        ".input":{
+          border: '1px solid #c7c7c7',
+          paddingRight: '1em',
+          paddingLeft: '1em',
+          paddingTop: ".3em", 
+          paddingBottom: ".3em",
+          borderRadius: '5px'
+        }
+      };
+      addComponents(formLabel);
+    },
   ],
 }
 

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import cureLogo from '../../assets/icons/Logo_Azul.png'
 import cureLogoBco from '../../assets/icons/Logo_bco.png'
 import { TbMenu } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom'
 import NavbarLandingResponsive from './NavbarLandingResponsive';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeForm } from '../../features/formSlice/formSlice'
 
 const NavbarLanding = () => {
@@ -13,6 +12,7 @@ const NavbarLanding = () => {
   const glass = "w-full bg-[#283E94]  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70  shadow text-white"
   const { pathname } = useLocation()
   const dispatch = useDispatch()
+  const { token } = useSelector(state => state.user)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,10 +37,10 @@ const NavbarLanding = () => {
 
 
   return (
-    <header className={!isFixed ? `flex items-center justify-around w-[100vw] py-3 font-light  max-[800px]:justify-between fixed z-20 text-white px-4 ${pathname === '/faqs' ? 'bg-primary-blue' : ''} ` : `${glass} flex items-center justify-around font-light w-[100vw] fixed max-[800px]:justify-between py-3 px-4 z-20`}>
+    <header className={!isFixed ? `flex items-center justify-around w-[100vw] py-3 font-light  max-[800px]:justify-between fixed z-20 text-white px-4 ${pathname === '/account' ? 'bg-primary-blue' : ''} ` : `${glass} flex items-center justify-around font-light w-[100vw] fixed max-[800px]:justify-between py-3 px-4 z-20`}>
 
-      <div className='w-[220px] max-[500px]:w-[200px]'>
-        <a href='#landing'><img alt='logo' src={cureLogoBco} /></a>
+      <div className='w-[170px] overflow-hidden'>
+        <a href='#landing'><img alt='logo' src={cureLogoBco} className='mt-5' /></a>
       </div>
 
       <button
@@ -71,9 +71,13 @@ const NavbarLanding = () => {
       </div>
 
       <div className='max-[800px]:hidden'>
+      {token ?
+      <Link to='/myaccount' className='px-3 py-1 font-regular text-md'>Mi Cuenta</Link>
+      :
         <button
         onClick={() => dispatch(changeForm(true))}
         className='px-3 py-1 font-regular text-md'>Ingresar</button>
+      }
         <a href='#publicity' className={`px-3 py-1 font-regular text-md rounded bg-[#239FD8] text-white`}>Contactanos</a>
 
       </div>
