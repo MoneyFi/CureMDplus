@@ -13,6 +13,7 @@ const UserDashboard = () => {
     const nav = useNavigate();
     const dispatch = useDispatch()
     const logout = () => {
+        localStorage.removeItem('login')
         dispatch(createToast('Cerrando sesion...'))
         setTimeout(() => {
             dispatch(logoutUser())

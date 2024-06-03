@@ -91,6 +91,8 @@ export const loginUserThunk = createAsyncThunk(
         }
       );
       console.log(data);
+      const userData= JSON.stringify(data)
+      localStorage.setItem('login',userData)
       return data;
     } catch (error) {
       console.log(error);
