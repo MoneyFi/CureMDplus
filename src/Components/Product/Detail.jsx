@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import doctores from '../../assets/doctores.png'
 import logo from '../../assets/icons/logo.png'
 import { MdCancel } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { planToPay, priceToPay } from '../../features/paymentSlice/paymentSlice';
+import { useDispatch } from 'react-redux';
 
 const Detail = ({ product, format, handleDetail }) => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const style = {
         backgroundImage: `url(${doctores})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover'
     }
+
+    useEffect((()=>{
+
+    }),[product])
+
+    const handlePay = () => {
+        // dispatch(changePay({amount: product.price, plan: product.title}))
+        dispatch(priceToPay(product.price))
+        dispatch(planToPay(product.title))
+        navigate('/register')
+    }
+
     return (
         <section className='fixed w-screen h-screen backdrop-blur-sm top-0 right-0 z-30 flex justify-center items-center'>
             <article className='flex flex-nowrap w-[80%] bg-white h-[90vh]  rounded-lg overflow-hidden shadow-xl max-[600px]:w-[90%] '>
@@ -38,7 +54,7 @@ const Detail = ({ product, format, handleDetail }) => {
 
                     </div>
                     <footer className='flex flex-col justify-center items-center gap-2 max-[600px]:w-full'>
-                        <button className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Comprar</button>
+                        <button onClick={()=>handlePay()} className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
                         <Link to='/terminosycondiciones'>Terminos y Condiciones</Link>
                     </footer>
                 </div>
