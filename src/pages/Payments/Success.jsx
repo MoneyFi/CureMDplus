@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import success from '../../assets/icons/success.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,8 @@ const Success = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const nav = useNavigate()
+  const registerData= localStorage.getItem('register')
+  const register = JSON.parse(registerData)
   const login = () => {
     dispatch(loginUserThunk({
       email: upload.mail,
@@ -40,7 +42,7 @@ const Success = () => {
       </div>
       <div className='w-full flex items-center justify-center flex-col p-4'>
         <h3 className='text-3xl font-bold p-2'>¡Pago exitoso!</h3>
-        <p className='font-light p-4'>Presione continuar para ir a su cuenta.</p>
+        <p className='font-light p-4'>Sus datos han sido cargados exitosamente. Pulse continuar para finalizar su registro.</p>
         <button onClick={login} className='px-12 py-3 bg-primary-blue font-bold text-white rounded-[20px]'>
           Continuar
         </button>
