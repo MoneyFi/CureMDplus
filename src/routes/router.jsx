@@ -7,6 +7,7 @@ import Failure from "../pages/Payments/Failure";
 import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
 import UserDashboard from "../pages/Client/UserPage/UserDashboard";
 import NewRegister from "../pages/Register/NewRegister";
+import Telemedicina from "../pages/TelemedicinaPage/Telemedicina";
 
 export const router = createBrowserRouter([
     {
@@ -44,5 +45,9 @@ export const router = createBrowserRouter([
     {
         path: '/myaccount',
         element: <UserDashboard/>
+    },
+    {
+        path: '/telemedicina',
+        element: <Telemedicina/>
     }
 ]);
