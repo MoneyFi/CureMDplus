@@ -23,6 +23,6 @@ jobs:
         echo "running build"
         npm run build 
         sudo /usr/local/bin/pm2 start 0
-        # echo "deploy server 1 done"
+        echo "deploy server 1 done"
         # echo "starting second deploy"
         
