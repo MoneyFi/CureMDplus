@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import success from '../../assets/icons/success.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUserThunk } from '../../features/User/userThunks'
+import { registerUserThunk, loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
 

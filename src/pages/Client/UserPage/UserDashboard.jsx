@@ -47,7 +47,7 @@ const UserDashboard = () => {
                     <p className='p-2'><strong className='text-primary-blue'>Productor: </strong> Juan Casares</p>
 
                     <div className='p-4 flex items-center justify-center w-full'>
-                    <button className='bg-primary-blue font-bold text-white rounded w-full p-2'>Descargar mi poliza</button>
+                    <button onClick={() => dispatch(createToast('Descargando mi poliza...'))} className='bg-primary-blue font-bold text-white rounded w-full p-2'>Descargar mi poliza</button>
                     </div>
                 </div>
             </div>
