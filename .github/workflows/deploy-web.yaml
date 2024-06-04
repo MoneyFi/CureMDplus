@@ -21,8 +21,8 @@ jobs:
         sudo cp -r ./ /var/www/curemd.io/website/CureMDplus/
         cd /var/www/curemd.io/website/CureMDplus/
         echo "running build"
-        npm run install
-        npm run build 
+        sudo npm  install
+        sudo npm run build 
         sudo /usr/local/bin/pm2 start 0
         echo "deploy server 1 done"
         # echo "starting second deploy"
