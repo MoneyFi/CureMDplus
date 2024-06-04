@@ -16,7 +16,7 @@ jobs:
     - name: Deploy into web
       run: |
         echo "stoping website"
-        pm2 stop myapp
+        sudo /usr/local/bin/pm2 list
         ls
         #mv ./ /var/www/curemd.io/website/CureMDplus/
         # echo "running build"
