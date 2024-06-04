@@ -1,0 +1,27 @@
+name: Deploy web to Dev
+
+on:
+  push:
+    branches:
+      - jorge-build-test
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Esto asume que tienes un runner configurado en el mismo servidor
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Deploy into web
+      run: |
+        echo "stoping website"
+        pm2 stop myapp
+        ls
+        #mv ./ /var/www/curemd.io/website/CureMDplus/
+        # echo "running build"
+        # npm run build 
+        # sudo /usr/local/bin/pm2 start 0
+        # echo "deploy server 1 done"
+        # echo "starting second deploy"
+        
