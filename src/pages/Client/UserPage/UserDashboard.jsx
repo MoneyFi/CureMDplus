@@ -29,7 +29,7 @@ const UserDashboard = () => {
                 <div className='w-[200px]'>
                     <img src={logo} alt='logo'/>
                 </div>
-                <button onClick={logout} title='Cerrar Sesion' className='text-xs font-bold font-varela text-white bg-[#E8193E] px-6 py-2 flex justify-center items-center gap-2 rounded-2xl shadow-md'>
+                <button onClick={logout} title='Cerrar Sesion' className='text-xs font-bold font-varela text-primary-blue px-6 py-2 flex justify-center items-center gap-2 rounded-2xl shadow-md'>
                     <IoIosLogOut size={30}/>
                     <p className='hidden md:block'>Cerrar Sesión</p>
                 </button>

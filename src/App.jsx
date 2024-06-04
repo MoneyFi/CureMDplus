@@ -41,7 +41,7 @@ function App() {
     tecnologia de vanguardia para cuidar tu salud
     </h3>
     <div className='mt-10 flex items-center justify-center max-[500px]:flex-col'>
-      <a href='#testimonials' className='mr-5 px-6 py-2 mb-5'>Sobre nosotros </a>
+      <a href='#testimonials' className='mr-5 px-6 py-2  max-[500px]:mb-5'>Sobre nosotros </a>
       <Link to={'/telemedicina'} className='px-6 py-2 bg-white font-bold text-primary-blue rounded'>App de telemedicina</Link>
     </div>
     </article>
