@@ -3,7 +3,7 @@ name: Deploy web to Dev
 on:
   push:
     branches:
-      - dev
+      - jorge-build-test
 
 jobs:
   deploy:
@@ -17,8 +17,11 @@ jobs:
       run: |
         echo "stoping website"
         pm2 stop myapp
-        echo "running build"
-        npm run build 
-        sudo /usr/local/bin/pm2 start --name "myapp" --user "apache" --uid 48 npm -- run dev
-        echo "deploy done"
+        ls
+        #mv ./ /var/www/curemd.io/website/CureMDplus/
+        # echo "running build"
+        # npm run build 
+        # sudo /usr/local/bin/pm2 start 0
+        # echo "deploy server 1 done"
+        # echo "starting second deploy"
         
