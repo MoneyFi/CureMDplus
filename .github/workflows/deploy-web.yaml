@@ -35,4 +35,34 @@ jobs:
         # sudo npm run build 
         # sudo /usr/local/bin/pm2 start 0
         # echo "deploy server 2 done"
+
+  deploy-second:
+    runs-on: runner-2  # Esto asume que tienes un runner configurado en el mismo servidor
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Deploy into web
+      run: |
+        echo "stoping website"
+        sudo /usr/local/bin/pm2 stop 0
+        ls
+        sudo cp -r ./ /var/www/curemd.io/website/CureMDplus/
+        cd /var/www/curemd.io/website/CureMDplus/
+        echo "running build"
+        sudo npm  install
+        sudo npm run build 
+        sudo /usr/local/bin/pm2 start 0
+        echo "deploy server 1 done"
+        echo "starting second deploy"
+        # #sudo scp -i "/home/ec2-user/actions-runner-plus/secret-key.pem" -r . ec2-user@3.220.189.206:/home/ec2-user/deploy-web
+        # ssh -i "/home/ec2-user/actions-runner-plus/secret-key.pem" ec2-user@3.220.189.206 
+        # cd /home/ec2-user/deploy-web 
+        # sudo cp -r /home/ec2-user/deploy-web/ /var/www/curemd.io/website/CureMDplus/
+        # echo "running build"
+        # sudo npm  install
+        # sudo npm run build 
+        # sudo /usr/local/bin/pm2 start 0
+        # echo "deploy server 2 done"
         
