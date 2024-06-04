@@ -32,9 +32,11 @@ const FormRegister = ({ position, setPosition }) => {
     }, [position, setPosition])
 
     const handleConfirmar = (e) => {
-        dispatch(uploadData(data));
+        dispatch(loginUserThunk({ email: data.mail, password: "" }))
         dispatch(createToast('Cargando...'));
-        setPosition(2)
+        setTimeout(() => {
+            setLoading(true)
+        }, 2000)
     }
 
     const dataHandler = (e) => {
@@ -42,33 +44,29 @@ const FormRegister = ({ position, setPosition }) => {
             ...data,
             [e.target.name]: e.target.value
         })
-
-        const registerdata = JSON.stringify(data)
-        localStorage.setItem('register',registerdata)
     }
 
     //Este useEffect va a servir cuando tengamos la ruta para verificar que no exista el correo en la base
-    // useEffect(() => {
-    //     if (loading) {
-    //         if (response === 'success') {
-    //             dispatch(loginUserThunk({ email: data.mail, password: data.contraseña }))
-    //             setPosition(2)
-    //             setLoading(false)
-    //             return;
-    //         }
-    //         if (response === 'repeat') {
-    //             dispatch(createToast('El correo ya se encuentra en uso'))
-    //             setLoading(false)
-    //             return;
-    //         }
-    //         if (response === 'failure') {
-    //             dispatch(createToast('Error en el servidor, intentelo mas tarde'))
-    //             setLoading(false)
-    //             return;
-    //         }
-    //     }
-    // }, [loading])
-
+    useEffect(() => {
+        if (loading) {
+            if (response === 'fail_email') {
+                dispatch(uploadData(data));
+                const registerdata = JSON.stringify(data)
+                localStorage.setItem('register', registerdata)
+                setPosition(2)
+                setLoading(false)
+                return;
+            }
+            if (response === 'fail_password') {
+                dispatch(createToast('El correo ya se encuentra en uso'))
+                setLoading(false)
+                return;
+            }
+            dispatch(createToast('Error en el servidor, intentelo mas tarde'))
+            setLoading(false)
+            return;
+        }
+    }, [loading])
 
 
     return (
@@ -186,11 +184,11 @@ const FormRegister = ({ position, setPosition }) => {
                     className='formLabel input w-full' placeholder='Telefono:' />
             </div>
 
-            <div className='p-2'>
+            {/* <div className='p-2'>
                 <p className='text-sm font-light'>¿ya tienes cuenta? <strong className='text-primary-blue font-semibold'>Inicia sesion</strong></p>
-            </div>
+            </div> */}
 
-            <div className='w-full flex items-center justify-center p-2'>
+            <div className='w-full flex items-center justify-center p-2 mt-4'>
                 <button
                     onClick={() => handleConfirmar()}
                     disabled={!Object.values(data).every(e => e !== '')}

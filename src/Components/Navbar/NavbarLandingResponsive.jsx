@@ -13,7 +13,7 @@ const NavbarLandingResponsive = ({ open, setOpen }) => {
 
   }, [open])
   return (
-    <div className='w-[220px] h-[320px] bg-[#ffffff7e] backdrop-blur-sm fixed right-3 top-6 rounded-lg shadow text-primary-blue flex flex-col items-start justify-between p-2'>
+    <div className='w-[250px] h-[400px] bg-[#ffffff] backdrop-blur-sm fixed right-1 top-2 rounded-lg shadow text-primary-blue flex flex-col items-start justify-between p-2'>
       <button
         onClick={() => setOpen(!open)}
         className='w-[30px] h-[30px] bg-primary-blue rounded-full flex items-center justify-center self-end'>

@@ -10,7 +10,7 @@ const NewRegister = () => {
     const [position, setPosition] = useState(1)
 
     useEffect(() => {
-        console.log(payInformation)
+        
     }, [position, payInformation])
 
     function formatearMonto(numero) {
