@@ -25,5 +25,14 @@ jobs:
         sudo npm run build 
         sudo /usr/local/bin/pm2 start 0
         echo "deploy server 1 done"
-        # echo "starting second deploy"
+        echo "starting second deploy"
+        scp -i "key-dev-server.pem" -r . ec2-user@3.220.189.206/home/ec2-user/deploy-web
+        ssh -i "~/.ssh/key-dev-server.pem" ec2-user@3.220.189.206 
+        cd /home/ec2-user/deploy-web 
+        sudo cp -r /home/ec2-user/deploy-web/ /var/www/curemd.io/website/CureMDplus/
+        echo "running build"
+        sudo npm  install
+        sudo npm run build 
+        sudo /usr/local/bin/pm2 start 0
+        echo "deploy server 2 done"
         
