@@ -3,7 +3,7 @@ name: Deploy web to Dev
 on:
   push:
     branches:
-      - jorge-build-test
+      - dev
 
 jobs:
   deploy:
