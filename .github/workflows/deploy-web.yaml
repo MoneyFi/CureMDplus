@@ -18,7 +18,7 @@ jobs:
         echo "stoping website"
         sudo /usr/local/bin/pm2 stop 0
         ls
-        sudo cp ./ /var/www/curemd.io/website/CureMDplus/
+        sudo cp -r ./ /var/www/curemd.io/website/CureMDplus/
         cd /var/www/curemd.io/website/CureMDplus/
         echo "running build"
         npm run build 
