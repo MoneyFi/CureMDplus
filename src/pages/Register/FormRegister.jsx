@@ -186,7 +186,7 @@ const FormRegister = ({ position, setPosition }) => {
             </div>
 
             <div className='p-2 flex items-center justify-center'>
-                <p className='text-sm font-light'>¿ya tienes un productor?</p>
+                <p className='text-sm font-light'>¿ya estas en contacto con un productor?</p>
                 <input onClick={()=>setProductor(!productor)}  className='ml-3' type='checkbox'/>
             </div>
 
