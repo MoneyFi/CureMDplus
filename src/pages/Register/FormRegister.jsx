@@ -71,7 +71,7 @@ const FormRegister = ({ position, setPosition }) => {
 
 
     return (
-        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-40'}`} >
+        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-72 max-[400px]:mt-[450px]'}`} >
             <div className='formLabel label max-[800px]:flex-col '>
                 <div>
                     <input
@@ -200,12 +200,28 @@ const FormRegister = ({ position, setPosition }) => {
                             onChange={(e) => dataHandler(e)}
                             className='formLabel input w-full' placeholder='Nombre de productor:' />
                     </div>
-                    <div className='mb-[.5rem]'>
+                    <div className='w-full mb-[.5rem]'>
                         <input
-                            name='apellido'
-                            value={data.apellido}
+                            name='nombre'
+                            value={data.nombre}
                             onChange={(e) => dataHandler(e)}
-                            className=' formLabel input w-full' placeholder='Mail:' />
+                            className='formLabel input w-full' placeholder='Apellido de productor:' />
+                    </div>
+
+                    <div className='w-full mb-[.5rem]'>
+                        <input
+                            name='nombre'
+                            value={data.nombre}
+                            onChange={(e) => dataHandler(e)}
+                            className='formLabel input w-full' placeholder='DNI de productor:' />
+                    </div>
+
+                    <div className='w-full mb-[.5rem]'>
+                        <input
+                            name='nombre'
+                            value={data.nombre}
+                            onChange={(e) => dataHandler(e)}
+                            className='formLabel input w-full' placeholder='Telefono de productor:' />
                     </div>
 
                     <div className='mb-[.5rem]'>
@@ -213,7 +229,15 @@ const FormRegister = ({ position, setPosition }) => {
                             name='apellido'
                             value={data.apellido}
                             onChange={(e) => dataHandler(e)}
-                            className=' formLabel input w-full' placeholder='Codigo:' />
+                            className=' formLabel input w-full' placeholder='Mail del productor:' />
+                    </div>
+
+                    <div className='mb-[.5rem]'>
+                        <input
+                            name='apellido'
+                            value={data.apellido}
+                            onChange={(e) => dataHandler(e)}
+                            className=' formLabel input w-full' placeholder='Codigo de productor:' />
                     </div>
 
                     <div>

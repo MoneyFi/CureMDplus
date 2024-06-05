@@ -21,7 +21,7 @@ const NewRegister = () => {
     }
 
     return (
-        <div className='layout background min-h-[130vh] pt-10 flex items-center justify-start flex-col  '>
+        <div className='layout background min-h-[160vh] pt-10 flex items-center justify-start flex-col  '>
             <div className='w-[200px]'>
                 <img src={logo} alt='logo' />
             </div>
