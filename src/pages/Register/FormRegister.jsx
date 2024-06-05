@@ -71,7 +71,7 @@ const FormRegister = ({ position, setPosition }) => {
 
 
     return (
-        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px] max-[400px]:w-[340px] max-[375px]:p-4   ${productor && 'mt-40'}`} >
+        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-40'}`} >
             <div className='formLabel label max-[800px]:flex-col '>
                 <div>
                     <input
