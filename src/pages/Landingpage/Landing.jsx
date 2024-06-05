@@ -12,13 +12,11 @@ import { useNavigate } from 'react-router-dom'
 const Landing = () => {
   const navigate = useNavigate()
   const form = useSelector(state => state.form)
-  const userData = localStorage.getItem('login')
-  const user = JSON.parse(userData)
-
+  const { token } = useSelector(state => state.user)
 
   useEffect(()=>{
-    if(user) navigate('/myaccount')
-  },[user])
+    if(token) navigate('/myaccount')
+  },[token])
 
   return (
     <div className={`layout background flex flex-col`}>
