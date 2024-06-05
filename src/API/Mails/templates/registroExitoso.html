@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu comprobante de pago</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 10px;
+        }
+        .comprobante {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: #1655A4;
+            color: white;
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: black 0 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class='comprobante'>
+        <h1>¡Bienvenido, ${info.name}!</h1>
+        <article class="info">
+            <span>Ahora tambien puedes acceder a CureMd con esta mismaa cuenta.</span>
+            <span>Descarga nuestra App</span>
+        </article>
+    </div>
+</body>
+</html>
