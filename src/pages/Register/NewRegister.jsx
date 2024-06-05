@@ -26,7 +26,7 @@ const NewRegister = () => {
                 <img src={logo} alt='logo' />
             </div>
             <section className='w-full flex items-center justify-around relative '>
-                <article className={`w-[2000px] h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1670px] max-[500px]:ml-[1600px] ' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
+                <article className={`w-[2000px] h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1670px] max-[375px]:ml-[1600px] max-[500px]:ml-[1600px] ' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
                     <FormRegister position={position} setPosition={setPosition} />
                     <Payment formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={payInformation} />
                 </article>
