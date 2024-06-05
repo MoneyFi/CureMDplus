@@ -11,6 +11,7 @@ const FormRegister = ({ position, setPosition }) => {
     const dispatch = useDispatch()
     const { response } = useSelector((state) => state.user)
     const [loading, setLoading] = useState(false)
+    const [productor,setProductor] = useState(false)
     const [data, setData] = useState({
         nombre: '',
         apellido: '',
@@ -70,7 +71,7 @@ const FormRegister = ({ position, setPosition }) => {
 
 
     return (
-        <section className='flex flex-col min-w-[400px]  items-center justify-center max-[800px]:mt-[120px] max-[400px]:w-[340px] max-[375px]:p-4' >
+        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px] max-[400px]:w-[340px] max-[375px]:p-4   ${productor && 'mt-40'}`} >
             <div className='formLabel label max-[800px]:flex-col '>
                 <div>
                     <input
@@ -184,9 +185,47 @@ const FormRegister = ({ position, setPosition }) => {
                     className='formLabel input w-full' placeholder='Telefono:' />
             </div>
 
-            {/* <div className='p-2'>
-                <p className='text-sm font-light'>¿ya tienes cuenta? <strong className='text-primary-blue font-semibold'>Inicia sesion</strong></p>
-            </div> */}
+            <div className='p-2 flex items-center justify-center'>
+                <p className='text-sm font-light'>¿ya tienes un productor?</p>
+                <input onClick={()=>setProductor(!productor)}  className='ml-3' type='checkbox'/>
+            </div>
+
+            {
+                productor && (
+                    <div className='formLabel label flex-col '>
+                    <div className='w-full mb-[.5rem]'>
+                        <input
+                            name='nombre'
+                            value={data.nombre}
+                            onChange={(e) => dataHandler(e)}
+                            className='formLabel input w-full' placeholder='Nombre de productor:' />
+                    </div>
+                    <div className='mb-[.5rem]'>
+                        <input
+                            name='apellido'
+                            value={data.apellido}
+                            onChange={(e) => dataHandler(e)}
+                            className=' formLabel input w-full' placeholder='Mail:' />
+                    </div>
+
+                    <div className='mb-[.5rem]'>
+                        <input
+                            name='apellido'
+                            value={data.apellido}
+                            onChange={(e) => dataHandler(e)}
+                            className=' formLabel input w-full' placeholder='Codigo:' />
+                    </div>
+
+                    <div>
+                        <input
+                            name='apellido'
+                            value={data.apellido}
+                            onChange={(e) => dataHandler(e)}
+                            className=' formLabel input w-full' placeholder='Brocker:' />
+                    </div>
+                </div>
+                )
+            }
 
             <div className='w-full flex items-center justify-center p-2 mt-4'>
                 <button
