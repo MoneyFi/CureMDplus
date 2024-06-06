@@ -71,7 +71,7 @@ const FormRegister = ({ position, setPosition }) => {
 
 
     return (
-        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-72 max-[400px]:mt-[450px]'}`} >
+        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-10 max-[400px]:mt-10'}`} >
             <div className='formLabel label max-[800px]:flex-col '>
                 <div>
                     <input
@@ -193,60 +193,21 @@ const FormRegister = ({ position, setPosition }) => {
             {
                 productor && (
                     <div className='formLabel label flex-col '>
-                    <div className='w-full mb-[.5rem]'>
-                        <input
-                            name='nombre'
-                            value={data.nombre}
-                            onChange={(e) => dataHandler(e)}
-                            className='formLabel input w-full' placeholder='Nombre de productor:' />
-                    </div>
-                    <div className='w-full mb-[.5rem]'>
-                        <input
-                            name='nombre'
-                            value={data.nombre}
-                            onChange={(e) => dataHandler(e)}
-                            className='formLabel input w-full' placeholder='Apellido de productor:' />
-                    </div>
+                    <div className='w-full'>
 
-                    <div className='w-full mb-[.5rem]'>
-                        <input
-                            name='nombre'
-                            value={data.nombre}
-                            onChange={(e) => dataHandler(e)}
-                            className='formLabel input w-full' placeholder='DNI de productor:' />
-                    </div>
+                <select
+                    name='genero'
+                    defaultValue=""
+                    onChange={(e) => dataHandler(e)}
+                    className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
+                    <option disabled value="">Elige tu productor</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Femenino</option>
+                    <option value="other">Prefiero no decirlo</option>
+                </select>
 
-                    <div className='w-full mb-[.5rem]'>
-                        <input
-                            name='nombre'
-                            value={data.nombre}
-                            onChange={(e) => dataHandler(e)}
-                            className='formLabel input w-full' placeholder='Telefono de productor:' />
-                    </div>
-
-                    <div className='mb-[.5rem]'>
-                        <input
-                            name='apellido'
-                            value={data.apellido}
-                            onChange={(e) => dataHandler(e)}
-                            className=' formLabel input w-full' placeholder='Mail del productor:' />
-                    </div>
-
-                    <div className='mb-[.5rem]'>
-                        <input
-                            name='apellido'
-                            value={data.apellido}
-                            onChange={(e) => dataHandler(e)}
-                            className=' formLabel input w-full' placeholder='Codigo de productor:' />
-                    </div>
-
-                    <div>
-                        <input
-                            name='apellido'
-                            value={data.apellido}
-                            onChange={(e) => dataHandler(e)}
-                            className=' formLabel input w-full' placeholder='Brocker:' />
-                    </div>
+                </div>
+                    
                 </div>
                 )
             }
