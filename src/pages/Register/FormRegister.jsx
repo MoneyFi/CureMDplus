@@ -5,13 +5,15 @@ import { loginUserThunk, registerUserThunk } from '../../features/User/userThunk
 import { createToast } from '../../features/toastSlice/toastSlice';
 import { Link } from 'react-router-dom';
 import { uploadData } from '../../features/User/userSlice';
+import { getProdsThunk } from '../../features/prodSlice/prodThunks';
 
 const FormRegister = ({ position, setPosition }) => {
 
     const dispatch = useDispatch()
     const { response } = useSelector((state) => state.user)
     const [loading, setLoading] = useState(false)
-    const [productor,setProductor] = useState(false)
+    const [productor, setProductor] = useState(false)
+    const { productores } = useSelector((state) => state.prod)
     const [data, setData] = useState({
         nombre: '',
         apellido: '',
@@ -23,13 +25,17 @@ const FormRegister = ({ position, setPosition }) => {
         ciudad: '',
         direccion: '',
         fecha_de_nacimiento: '',
-        telefono: ''
+        telefono: '',
+        dni_productor: ''
     })
 
     const [pass, setPass] = useState(false)
 
     useEffect(() => {
-
+        const fetchProds = async () => {
+            dispatch(getProdsThunk())
+        }
+        fetchProds();
     }, [position, setPosition])
 
     const handleConfirmar = (e) => {
@@ -187,28 +193,25 @@ const FormRegister = ({ position, setPosition }) => {
 
             <div className='p-2 flex items-center justify-center'>
                 <p className='text-sm font-light'>¿ya estas en contacto con un productor?</p>
-                <input onClick={()=>setProductor(!productor)}  className='ml-3' type='checkbox'/>
+                <input onClick={() => setProductor(!productor)} className='ml-3' type='checkbox' />
             </div>
 
             {
                 productor && (
                     <div className='formLabel label flex-col '>
-                    <div className='w-full'>
-
-                <select
-                    name='genero'
-                    defaultValue=""
-                    onChange={(e) => dataHandler(e)}
-                    className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
-                    <option disabled value="">Elige tu productor</option>
-                    <option value="male">Masculino</option>
-                    <option value="female">Femenino</option>
-                    <option value="other">Prefiero no decirlo</option>
-                </select>
-
-                </div>
-                    
-                </div>
+                        <div className='w-full'>
+                            <select
+                                name='dni_productor'
+                                defaultValue=""
+                                onChange={(e) => dataHandler(e)}
+                                className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
+                                <option disabled value="">Elige tu productor</option>
+                                {productores ? productores?.map((p) => (
+                                    <option value={p.prod_dni}>{p.prod_name + " " + p.prod_lastname}</option>
+                                )) : <option disabled>No hay productores disponibles</option>}
+                            </select>
+                        </div>
+                    </div>
                 )
             }
 

@@ -20,6 +20,11 @@ export const registerUserThunk = createAsyncThunk(
         longitude: "",
       };
 
+      let productor = 0
+      if(body.dni_productor){
+        productor = body.dni_productor
+      }
+
       const dateNow = new Date();
       const dob = new Date(body.fecha_de_nacimiento);
       let age = dateNow.getFullYear() - dob.getFullYear();
@@ -57,6 +62,8 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("gender", body.genero);
       uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
+      uploadData.append("dni_productor", productor);
+      uploadData.append("curemd", "curemdplus");
 
       const { data } = await axios.post(`${apiCallTest}?action=Add_user`, uploadData, {
         headers: {
