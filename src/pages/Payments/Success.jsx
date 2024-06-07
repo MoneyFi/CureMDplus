@@ -13,6 +13,7 @@ const Success = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const nav = useNavigate()
+  const { productores } = useSelector(state => state.prod)
   const registerData= localStorage.getItem('register')
   const register = JSON.parse(registerData)
   const login = () => {
@@ -29,6 +30,7 @@ const Success = () => {
 
   useEffect(() => {
     if (loading) {
+      // const { prod_email } = productores?.filter(p => p.prod_dni === register.dni_productor)[0]
       // dispatch(registerUserThunk(upload))
       dispatch(registerUserThunk(register))
       sendConfirmarcionMail([register.mail, 'administracion@moneyfi.io'])
