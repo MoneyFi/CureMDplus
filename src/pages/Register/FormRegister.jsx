@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 import { uploadData } from '../../features/User/userSlice';
 import { getProdsThunk } from '../../features/prodSlice/prodThunks';
 
-const FormRegister = ({ position, setPosition }) => {
+const FormRegister = ({ position, setPosition, setHaveAccount }) => {
 
     const dispatch = useDispatch()
     const { response } = useSelector((state) => state.user)
     const [loading, setLoading] = useState(false)
+    const [exists, setExists] = useState(false)
     const [productor, setProductor] = useState(false)
     const { productores } = useSelector((state) => state.prod)
     const [data, setData] = useState({
@@ -26,7 +27,7 @@ const FormRegister = ({ position, setPosition }) => {
         direccion: '',
         fecha_de_nacimiento: '',
         telefono: '',
-        dni_productor: ''
+        dni_productor: null
     })
 
     const [pass, setPass] = useState(false)
@@ -66,6 +67,7 @@ const FormRegister = ({ position, setPosition }) => {
             }
             if (response === 'fail_password') {
                 dispatch(createToast('El correo ya se encuentra en uso'))
+                setExists(true)
                 setLoading(false)
                 return;
             }
@@ -192,7 +194,7 @@ const FormRegister = ({ position, setPosition }) => {
             </div>
 
             <div className='p-2 flex items-center justify-center'>
-                <p className='text-sm font-light'>¿ya estas en contacto con un productor?</p>
+                <p className='text-sm font-light'>¿ya estas en contacto con un productor? (opcional)</p>
                 <input onClick={() => setProductor(!productor)} className='ml-3' type='checkbox' />
             </div>
 
@@ -222,9 +224,33 @@ const FormRegister = ({ position, setPosition }) => {
                     className='bg-primary-blue font-bold text-white py-2 px-6 rounded w-full disabled:bg-[#c7c7c7]'>Confirmar</button>
             </div>
 
+            <div className='p-2 flex items-center justify-center text-[#000000]'>
+                <button onClick={() => setHaveAccount(true)}>
+                    <p className='text-sm font-light'>¿Tienes una cuenta en CureMd? <strong> Inicia sesion aqui.</strong></p>
+                </button>
+            </div>
+
             <div className='p-2'>
                 <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Terminos y Condiciones</Link></strong></p>
             </div>
+
+            {exists &&
+                <section className='fixed backdrop-blur-sm z-50 top-0 left-0 w-screen h-screen flex items-center justify-center'>
+                    <div className='absolute z[60] w-3/4 md:w-2/4 h-2/4 flex flex-col items-center justify-around px-5 py-2 bg-white rounded-md shadow-lg'>
+                        <div>
+                            <p className='text-xl font-varela font-bold text-center'>Ya existe un usuario con este correo</p>
+                            <p className='text-xl font-varela font-bold text-center text-secondary-blue'>¿Tienes una cuenta en CureMd o CureMdPlus?</p>
+                        </div>
+                        <div className='w-full flex items-center justify-around'>
+                            <button onClick={() => {
+                                setExists(false)
+                                setHaveAccount(true)
+                                }} className='bg-white text-secondary-blue border border-secondary-blue py-2 px-5 shadow-lg font-bold hover:bg-secondary-blue hover:text-white transition-colors'>Iniciar Sesion</button>
+                            <button onClick={() => setExists(false)} className='bg-white text-secondary-blue border border-secondary-blue py-2 px-5 shadow-lg font-bold hover:bg-secondary-blue hover:text-white transition-colors'>Probar otro correo</button>
+                        </div>
+                    </div>
+                </section>
+            }
 
         </section>
     )

@@ -20,9 +20,9 @@ export const registerUserThunk = createAsyncThunk(
         longitude: "",
       };
 
-      let productor = 0
-      if(body.dni_productor){
-        productor = body.dni_productor
+      let productor = 0;
+      if (body.dni_productor) {
+        productor = body.dni_productor;
       }
 
       const dateNow = new Date();
@@ -31,7 +31,7 @@ export const registerUserThunk = createAsyncThunk(
       const monthDiff = dateNow.getMonth() - dob.getMonth();
       const dayDiff = dateNow.getDate() - dob.getDate();
       if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-          age--;
+        age--;
       }
 
       uploadData.append("name", body.nombre);
@@ -42,10 +42,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("mobile_number", body.telefono);
       uploadData.append("role", "user");
       uploadData.append("photo", "false");
-      uploadData.append(
-        "valueOfCountryInCode",
-        ""
-      );
+      uploadData.append("valueOfCountryInCode", "");
       uploadData.append("country", body.pais);
       uploadData.append(
         "user_registration_geolocation",
@@ -65,11 +62,15 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("dni_productor", productor);
       uploadData.append("curemd", "curemdplus");
 
-      const { data } = await axios.post(`${apiCallTest}?action=Add_user`, uploadData, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
+      const { data } = await axios.post(
+        `${apiCallTest}?action=Add_user`,
+        uploadData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
       console.log(data);
       return data.response;
     } catch (error) {
@@ -98,9 +99,34 @@ export const loginUserThunk = createAsyncThunk(
         }
       );
       console.log(data);
-      const userData= JSON.stringify(data)
-      localStorage.setItem('login',userData)
+      const userData = JSON.stringify(data);
+      localStorage.setItem("login", userData);
       return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserThunk = createAsyncThunk(
+  "updateUser",
+  async (body, { rejectWithValue }) => {
+    try {
+      const uploadinfo = new FormData();
+      uploadinfo.append("cuil", body.cuil);
+      uploadinfo.append("id", body.id);
+      uploadinfo.append("dni_productor", body.dni_productor);
+      const { data } = await axios.post(
+        `${apiCallTest}?action=curemd_plus_update`,
+        uploadinfo,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data.response;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
