@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerUserThunk, loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
+import { sendConfirmarcionMail } from '../../API/Mails/mailPrincipal'
 
 
 const Success = () => {
@@ -30,6 +31,7 @@ const Success = () => {
     if (loading) {
       // dispatch(registerUserThunk(upload))
       dispatch(registerUserThunk(register))
+      sendConfirmarcionMail([register.mail, 'administracion@moneyfi.io'])
       setTimeout(() => {
         setLoading(false)
       }, 3000)
