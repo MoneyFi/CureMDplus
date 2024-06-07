@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted  # Esto asume que tienes un runner configurado en el mismo servidor
+    runs-on: runner-1  # Esto asume que tienes un runner configurado en el mismo servidor
 
     steps:
     - name: Checkout Repository
