@@ -24,6 +24,7 @@ jobs:
         sudo npm  install
         sudo npm run build 
         sudo /usr/local/bin/pm2 start --name "myapp" --user "apache" --uid 48 --cwd /var/www/curemd.io/website/CureMDplus/ npm -- run dev
+        sudo /usr/local/bin/pm2 save
         echo "deploy server 1 done"
         echo "starting second deploy"
         
@@ -46,6 +47,7 @@ jobs:
         sudo npm  install
         sudo npm run build 
         sudo /usr/local/bin/pm2 start --name "myapp" --user "apache" --uid 48 --cwd /var/www/curemd.io/website/CureMDplus/ npm -- run dev
+        sudo /usr/local/bin/pm2 save
         echo "deploy server 1 done"
         echo "starting second deploy"
         
