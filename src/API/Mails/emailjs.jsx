@@ -2,14 +2,14 @@ import emailjs from '@emailjs/browser';
 import { mailPrincipal } from './mailPrincipal';
 import { MAIL_SERVICE_ID, MAIL_USER_ID, MAIL_TEMPLATE_ID } from '../../Constants/Constants';
 
-export const sendEmailConfirmation = (details) => {
+export const sendEmailConfirmation = (emails) => {
     emailjs.init(MAIL_USER_ID)
     emailjs
     .send(
         MAIL_SERVICE_ID,
         MAIL_TEMPLATE_ID,
         {
-            to_email: details.to_email,
+            to_email: emails,
             subject: mailPrincipal.subject,
             message: mailPrincipal.text,
         },
@@ -19,5 +19,3 @@ export const sendEmailConfirmation = (details) => {
     })
     .catch(err => console.log('FAILED...', err));
 }
-
-console.log(sendEmailConfirmation({to_email: ['leandromaxi2014@gmail.com', 'curemd-plus@moneyfi.io']}))
