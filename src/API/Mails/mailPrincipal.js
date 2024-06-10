@@ -1,13 +1,7 @@
-import { transporter } from "./transporter.js";
-import "dotenv/config";
-
-export const sendConfirmarcionMail = (email) => {
-  const mailConfig = {
-    from: "CureMd+ " + process.env.MAIL_USER,
-    to: email,
-    subject:
-      "¡Bienvenido a CureMD+! Confirmación de Pago y Activación de Cobertura",
-    text: `
+export const mailPrincipal = {
+  subject:
+    "¡Bienvenido a CureMD+! Confirmación de Pago y Activación de Cobertura",
+  text: `
 Estimado/a Asegurado,
 
 ¡Nos complace darle la bienvenida a la familia CureMD+! Queremos confirmar que hemos recibido su pago y que su cobertura ya está activa. A continuación, encontrará los detalles importantes sobre su póliza:
@@ -32,15 +26,4 @@ Estamos encantados de tenerlo con nosotros y queremos asegurarnos de que su expe
 ¡Gracias por confiar en nosotros!
 
 El Equipo de CureMD+`,
-  };
-
-  transporter.sendMail(mailConfig, (error, info) => {
-    if (error) {
-      console.log("Error al enviar el mail:", error);
-    } else {
-      console.log("Mail enviado:", info);
-    }
-  });
 };
-
-console.log(sendConfirmarcionMail(["leandromaxi2014@gmail.com"]));
