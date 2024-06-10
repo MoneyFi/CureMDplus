@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerUserThunk, loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
-import { sendConfirmarcionMail } from '../../API/Mails/mailPrincipal'
-
+import { sendEmailConfirmation } from '../../API/Mails/emailjs'
 
 const Success = () => {
   const { upload } = useSelector(state => state.user)
@@ -30,10 +29,11 @@ const Success = () => {
 
   useEffect(() => {
     if (loading) {
-      // const { prod_email } = productores?.filter(p => p.prod_dni === register.dni_productor)[0]
+      const { prod_email } = productores?.filter(p => p.prod_dni === register.dni_productor)[0]
       // dispatch(registerUserThunk(upload))
+      let productor = prod_email || ''
       dispatch(registerUserThunk(register))
-      sendConfirmarcionMail([register.mail, 'administracion@moneyfi.io'])
+      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', productor])
       setTimeout(() => {
         setLoading(false)
       }, 3000)

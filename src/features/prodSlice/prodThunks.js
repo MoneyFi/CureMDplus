@@ -7,7 +7,6 @@ export const getProdsThunk = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await axios.get(`${apiCallProd}?action=curemd_plus_productores`);
-            console.log(data);
             return data.response;
         } catch (error) {
             console.log(error);

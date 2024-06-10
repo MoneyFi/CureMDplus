@@ -5,3 +5,6 @@ export const GO_CUOTAS_LOGO="https://d2r9epyceweg5n.cloudfront.net/stores/419/17
 export const base_s3 = "CureMD_Argentina_TEST";
 export const apiCallTest = "https://curemd.io/CureMD_Argentina_TEST/rest_apis_argentina.php";
 export const apiCallProd = "https://curemd.io/CureMD_Argentina/rest_apis_argentina.php";
+export const MAIL_SERVICE_ID = 'service_axdv4hd';
+export const MAIL_USER_ID = 'MGu-bPeZQVTRgADoC';
+export const MAIL_TEMPLATE_ID = 'template_k5whayd';
