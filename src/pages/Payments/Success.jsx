@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerUserThunk, loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
+import { sendConfirmarcionMail } from '../../API/Mails/mailPrincipal'
 
 
 const Success = () => {
@@ -12,6 +13,7 @@ const Success = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const nav = useNavigate()
+  const { productores } = useSelector(state => state.prod)
   const registerData= localStorage.getItem('register')
   const register = JSON.parse(registerData)
   const login = () => {
@@ -28,8 +30,10 @@ const Success = () => {
 
   useEffect(() => {
     if (loading) {
+      // const { prod_email } = productores?.filter(p => p.prod_dni === register.dni_productor)[0]
       // dispatch(registerUserThunk(upload))
       dispatch(registerUserThunk(register))
+      sendConfirmarcionMail([register.mail, 'administracion@moneyfi.io'])
       setTimeout(() => {
         setLoading(false)
       }, 3000)
