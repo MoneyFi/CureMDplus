@@ -6,6 +6,7 @@ import { createToast } from '../../features/toastSlice/toastSlice';
 import { Link } from 'react-router-dom';
 import { uploadData } from '../../features/User/userSlice';
 import { getProdsThunk } from '../../features/prodSlice/prodThunks';
+import { Productores_Call } from '../../API/Productores/Productores';
 
 const FormRegister = ({ position, setPosition, setHaveAccount }) => {
 
@@ -76,6 +77,11 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             return;
         }
     }, [loading])
+
+
+    useEffect(()=>{
+        Productores_Call()
+    },[])
 
 
     return (
