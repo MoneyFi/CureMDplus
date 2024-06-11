@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
 import video from '../../../assets/bakground/video.mp4'
 
-function TelemedicinaCure() {
+const TelemedicinaCure = () => {
   const glass = "w-full bg-white  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70 text-white shadow"
 
   return (
