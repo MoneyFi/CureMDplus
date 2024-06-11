@@ -18,6 +18,7 @@ const Products = () => {
         },
         {
             title: 'Plan SENIOR',
+            subtitle: 'Desde 65 hasta 74 años y 11 meses.',
             essential: 'Atención primaria en telemedicina: 24/7, (1 consulta al mes. Tope $20.000)._Asistencia convalecencia: Servicio de acompañante en establecimiento médico, Servicio de acompañante en domicilio, Bonificación de acompañante en Domicilio especial, Asesor Previsional.',
             detail:'Chequeo médico anual por prevención/ control con un especialista de Gerontología para realizar una evaluación que consiste en Chequeo médico regular._Indemnizatorias:_Cobertura de internación retroactiva: Cubre los gastos de internación de hasta 3 días previos al alta, siempre que la internación esté dentro del período de vigencia de la póliza_Máximo anual de internación: 90 días._Cuidados prolongados: Cubre hasta 12 meses de cuidados en un hogar geriátrico o en el domicilio del asegurado.',
             price: 160000
