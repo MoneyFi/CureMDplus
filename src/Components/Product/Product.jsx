@@ -40,22 +40,25 @@ const Product = ({ product, index }) => {
             <header className='flex flex-col justify-center items-start text-2xl w-full gap-2'>
                 <div className='text-primary-blue flex items-center gap-2'>
                     <img src={logo} alt="" width={55} className='rounded-full' />
-                    <span>{product.title.split(' ')[0]} <b>{product.title.split(' ')[1]}</b></span>
+                    <div className='flex flex-col'>
+                        <span className={product.subtitle ? '-mb-2 mt-3' : ''}>{product.title.split(' ')[0]} <b>{product.title.split(' ')[1]}</b></span>
+                        {product.subtitle && <span className='text-[10px] text-[#727274] -mb-2'>{product.subtitle}</span>}
+                    </div>
                 </div>
                 <span className='font-bold font-sans self-center'>{formatearMonto(product.price)}</span>
             </header>
             <hr className='w-full text-primary-blue' />
-            <div className='pt-4 text-pretty min-w-[100%] h-60 font-roboto font-light '>{product.essential.split('_').map((l,index) => (
+            <div className='pt-4 text-pretty min-w-[100%] h-60 font-roboto font-light '>{product.essential.split('_').map((l, index) => (
                 <li className='my-1' key={index}>{l}</li>
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
                 <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
-                <button onClick={()=>handlePay()} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
+                <button onClick={() => handlePay()} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
             </footer>
             {
                 detail ?
-                <Detail product={product} format={formatearMonto} handleDetail={handleDetail}/>
-                : ""
+                    <Detail product={product} format={formatearMonto} handleDetail={handleDetail} />
+                    : ""
             }
             {/* {form && <Form handleForm={handleForm}/>} */}
             {/* {pay && <Payment price={product.price} handlePay={handlePay} formatearMonto={formatearMonto}/>} */}
