@@ -30,37 +30,16 @@ const Telemedicina = () => {
     ];
 
     return (
-        <div className='landing w-screen min-h-screen scroll-smooth'>
-            <section className='w-full h-screen relative flex flex-col justify-between items-center'>
-                <div
-                    className='w-full h-2/3 flex flex-col justify-start md:justify-center items-end overflow-hidden'
-                ><img src={telemedicina} alt="" className='w-full object-cover h-full object-[89%] md:object-bottom' /></div>
-                <div className='flex flex-col justify-center items-center w-full h-full md:h-1/3 gap-4 py-0 md:py-4 px-5 md:px-2'>
-                    <span className='text-xl text-center md:text-3xl text-secondary-blue font-varela'>Bienvenido a Nuestra Plataforma de Telemedicina: Salud a tu Alcance</span>
-                    <p className='font-roboto text-center text-pretty text-xs md:text-sm w-full md:w-2/3'>En nuestra plataforma de telemedicina, combinamos la última tecnología con la atención médica de calidad para ofrecerte una experiencia de salud integral y accesible desde la comodidad de tu hogar. Descubre las características que hacen de nuestra plataforma la elección ideal para tus necesidades de salud.</p>
-                </div>
-            </section>
-
+        <div className='landing w-screen min-h-screen scroll-smooth p-4'>
             <section className='w-full min-h-screen relative flex justify-center md:justify-around items-center gap-6 md:gap-4 flex-wrap'>
                 {features.map((feature, index) => (
-                    <div key={index} className='flex flex-col justify-around text-center items-center gap-3 md:min-h-[18em] md:w-1/4 w-3/4 shadow-md rounded-2xl py-3 px-5 transition-all hover:scale-110 bg-white hover:bg-primary-blue hover:text-white cursor-default'>
-                        <span className='text-lg font-varela font-bold'>{feature.title}</span>
-                        <p className='text-sm font-roboto font-light text-balance'>{feature.content}</p>
+                    <div key={index} className='flex flex-col text-sm justify-start text-center items-start gap-3 md:min-h-[18em] md:w-[400px]  rounded py-3 px-5 transition-all hover:scale-105 hover:shadow bg-white cursor-default'>
+                        <span className='text-lg font-varela text-left font-semibold text-primary-blue '>{feature.title}</span>
+                        <p className='text-sm font-roboto font-light text-left'>{feature.content}</p>
                     </div>
                 ))}
             </section>
 
-            <section className='w-full h-screen relative flex flex-col justify-between items-center'>
-                <div className='flex flex-col justify-center items-center w-full h-full md:h-2/3 gap-6 py-0 md:py-4 px-5 md:px-2'>
-                    <span className='text-xl text-center md:text-3xl text-secondary-blue font-varela'>Únete a la Revolución de la Telemedicina</span>
-                    <p className='font-roboto text-center text-pretty text-xs md:text-sm w-full md:w-2/3'>Estamos comprometidos a transformar la forma en que accedes a los servicios de salud. Con nuestras avanzadas herramientas y enfoque centrado en el paciente, brindamos una experiencia médica sin igual. Únete a nosotros y descubre cómo nuestra plataforma de telemedicina puede mejorar tu calidad de vida.</p>
-                    <button className='text-lg font-varela text-primary-blue py-3 px-6 rounded-full shadow-md transition-colors hover:bg-primary-blue hover:text-white'>¡Unete ahora!</button>
-                </div>
-                <div className='w-full h-1/3 bg-primary-blue text-white flex flex-col justify-center items-center py-4 px-5 gap-4'>
-                    <span className='text-lg text-center md:text-2xl font-sans font-bold'>¿Tienes preguntas o necesitas más información? No dudes en contactarnos.</span>
-                    <p className='font-roboto font-light text-center text-pretty text-sm w-full md:w-2/3'>Teléfono: +54 9 3517 86-0525</p>
-                </div>
-            </section>
         </div>
     )
 }
