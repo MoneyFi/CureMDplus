@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { apiCallTest, base_s3 } from "../../Constants/Constants";
+import { apiCallProd, base_s3 } from "../../Constants/Constants";
+
+let apiCall = apiCallProd
 
 export const registerUserThunk = createAsyncThunk(
   "registerUser",
@@ -20,7 +22,7 @@ export const registerUserThunk = createAsyncThunk(
         longitude: "",
       };
 
-      let productor = 0;
+      let productor = '0';
       if (body.dni_productor) {
         productor = body.dni_productor;
       }
@@ -63,7 +65,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("curemd", "curemdplus");
 
       const { data } = await axios.post(
-        `${apiCallTest}?action=Add_user`,
+        `${apiCall}?action=Add_user`,
         uploadData,
         {
           headers: {
@@ -90,7 +92,7 @@ export const loginUserThunk = createAsyncThunk(
       uploadinfo.append("password", body.password);
 
       const { data } = await axios.post(
-        `${apiCallTest}?action=login`,
+        `${apiCall}?action=login`,
         uploadinfo,
         {
           headers: {
@@ -118,7 +120,7 @@ export const updateUserThunk = createAsyncThunk(
       uploadinfo.append("id", body.id);
       uploadinfo.append("dni_productor", body.dni_productor);
       const { data } = await axios.post(
-        `${apiCallTest}?action=curemd_plus_update`,
+        `${apiCall}?action=curemd_plus_update`,
         uploadinfo,
         {
           headers: {

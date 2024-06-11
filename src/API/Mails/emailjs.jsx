@@ -19,5 +19,3 @@ export const sendEmailConfirmation = (emails) => {
     })
     .catch(err => console.log('FAILED...', err));
 }
-
-console.log(sendEmailConfirmation({to_email: ['leandromaxi2014@gmail.com', 'curemd-plus@moneyfi.io']}))
