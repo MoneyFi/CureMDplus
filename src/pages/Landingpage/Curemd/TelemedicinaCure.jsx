@@ -33,7 +33,7 @@ const TelemedicinaCure = () => {
 
     <article className='w-[600px] flex flex-col items-center justify-center mt-5 max-[800px]:w-full'>
     <h3 className="text-primary-blue text-sm text-center  py-1  max-[600px]:text-sm">
-    En nuestra plataforma de telemedicina, combinamos la última tecnología con la atención médica de calidad para ofrecerte una experiencia de salud integral y accesible desde la comodidad de tu hogar. Descubre las características que hacen de nuestra plataforma la elección ideal para tus necesidades de salud.
+    En nuestra plataforma de telemedicina, combinamos la última tecnología con la atención médica de calidad para ofrecerte una experiencia de salud integral y accesible desde la comodidad de tu hogar. Descubre las características que hacen de nuestra plataforma la elección ideal para tus necesidades.
     </h3>
     </article>
     </div>
