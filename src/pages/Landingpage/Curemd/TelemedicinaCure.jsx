@@ -1,5 +1,6 @@
 import video from '../../../assets/bakground/video.mp4'
 
+
 const TelemedicinaCure = () => {
   const glass = "w-full bg-white  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70 text-white shadow"
 
@@ -39,6 +40,7 @@ const TelemedicinaCure = () => {
     </div>
     </section>
   )
+
 }
 
 export default TelemedicinaCure
