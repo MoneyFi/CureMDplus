@@ -8,6 +8,7 @@ import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
 import UserDashboard from "../pages/Client/UserPage/UserDashboard";
 import NewRegister from "../pages/Register/NewRegister";
 import Telemedicina from "../pages/TelemedicinaPage/Telemedicina";
+import LandingCureMd from "../pages/Landingpage/LandingCureMd";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,6 @@ export const router = createBrowserRouter([
     },
     {
         path: '/telemedicina',
-        element: <Telemedicina/>
+        element: <LandingCureMd/>
     }
 ]);
