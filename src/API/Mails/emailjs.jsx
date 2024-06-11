@@ -18,5 +18,9 @@ export const sendEmailConfirmation = (emails) => {
         console.log('SUCCESS!', response.status, response.text);
     })
     .catch(err => console.log('FAILED...', err));
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> a74d30c9887354f08aad03a90f690239bafa4b5e

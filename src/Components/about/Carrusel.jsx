@@ -17,7 +17,7 @@ const Carrusel = () => {
 
     const data = [
         {
-            nombre: " María González",
+            nombre: "María Esperanza",
             img: 'https://randomuser.me/api/portraits/women/82.jpg',
             testimony: 'Desde que uso CureMD, gestionar mis citas médicas es más fácil. La app me permite acceder a mis registros y comunicarme con mis médicos en un solo lugar.'
         },
