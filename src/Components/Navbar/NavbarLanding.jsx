@@ -39,7 +39,7 @@ const NavbarLanding = () => {
   return (
     <header className={!isFixed ? `flex items-center justify-around w-[100vw] py-3 font-light  max-[800px]:justify-between fixed z-20 text-white px-4 ${pathname === '/account' ? 'bg-primary-blue' : ''} ` : `${glass} flex items-center justify-around font-light w-[100vw] fixed max-[800px]:justify-between py-3 px-4 z-20`}>
 
-      <div className='w-[170px] overflow-hidden'>
+      <div className='w-[220px] md:w-[250px] overflow-hidden'>
         <a href='#landing'><img alt='logo' src={cureLogoBco} className='mt-5' /></a>
       </div>
 
@@ -57,7 +57,7 @@ const NavbarLanding = () => {
             null
         }
       </button>
-      <div className='max-[800px]:hidden'>
+      <div className='max-[800px]:hidden text-lg'>
         {pathname === '/faqs' ? (
           ""
         ) : (
@@ -72,13 +72,13 @@ const NavbarLanding = () => {
 
       <div className='max-[800px]:hidden'>
       {token ?
-      <Link to='/myaccount' className='px-3 py-1 font-regular text-md'>Mi Cuenta</Link>
+      <Link to='/myaccount' className='px-3 py-1 font-regular text-xl'>Mi Cuenta</Link>
       :
         <button
         onClick={() => dispatch(changeForm(true))}
-        className='px-3 py-1 font-regular text-md'>Ingresar</button>
+        className='px-3 py-1 font-regular text-lg'>Ingresar</button>
       }
-        <a href='#publicity' className={`px-3 py-1 font-regular text-md rounded bg-[#239FD8] text-white`}>Contactanos</a>
+        <a href='#publicity' className={`px-3 py-1 font-regular text-xl rounded bg-[#239FD8] text-white`}>Contactanos</a>
 
       </div>
     </header>
