@@ -3,16 +3,12 @@ import cureLogoBco from '../../assets/icons/Logo_Azul.png'
 import { TbMenu } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom'
 import NavbarLandingResponsive from './NavbarLandingResponsive';
-import { useDispatch, useSelector } from 'react-redux';
-
 
 const NavTelemedicina = () => {
   const [isFixed, setIsFixed] = useState(false)
   const [open, setOpen] = useState(false)
   const glass = "w-full bg-white  bg-clip-padding backdrop-filter backdrop-blur-[50%] bg-opacity-70 shadow text-primary-blue"
   const { pathname } = useLocation()
-  const dispatch = useDispatch()
-  const { token } = useSelector(state => state.user)
 
   useEffect(() => {
     const handleScroll = () => {
