@@ -6,11 +6,13 @@ import { getProdsThunk } from '../../features/prodSlice/prodThunks';
 
 const FormData = ({ setHaveAccount, setPosition, position }) => {
     const { user_id, response } = useSelector((state) => state.user);
+    const loginData = localStorage.getItem('login');
+    const login = JSON.parse(loginData);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         cuil: '',
-        dni_productor: '',
-        id: user_id
+        dni_productor: '0',
+        id: '',
     });
     const dispatch = useDispatch()
     const [productor, setProductor] = useState(false);
@@ -22,7 +24,11 @@ const FormData = ({ setHaveAccount, setPosition, position }) => {
         })
     }
     const handleSubmit = () => {
-        dispatch(updateUserThunk(data))
+        dispatch(updateUserThunk({
+            cuil: data.cuil,
+            dni_productor: data.dni_productor,
+            id: login.user_id
+        }))
         dispatch(createToast('Subiendo datos...'))
         setTimeout(() => {
             setLoading(true)

@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 const Payment = ({ price, formatearMonto, position, setPosition }) => {
     const { upload } = useSelector(state => state.user)
     const { plan } = useSelector(state => state.payment)
+    const planData = JSON.parse(localStorage.getItem('plan'))
+    const registerData = JSON.parse(localStorage.getItem('register'))
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
         discount: 'true'
@@ -27,7 +29,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         goCuotas({
             amount_in_cents: amount * 100,
             order_reference_id: id,
-            phone_number: upload.telefono
+            phone_number: registerData.telefono
         })
     }
 
@@ -37,17 +39,17 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             mercadoPago({
                 amount: 1, //Para testear
                 // amount: amount,
-                mail: upload.mail,
-                producto: plan,
-                facturacion: 'total'
+                mail: registerData.mail,
+                producto: planData.plan,
+                facturacion: 'anual'
             })
             return;
         }
         mercadoPago({
             amount: 1, //Para testear
             // amount: price,
-            mail: upload.mail,
-            producto: plan,
+            mail: registerData.mail,
+            producto: planData.plan,
             facturacion: 'mensual'
         })
         return;
