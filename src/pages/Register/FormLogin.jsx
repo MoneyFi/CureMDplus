@@ -34,7 +34,7 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
             if (response === 'success') {
                 dispatch(createToast('Inicio exitoso, corroborando datos...'))
                 setTimeout(() => {
-                    if (!data_user.cuil || data_user.cuil === '' && !data_user.dni_productor || data_user.dni_productor === '') {
+                    if (!data_user.cuil || data_user.cuil === '0' && !data_user.dni_productor || data_user.dni_productor === '0') {
                         setPosition(2)
                         setLoading(false)
                         return
