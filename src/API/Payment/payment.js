@@ -112,8 +112,8 @@ const mercado_pago_preference = async (data) => {
                             },
                         ],
                         back_urls: {
-                            success: 'https://curemd-plus.curemd.io/payments/success',
-                            failure: 'https://curemd-plus.curemd.io/payments/failure',
+                            success: 'https://plus.curemd.io/payments/success',
+                            failure: 'https://plus.curemd.io/payments/failure',
                         },
                         auto_return: 'approved',
                         notification_url: 'http://199.192.30.130:3559/webhook',
