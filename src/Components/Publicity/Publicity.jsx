@@ -14,7 +14,7 @@ const Publicity = () => {
         <Link to="/telemedicina" className='px-4 py-3 mb:px-6 mb:py-4 hover:bg-secondary-blue rounded-xl shadow-xl hover:text-white text-secondary-blue bg-white transition-colors'>
           <h2 className='text-xl mb:text-2xl  font-sans font-light text-center'>App de <b className='font-bold'>Telemedicina</b></h2>
         </Link>
-        <p className='text-white font-sans font-light md:max-w text-center'>Planes accesibles, atención personalizada y tecnología de vanguardia para cuidar tu salud.</p>
+        <p className='text-white font-sans font-light md:max-w text-center'>Nuestro enfoque integral combina cobertura para enfermedades complejas cono la <strong>comodidad y eficiencia de la telemedicina,</strong>  asegurando que nuestros afiliados reciban la mejor atencion posible sin importar donde se necuentren.</p>
         <span className='text-white font-sans font-bold text-center'>Descarga la App en:</span>
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 md:gap-3'>
           <div className='flex justify-center bg-white rounded-[10px] w-2/3 md:w-2/5 '>
