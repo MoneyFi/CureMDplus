@@ -6,6 +6,7 @@ import { registerUserThunk, loginUserThunk } from '../../features/User/userThunk
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
 import { sendEmailConfirmation } from '../../API/Mails/emailjs'
+import { getProdsThunk } from '../../features/prodSlice/prodThunks'
 
 const Success = () => {
   const { upload } = useSelector(state => state.user)
@@ -17,21 +18,20 @@ const Success = () => {
   const register = JSON.parse(registerData)
   const login = () => {
     dispatch(loginUserThunk({
-      email: upload.mail,
-      password: upload.contraseña
+      email: register.mail,
+      password: register.contraseña
     }))
     createToast('Cargando datos de usuario...')
     setTimeout(() => {
       dispatch(uploadData({}))
-      nav('/')
+      nav('/myaccount')
     }, 2000)
   }
 
-console.log(productores)
-
   useEffect(() => {
     if (loading) {
-      const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'Andres Salinas'
+      dispatch(getProdsThunk())
+      const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'curemd_plus@moneyfi.io'
       // dispatch(registerUserThunk(upload))
       // let productor = prod_email || ''
       

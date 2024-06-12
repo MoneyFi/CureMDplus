@@ -11,10 +11,10 @@ const Publicity = () => {
       <video src={video} autoPlay loop muted className='hidden md:block md:w-[260px]' id='mobile'></video>
       <div className='w-[500px] px-4 flex flex-col md:flex justify-center items-center gap-4'>
         <img src={app} alt="App Telemedicina" className='w-full md:w-3/4 mb-4' />
+        <p className='text-white font-sans font-light md:max-w text-center'>Nuestro enfoque integral combina cobertura para enfermedades complejas con la <b className='font-bold'>comodidad y eficiencia de la telemedicina</b>, asegurando que nuestros afiliados reciban la mejor atención posible sin importar donde se encuentren.</p>
         <Link to="/telemedicina" className='px-4 py-3 mb:px-6 mb:py-4 hover:bg-secondary-blue rounded-xl shadow-xl hover:text-white text-secondary-blue bg-white transition-colors'>
-          <h2 className='text-xl mb:text-2xl  font-sans font-light text-center'>App de <b className='font-bold'>Telemedicina</b></h2>
+          <h2 className='text-xl mb:text-2xl  font-sans font-light text-center'>Más <b className='font-bold'>información</b></h2>
         </Link>
-        <p className='text-white font-sans font-light md:max-w text-center'>Nuestro enfoque integral combina cobertura para enfermedades complejas cono la <strong>comodidad y eficiencia de la telemedicina,</strong>  asegurando que nuestros afiliados reciban la mejor atencion posible sin importar donde se necuentren.</p>
         <span className='text-white font-sans font-bold text-center'>Descarga la App en:</span>
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 md:gap-3'>
           <div className='flex justify-center bg-white rounded-[10px] w-2/3 md:w-2/5 '>

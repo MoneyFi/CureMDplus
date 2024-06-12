@@ -9,13 +9,15 @@ import { createToast } from '../../../features/toastSlice/toastSlice';
 
 
 const UserDashboard = () => {
-    const { data } = useSelector((state) => state.user);
+    // const { data } = useSelector((state) => state.user);
+    const login = JSON.parse(localStorage.getItem('login'))
+    const { data_user: data } = login
     const nav = useNavigate();
     const dispatch = useDispatch()
     const logout = () => {
-        localStorage.removeItem('login')
         dispatch(createToast('Cerrando sesion...'))
         setTimeout(() => {
+            localStorage.removeItem('login')
             dispatch(logoutUser())
             nav('/')
             dispatch(createToast('Sesion cerrada'))
