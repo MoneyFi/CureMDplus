@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { apiCallProd, apiCallTest, base_s3 } from "../../Constants/Constants";
 
-let apiCall = apiCallTest
+let apiCall = apiCallProd;
 
 export const registerUserThunk = createAsyncThunk(
   "registerUser",
