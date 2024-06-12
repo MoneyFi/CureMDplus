@@ -127,6 +127,7 @@ export const updateUserThunk = createAsyncThunk(
           },
         }
       );
+      console.log(data);
       return data.response;
     } catch (error) {
       console.log(error);
