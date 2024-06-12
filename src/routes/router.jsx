@@ -46,8 +46,8 @@ export const router = createBrowserRouter([
         path: '/myaccount',
         element: <UserDashboard/>
     },
-    {
-        path: '/telemedicina',
-        element: <LandingCureMd/>
-    },
+    // {
+    //     path: '/telemedicina',
+    //     element: <LandingCureMd/>
+    // }
 ]);
