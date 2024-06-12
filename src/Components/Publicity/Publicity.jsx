@@ -12,7 +12,7 @@ const Publicity = () => {
       <div className='w-[500px] px-4 flex flex-col md:flex justify-center items-center gap-4'>
         <img src={app} alt="App Telemedicina" className='w-full md:w-3/4 mb-4' />
         <Link to="/telemedicina" className='px-4 py-3 mb:px-6 mb:py-4 hover:bg-secondary-blue rounded-xl shadow-xl hover:text-white text-secondary-blue bg-white transition-colors'>
-          <h2 className='text-xl mb:text-2xl  font-sans font-light text-center'>App de <b className='font-bold'>Telemedicina</b></h2>
+          <h2 className='text-xl mb:text-2xl  font-sans font-light text-center'>Más <b className='font-bold'>Información</b></h2>
         </Link>
         <p className='text-white font-sans font-light md:max-w text-center'>Planes accesibles, atención personalizada y tecnología de vanguardia para cuidar tu salud.</p>
         <span className='text-white font-sans font-bold text-center'>Descarga la App en:</span>
@@ -27,7 +27,6 @@ const Publicity = () => {
               <img src={istore} alt="App Store" />
             </a>
           </div>
-
         </div>
       </div>
     </div>
