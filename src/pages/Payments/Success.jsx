@@ -27,11 +27,14 @@ const Success = () => {
     }, 2000)
   }
 
+console.log(productores)
+
   useEffect(() => {
     if (loading) {
-      const { prod_email } = productores?.filter(p => p.prod_dni === register.dni_productor)[0]
+      const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'Andres Salinas'
       // dispatch(registerUserThunk(upload))
-      let productor = prod_email || ''
+      // let productor = prod_email || ''
+      
       dispatch(registerUserThunk(register))
       sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', productor])
       setTimeout(() => {
