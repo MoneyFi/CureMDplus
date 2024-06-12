@@ -42,7 +42,6 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("email", body.mail);
       uploadData.append("address", body.direccion);
       uploadData.append("mobile_number", body.telefono);
-      uploadData.append("role", "user");
       uploadData.append("photo", "false");
       uploadData.append("valueOfCountryInCode", "");
       uploadData.append("country", body.pais);
@@ -62,7 +61,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
       uploadData.append("dni_productor", productor);
-      uploadData.append("curemd", "curemdplus");
+      uploadData.append("curemd", "curemd_plus");
 
       const { data } = await axios.post(
         `${apiCall}?action=Add_user`,
