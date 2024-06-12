@@ -6,8 +6,9 @@ import { loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 
 const FormLogin = ({ setHaveAccount, position, setPosition }) => {
-    const [loading, setLoading] = useState(false)
-    const { response, data: data_user } = useSelector((state) => state.user)
+    const [loading, setLoading] = useState(false);
+    const { response, data: data_user } = useSelector((state) => state.user);
+    const login = JSON.parse(localStorage.getItem('login'))
     const [pass, setPass] = useState(false)
     const dispatch = useDispatch()
     const [data, setData] = useState({
@@ -34,7 +35,7 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
             if (response === 'success') {
                 dispatch(createToast('Inicio exitoso, corroborando datos...'))
                 setTimeout(() => {
-                    if (!data_user.cuil || data_user.cuil === '0' && !data_user.dni_productor || data_user.dni_productor === '0') {
+                    if (login.data_user.cuil === '0') {
                         setPosition(2)
                         setLoading(false)
                         return

@@ -114,6 +114,7 @@ export const updateUserThunk = createAsyncThunk(
   "updateUser",
   async (body, { rejectWithValue }) => {
     try {
+      console.log(body);
       const uploadinfo = new FormData();
       uploadinfo.append("cuil", body.cuil);
       uploadinfo.append("id", body.id);
