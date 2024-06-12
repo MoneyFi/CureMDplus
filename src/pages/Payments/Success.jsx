@@ -23,7 +23,7 @@ const Success = () => {
     createToast('Cargando datos de usuario...')
     setTimeout(() => {
       dispatch(uploadData({}))
-      nav('/myaccount')
+      nav('/')
     }, 2000)
   }
 
