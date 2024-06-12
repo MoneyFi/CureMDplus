@@ -25,4 +25,4 @@ const combinedReducers = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
-export default persistedReducer;
+export default combinedReducers;
