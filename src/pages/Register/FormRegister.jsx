@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUserThunk, registerUserThunk } from '../../features/User/userThunks';
+import { loginUserThunk } from '../../features/User/userThunks';
 import { createToast } from '../../features/toastSlice/toastSlice';
 import { Link } from 'react-router-dom';
 import { uploadData } from '../../features/User/userSlice';
@@ -29,7 +29,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
         direccion: '',
         fecha_de_nacimiento: '',
         telefono: '',
-        dni_productor: null
+        dni_productor: '0'
     })
 
     const [pass, setPass] = useState(false)
@@ -150,9 +150,9 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                         onChange={(e) => dataHandler(e)}
                         className='py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
                         <option disabled value="">Elegi tu genero</option>
-                        <option value="male">Masculino</option>
-                        <option value="female">Femenino</option>
-                        <option value="other">Prefiero no decirlo</option>
+                        <option value="Male">Masculino</option>
+                        <option value="Female">Femenino</option>
+                        <option value="Other">Prefiero no decirlo</option>
                     </select>
 
                 </div>
@@ -238,7 +238,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             </div>
 
             {exists &&
-               <LoginRegister/>
+               <LoginRegister setExists={setExists} setHaveAccount={setHaveAccount}/>
             }
 
         </section>

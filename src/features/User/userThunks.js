@@ -22,11 +22,6 @@ export const registerUserThunk = createAsyncThunk(
         longitude: "",
       };
 
-      let productor = '0';
-      if (body.dni_productor) {
-        productor = body.dni_productor;
-      }
-
       const dateNow = new Date();
       const dob = new Date(body.fecha_de_nacimiento);
       let age = dateNow.getFullYear() - dob.getFullYear();
@@ -60,7 +55,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("gender", body.genero);
       uploadData.append("cuil", body.cuil);
       uploadData.append("base", base_s3);
-      uploadData.append("dni_productor", productor);
+      uploadData.append("dni_productor", body.dni_productor);
       uploadData.append("curemd", "curemd_plus");
 
       const { data } = await axios.post(
@@ -72,7 +67,6 @@ export const registerUserThunk = createAsyncThunk(
           },
         }
       );
-      console.log(data);
       return data.response;
     } catch (error) {
       console.log(error);
@@ -99,7 +93,6 @@ export const loginUserThunk = createAsyncThunk(
           },
         }
       );
-      console.log(data);
       const userData = JSON.stringify(data);
       localStorage.setItem("login", userData);
       return data;
@@ -114,7 +107,6 @@ export const updateUserThunk = createAsyncThunk(
   "updateUser",
   async (body, { rejectWithValue }) => {
     try {
-      console.log(body);
       const uploadinfo = new FormData();
       uploadinfo.append("cuil", body.cuil);
       uploadinfo.append("id", body.id);
