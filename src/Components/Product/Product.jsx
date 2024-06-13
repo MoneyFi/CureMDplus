@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import logo from '../../assets/icons/logo.png'
 import Detail from './Detail';
-import Form from '../Form/Form'
-import Payment from '../../pages/Payments/Payment/Payment';
 import { useDispatch } from 'react-redux';
-import { changeForm } from '../../features/formSlice/formSlice';
 import { useNavigate } from 'react-router-dom';
 import { priceToPay, planToPay } from '../../features/paymentSlice/paymentSlice';
 

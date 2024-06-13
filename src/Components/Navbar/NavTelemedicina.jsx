@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import cureLogoBco from '../../assets/icons/Logo_Azul.png'
+import cureLogoBco from '../../assets/icons/Logo_Azul_Cure.png'
 import { TbMenu } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom'
 import NavbarLandingResponsive from './NavbarLandingResponsive';

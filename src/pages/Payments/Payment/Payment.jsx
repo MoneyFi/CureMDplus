@@ -61,11 +61,11 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
 
     React.useEffect(() => {
         if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
-            setAmount(price - (price * 0.1))
+            setAmount((price - (price * 0.1))*12)
         } else if (paymentOptions.type === 'mensual') {
-            setAmount(price / 12)
-        } else {
             setAmount(price)
+        } else {
+            setAmount(price*12)
         }
     }, [paymentOptions, handleType, price])
 
