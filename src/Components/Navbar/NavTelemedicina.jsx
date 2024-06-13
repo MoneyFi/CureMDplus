@@ -65,7 +65,7 @@ const NavTelemedicina = () => {
         )}
       </div>
 
-      <div>
+      <div className='max-[800px]:hidden'>
         <select className='p-1 rounded bg-primary-blue text-sm font-light text-white'>
             <option>Español</option>
             <option>English</option>

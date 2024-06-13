@@ -1,4 +1,4 @@
-import video from '../../../assets/bakground/video.mp4'
+import video from '../../../assets/bakground/video2.mp4'
 
 
 const TelemedicinaCure = () => {
@@ -11,7 +11,7 @@ const TelemedicinaCure = () => {
        loop 
        muted 
        playsInline
-       className='w-full h-full object-cover object-[89%] md:object-[100%]'
+       className='w-full h-full object-cover  md:object-[100%]'
        controls={false} 
        disablePictureInPicture
        preload='auto'

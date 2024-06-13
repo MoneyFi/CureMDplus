@@ -6,14 +6,14 @@ const Products = () => {
     const products = [
         {
             title: 'Salud Esencial',
-            essential: 'Consultas médicas con atención primaria en telemedicina: 24/7, incluyendo asistencia psicológica (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
-            detail:'Segunda opinión casos de alta complejidad_Asistencia al viajero_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica_Indemninzatorias:_Renta diaria por internación, en caso de que necesites ser hospitalizado._Cobertura de ambulancias: Transporte terrestre en caso de urgencia._Gastos de internación 3 días (Asistencia terapéutica)._Máximo anual: 90 días.',
+            essential: 'Consultas médicas de atención primaria en CureMD con atención primaria en telemedicina: 24/7, incluyendo asistencia psicológica (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
+            detail:'Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica_Indemninzatorias:_Renta diaria por internación, en caso de que necesites ser hospitalizado._Cobertura de ambulancias: Transporte terrestre en caso de urgencia._Gastos de internación 3 días (Asistencia terapéutica)._Máximo anual: 90 días.',
             price: 65000
         },
         {
             title: 'Salud Plus',
-            essential:'Consultas médicas con atención primaria en telemedicina: 24/7, incluyendo asistencia psicológica (1 por mes. Tope $30.000)_Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
-            detail:'Segunda opinión casos de alta complejidad_Asistencia al viajero_50% off en farmacia, óptica y ortopedia._Visitas médicas domiciliarias._Asistencia nutricional telefónica_Indemnizatorias: _Renta diaria por internación._Cobertura de ambulancias: Transporte terrestre en caso de urgencia. _Intervenciones quirúrgicas ambulatorias: Cubre el costo de cirugías menores que no requieran internación. Gastos de internación 7 días (Asistencia terapéutica)_Máximo anual: 120 días.',
+            essential:'Consultas médicas de atención primaria en CureMD con atención primaria en telemedicina: 24/7, incluyendo asistencia psicológica (1 por mes. Tope $30.000)_Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
+            detail:'Segunda opinión casos de alta complejidad_Asistencia en viajes_50% off en farmacia, óptica y ortopedia._Visitas médicas domiciliarias._Asistencia nutricional telefónica_Indemnizatorias: _Renta diaria por internación._Cobertura de ambulancias: Transporte terrestre en caso de urgencia. _Intervenciones quirúrgicas ambulatorias: Cubre el costo de cirugías menores que no requieran internación. Gastos de internación 7 días (Asistencia terapéutica)_Máximo anual: 120 días.',
             price: 95000
         },
         {
