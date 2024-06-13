@@ -78,7 +78,7 @@ const NavbarLanding = () => {
         onClick={() => dispatch(changeForm(true))}
         className='px-3 py-1 font-regular text-lg'>Ingresar</button>
       }
-        <a href='#publicity' className={`px-3 py-1 font-regular text-xl rounded bg-[#239FD8] text-white`}>Contactanos</a>
+        <a href=' https://calendly.com/ecarbotti' target='_blank' className={`px-3 py-1 font-regular text-xl rounded bg-[#239FD8] text-white`}>Contactanos</a>
 
       </div>
     </header>

@@ -7,7 +7,7 @@ const Faq = ({ title, content, list }) => {
     const handleOpen = () => setOpen(!open)
     return (
         <article className={`flex flex-col items-center justify-center w-[90%] h-full overflow-hidden font-sans gap-2`}>
-            <div onClick={handleOpen} className='flex justify-between items-center w-full font-bold border-b border-primary-blue py-2 cursor-pointer'>
+            <div onClick={handleOpen} className='flex justify-between items-center w-full  border-b border-primary-blue py-2 cursor-pointer'>
                 <span className='text-lg md:text-xl '>{title}</span>
                 <button className='text-xl md:text-2xl text-primary-blue'>
                     {open ? <IoMdArrowDropupCircle /> : <IoMdArrowDropdownCircle />}

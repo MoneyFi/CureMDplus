@@ -49,15 +49,15 @@ const UserDashboard = () => {
                     <p className='p-2'><strong className='text-primary-blue'>Productor: </strong> Juan Casares</p>
 
                     <div className='p-4 flex items-center justify-center w-full'>
-                    <button onClick={() => dispatch(createToast('Descargando mi poliza...'))} className='bg-primary-blue font-bold text-white rounded w-full p-2'>Descargar mi poliza</button>
+                    <button onClick={() => dispatch(createToast('Descargando mi poliza...'))} className='bg-primary-blue font-bold text-white rounded w-full p-2'>Descargar certificado</button>
                     </div>
                 </div>
             </div>
 
             <footer className='flex items-center justify-between h-[8vh]'>
-                <div className='flex flex-col items-center justify-center text-sm'>
-                <p className='font-bold text-primary-blue'>¿Necesitas ayuda?</p>
-                <p className='flex items-center justify-center'><FaPhoneAlt  className='mr-2'/> 0800-444-0001 <strong className='ml-2'> opcion 3</strong></p>
+                <div className='flex  items-center justify-center text-sm'>
+                <p className='mr-1'>¿Necesitas ayuda? </p>
+                <a className='flex items-center justify-center font-bold text-primary-blue ' href=' https://api.whatsapp.com/send?phone=543517860525&text=Hola!%20Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20CureMD' target='_blank'> Escribe aqui </a>
                 </div>
             </footer>
 

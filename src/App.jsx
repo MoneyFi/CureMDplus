@@ -39,7 +39,9 @@ function App() {
             </h4>
           </article>
         </div>
+        <a href='#products'>
         <MdKeyboardDoubleArrowDown size={50} className='text-white animate-bounce' />
+        </a>
       </div>
     </section>
   )
