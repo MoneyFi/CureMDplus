@@ -38,7 +38,7 @@ const Detail = ({ product, format, handleDetail }) => {
                         <div className='text-primary-blue flex items-center gap-2'>
                             <img src={logo} alt="" width={55} className='rounded-full' />
                             <div className='flex flex-col'>
-                                <span className={product.subtitle ? 'flex gap-1 w-full -mb-2 mt-3' : 'flex gap-1 w-full'}>{product.title.split(' ')[0]} <b>{product.title.split(' ')[1]}</b></span>
+                                <span className={product.subtitle ? 'flex gap-1 w-full -mb-2 mt-3' : 'flex gap-1 w-full'}>{product.title.split(' ')[0]} <b className='font-bold uppercase'>{product.title.split(' ')[1]}</b></span>
                                 {product.subtitle && <span className='text-[10px] text-[#727274]'>{product.subtitle}</span>}
                             </div>
                         </div>
