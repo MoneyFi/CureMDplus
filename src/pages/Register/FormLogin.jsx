@@ -95,12 +95,12 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
 
             <div className='p-2 flex items-center justify-center '>
                 <button onClick={() => setHaveAccount(false)}>
-                    <p className='text-sm font-light '>¿No tienes una cuenta? <strong> Registrate aqui.</strong></p>
+                    <p className='text-sm font-light '>¿No tienes una cuenta? <strong> Regístrate aquí.</strong></p>
                 </button>
             </div>
 
             <div className='p-2'>
-                <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Terminos y Condiciones</Link></strong></p>
+                <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Términos y Condiciones</Link></strong></p>
             </div>
         </section>
     )

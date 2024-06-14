@@ -29,10 +29,10 @@ const NewRegister = () => {
                 <img src={logo} alt='logo' />
             </div>
             {
-                !haveAccount &&
+                !haveAccount && position === 1 &&
             <div className='p-2 flex items-center justify-center text-[#000000] z-20 mb-5'>
                 <button onClick={() => setHaveAccount(true)}>
-                    <p className='text-sm font-light'>¿Tienes una cuenta en CureMd? <strong className='font-bold text-primary-blue'> Inicia sesion aqui.</strong></p>
+                    <p className='text-sm font-light'>¿Tienes una cuenta en CureMd? <strong className='font-bold text-primary-blue'> Inicia sesión aquí.</strong></p>
                 </button>
             </div>
             }
