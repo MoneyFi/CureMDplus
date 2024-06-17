@@ -84,7 +84,7 @@ const FormData = ({ setHaveAccount, setPosition, position }) => {
                                 className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
                                 <option disabled value="">Elige tu productor</option>
                                 {productores ? productores?.map((p) => (
-                                    <option value={p.prod_dni}>{p.prod_name + " " + p.prod_lastname}</option>
+                                    <option value={p.prod_dni}>{p.prod_broker}</option>
                                 )) : <option disabled>No hay productores disponibles</option>}
                             </select>
                         </div>

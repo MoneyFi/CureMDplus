@@ -131,7 +131,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                     onChange={(e) => dataHandler(e)}
                     name='mail'
                     value={data.mail}
-                    className='formLabel input w-full' placeholder='Correo electronico:' />
+                    className='formLabel input w-full' placeholder='Correo electrónico:' />
             </div>
 
             <div className='formLabel label w-full max-[800px]:flex-col '>
@@ -149,7 +149,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                         defaultValue=""
                         onChange={(e) => dataHandler(e)}
                         className='py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
-                        <option disabled value="">Elegi tu genero</option>
+                        <option disabled value="">Elegí tu género</option>
                         <option value="Male">Masculino</option>
                         <option value="Female">Femenino</option>
                         <option value="Other">Prefiero no decirlo</option>
@@ -164,7 +164,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                         onChange={(e) => dataHandler(e)}
                         name='pais'
                         value={data.pais}
-                        className='formLabel input max-[800px]:w-full max-[800px]:mb-[.5rem]' placeholder='Pais:' />
+                        className='formLabel input max-[800px]:w-full max-[800px]:mb-[.5rem]' placeholder='País:' />
                 </div>
                 <div>
                     <input
@@ -180,7 +180,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                     onChange={(e) => dataHandler(e)}
                     name='direccion'
                     value={data.direccion}
-                    className='formLabel input w-full' placeholder='Direccion:' />
+                    className='formLabel input w-full' placeholder='Dirección:' />
             </div>
 
             <div className='formLabel label'>
@@ -197,11 +197,11 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                     onChange={(e) => dataHandler(e)}
                     name='telefono'
                     value={data.telefono}
-                    className='formLabel input w-full' placeholder='Telefono:' />
+                    className='formLabel input w-full' placeholder='Teléfono:' />
             </div>
 
             <div className='p-2 flex items-center justify-center'>
-                <p className='text-sm font-light'>¿ya estas en contacto con un productor? (opcional)</p>
+                <p className='text-sm font-light'>¿Ya estás en contacto con un productor? (opcional)</p>
                 <input onClick={() => setProductor(!productor)} className='ml-3' type='checkbox' />
             </div>
 
@@ -216,7 +216,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                                 className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
                                 <option disabled value="">Elige tu productor</option>
                                 {productores ? productores?.map((p) => (
-                                    <option value={p.prod_dni}>{p.prod_name + " " + p.prod_lastname}</option>
+                                    <option value={p.prod_dni}>{p.prod_broker}</option>
                                 )) : <option disabled>No hay productores disponibles</option>}
                             </select>
                         </div>
@@ -234,7 +234,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             
 
             <div className='p-2'>
-                <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Terminos y Condiciones</Link></strong></p>
+                <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Términos y Condiciones</Link></strong></p>
             </div>
 
             {exists &&

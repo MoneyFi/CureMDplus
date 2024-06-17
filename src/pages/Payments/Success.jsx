@@ -31,12 +31,12 @@ const Success = () => {
   useEffect(() => {
     if (loading) {
       dispatch(getProdsThunk())
-      const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'curemd_plus@moneyfi.io'
+      // const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'curemd_plus@moneyfi.io'
       // dispatch(registerUserThunk(upload))
       // let productor = prod_email || ''
       
       dispatch(registerUserThunk(register))
-      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', productor])
+      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', 'curemd_plus@moneyfi.io'])
       setTimeout(() => {
         setLoading(false)
       }, 3000)
