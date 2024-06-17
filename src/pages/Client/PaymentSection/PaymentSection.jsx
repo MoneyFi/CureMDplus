@@ -30,24 +30,7 @@ const PaymentSection = () => {
         case 3:
             return <Payment price={price} formatearMonto={formatearMonto} prevStep={prevStep} />
     }
-//   return (
-//     <div className='layout background flex items-center justify-center'>
 
-//         <button onClick={()=>handleSteps(1)}>1</button>
-//         <button onClick={()=>handleSteps(2)}>2</button>
-
-//         <section className='w-[800px]  h-[100vh]  flex items-center justify-between relative overflow-hidden max-[800px]:w-full'>
-//         <article className={`w-[2000px] absolute  flex items-center justify-around   ${step === 1 ?  'ml-[0px] transform duration-700' : 'ml-[-730px] transform duration-700' }`}>
-//             <Register/>
-
-//             <div className='w-[1000px] '>
-//             <Payment price={payment && payment.amount} formatearMonto={formatearMonto} />
-//             </div>
-//         </article>
-
-//         </section>
-//     </div>
-//   )
 }
 
 export default PaymentSection
