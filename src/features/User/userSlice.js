@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUserThunk, registerUserThunk, updateUserThunk } from "./userThunks";
+import { loginUserThunk, registerUserThunk, updateUserThunk, uploadPdfThunk } from "./userThunks";
 
 const initialState = {
   token: null, //Aca iria el token de inicion de sesion.
@@ -67,6 +67,19 @@ export const userSlice = createSlice({
         state.response = action.payload;
       })
       .addCase(updateUserThunk.rejected, (state, action) => {
+        state.status = "failure";
+        state.error = action;
+        state.response = action.payload;
+      })
+      // Upload PDF
+      .addCase(uploadPdfThunk.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(uploadPdfThunk.fulfilled, (state, action) => {
+        state.status = "success";
+        state.response = action.payload;
+      })
+      .addCase(uploadPdfThunk.rejected, (state, action) => {
         state.status = "failure";
         state.error = action;
         state.response = action.payload;

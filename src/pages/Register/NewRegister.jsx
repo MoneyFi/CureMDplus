@@ -5,12 +5,14 @@ import FormRegister from './FormRegister'
 import { useSelector } from 'react-redux'
 import FormLogin from './FormLogin'
 import FormData from './FormData'
+import FormJurada from './FormJurada'
 
 const NewRegister = () => {
     const payInformation = useSelector((state) => state.payment.price)
 
     const [position, setPosition] = useState(1)
     const [haveAccount, setHaveAccount] = useState(false)
+    const [jurada, setJurada] = useState(true)
 
     useEffect(() => {
 
@@ -39,13 +41,15 @@ const NewRegister = () => {
             <section className='w-full flex items-center justify-around relative '>
                 {haveAccount ? (
                     <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1600px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : 'mr-[1600px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
-                        <FormLogin position={position} setPosition={setPosition} setHaveAccount={setHaveAccount}/>
-                        <FormData position={position} setPosition={setPosition}/>
+                        <FormLogin position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} />
+                        <FormData position={position} setPosition={setPosition} />
                     </article>
                 ) : (
-                    <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
+                    <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : jurada ? 'mr-[470px] transition duration-1500 max-[500px]:mr-[390px]  max-[375px]:mr-[390px]' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
                         <FormRegister position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} />
-                        <Payment formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={payInformation} />
+                        {jurada ? <FormJurada setJurada={setJurada} position={position} setPosition={setPosition} /> :
+                            <Payment setJurada={setJurada} formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={payInformation} />
+                        }
                     </article>
                 )}
             </section>
