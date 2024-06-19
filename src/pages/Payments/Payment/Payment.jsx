@@ -37,8 +37,8 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         // const client_id = '';
         if(paymentOptions.discount === 'true' && paymentOptions.type === 'anual'){
             mercadoPago({
-                amount: 1, //Para testear
-                // amount: amount,
+                // amount: 1, //Para testear
+                amount: amount,
                 mail: registerData.mail,
                 producto: planData.plan,
                 facturacion: 'anual'
@@ -46,8 +46,8 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             return;
         }
         mercadoPago({
-            amount: 1, //Para testear
-            // amount: price,
+            // amount: 1, //Para testear
+            amount: price,
             mail: registerData.mail,
             producto: planData.plan,
             facturacion: 'mensual'
