@@ -117,10 +117,10 @@ export const updateUserThunk = createAsyncThunk(
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: 'Bearer ' + body.token
           },
         }
       );
-      console.log(data);
       return data.response;
     } catch (error) {
       console.log(error);

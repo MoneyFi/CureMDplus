@@ -8,6 +8,12 @@ import { uploadPdfThunk } from '../../features/User/userThunks';
 const FormJurada = ({ setJurada }) => {
     const { response } = useSelector((state) => state.user)
     const register = JSON.parse(localStorage.getItem('register'))
+    const login = JSON.parse(localStorage.getItem('login'))
+    const [user, setUser] = useState({
+        nombre: '',
+        apellido: '',
+        cuil: ''
+    })
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null);
     const [page, setPage] = useState(0);
@@ -31,6 +37,23 @@ const FormJurada = ({ setJurada }) => {
     }
 
     useEffect(() => {
+        if(login){
+            setUser({
+                nombre: login?.data_user.first_name,
+                apellido: login?.data_user.last_Name,
+                cuil: login?.data_user.cuil
+            })
+        }
+        if(register){
+            setUser({
+                nombre: register?.nombre,
+                apellido: register?.apellido,
+                cuil: register?.cuil
+            })
+        }
+    },[])
+
+    useEffect(() => {
         if(loading){
             if(response === 'success'){
                 dispatch(createToast('Archivo subido correctamente'))
@@ -48,7 +71,7 @@ const FormJurada = ({ setJurada }) => {
                 <section className={`flex flex-col min-w-[400px] items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4 gap-6 `} >
                     <h1 className='text-2xl md:text-3xl text-secondary-blue font-bold'>Bienvenidos a CureMD+</h1>
                     <p className='text-xs text-wrap w-2/3 text-center px-4 md:text-sm font-roboto text-[#5c5b5c]'>Como primer paso, debes descargar y completar la Declaración Jurada de Salud que figura a continuación.</p>
-                    <a href='/Declaración_Jurada_de_Salud.pdf' onClick={handleDownload} download={`D.J. de Salud - ${register?.nombre + ' ' + register?.apellido + ' ' + register?.cuil}.pdf`} target="_blank" rel="noopener noreferrer" className='py-3 px-5 text-lg bg-primary-blue rounded-lg text-white flex gap-3 justify-center items-center cursor-pointer'>
+                    <a href='/Declaración_Jurada_de_Salud.pdf' onClick={handleDownload} download={`D.J. de Salud - ${user.nombre + ' ' + user.apellido + ' ' + user.cuil}.pdf`} target="_blank" rel="noopener noreferrer" className='py-3 px-5 text-lg bg-primary-blue rounded-lg text-white flex gap-3 justify-center items-center cursor-pointer'>
                         <FaFileArrowDown size={20} />
                         <p>Descargar Declaracion Jurada</p>
                     </a>

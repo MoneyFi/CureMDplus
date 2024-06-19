@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUserThunk, updateUserThunk } from '../../features/User/userThunks';
+import { updateUserThunk } from '../../features/User/userThunks';
 import { createToast } from '../../features/toastSlice/toastSlice';
 import { getProdsThunk } from '../../features/prodSlice/prodThunks';
 
-const FormData = ({ setHaveAccount, setPosition, position }) => {
-    const { user_id, response } = useSelector((state) => state.user);
-    const loginData = localStorage.getItem('login');
-    const login = JSON.parse(loginData);
+const FormData = ({ setPosition, position }) => {
+    const { response } = useSelector((state) => state.user);
+    const login = JSON.parse(localStorage.getItem('login'));
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         cuil: '',
         dni_productor: '0',
         id: '',
+        token: ''
     });
     const dispatch = useDispatch()
     const [productor, setProductor] = useState(false);
@@ -27,7 +27,8 @@ const FormData = ({ setHaveAccount, setPosition, position }) => {
         dispatch(updateUserThunk({
             cuil: data.cuil,
             dni_productor: data.dni_productor,
-            id: login.user_id
+            id: login.user_id,
+            token: login.token
         }))
         dispatch(createToast('Subiendo datos...'))
         setTimeout(() => {
