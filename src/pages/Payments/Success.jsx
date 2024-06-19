@@ -36,7 +36,7 @@ const Success = () => {
       // let productor = prod_email || ''
       
       dispatch(registerUserThunk(register))
-      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', 'curemd_plus@moneyfi.io'])
+      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
       setTimeout(() => {
         setLoading(false)
       }, 3000)
