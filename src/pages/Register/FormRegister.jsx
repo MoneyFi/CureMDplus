@@ -41,6 +41,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             dispatch(getProdsThunk())
         }
         fetchProds();
+        localStorage.removeItem('login')
     }, [position, setPosition])
 
     const handleConfirmar = (e) => {
@@ -58,12 +59,12 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
         })
     }
 
-    const handleCaptcha = (value)=>{
+    const handleCaptcha = (value) => {
         const val = value.toString()
-        setData({capt:val})
+        setData({ capt: val })
     }
 
-    
+
 
     //Este useEffect va a servir cuando tengamos la ruta para verificar que no exista el correo en la base
     useEffect(() => {
@@ -89,9 +90,9 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
     }, [loading])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         Productores_Call()
-    },[])
+    }, [])
 
 
     return (
@@ -234,10 +235,10 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             }
 
             <>
-            <ReCAPTCHA
-            onChange={handleCaptcha}
-            sitekey='6Ld8pvwpAAAAANBQZDG2b8i-1N7ZtV9MMDAmoOjs'
-            />
+                <ReCAPTCHA
+                    onChange={handleCaptcha}
+                    sitekey='6Ld8pvwpAAAAANBQZDG2b8i-1N7ZtV9MMDAmoOjs'
+                />
             </>
 
             <div className='w-full flex items-center justify-center p-2 mt-4'>
@@ -247,14 +248,14 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                     className='bg-primary-blue font-bold text-white py-2 px-6 rounded w-full disabled:bg-[#c7c7c7]'>Confirmar</button>
             </div>
 
-         
+
 
             <div className='p-2'>
                 <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Términos y Condiciones</Link></strong></p>
             </div>
 
             {exists &&
-               <LoginRegister setExists={setExists} setHaveAccount={setHaveAccount}/>
+                <LoginRegister setExists={setExists} setHaveAccount={setHaveAccount} />
             }
 
         </section>

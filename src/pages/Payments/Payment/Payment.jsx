@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { goCuotas, mercadoPago } from '../../../API/Payment/payment'
 import Anual from './Anual'
 import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
@@ -12,6 +12,25 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
     const { plan } = useSelector(state => state.payment)
     const planData = JSON.parse(localStorage.getItem('plan'))
     const registerData = JSON.parse(localStorage.getItem('register'))
+    const login = JSON.parse(localStorage.getItem('login'))
+    const [user, setUser] = useState({
+        mail: '',
+        telefono: '',
+    })
+    useEffect(() => {
+        if(login){
+            setUser({
+                mail: login?.data_user.email,
+                telefono: login?.data_user.user_registration_input_phone_number,
+            })
+        }
+        if(registerData){
+            setUser({
+                mail: registerData?.mail,
+                telefono: registerData?.telefono,
+            })
+        }
+    },[])
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
         discount: 'true'
@@ -29,7 +48,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         goCuotas({
             amount_in_cents: amount * 100,
             order_reference_id: id,
-            phone_number: registerData.telefono
+            phone_number: user.telefono
         })
     }
 
@@ -39,7 +58,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             mercadoPago({
                 // amount: 1, //Para testear
                 amount: amount,
-                mail: registerData.mail,
+                mail: user.mail,
                 producto: planData.plan,
                 facturacion: 'anual'
             })
@@ -48,7 +67,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         mercadoPago({
             // amount: 1, //Para testear
             amount: price,
-            mail: registerData.mail,
+            mail: user.mail,
             producto: planData.plan,
             facturacion: 'mensual'
         })

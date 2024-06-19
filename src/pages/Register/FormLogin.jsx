@@ -31,6 +31,7 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
     }
 
     useEffect(() => {
+        localStorage.removeItem('register')
         if (loading) {
             if (response === 'success') {
                 dispatch(createToast('Inicio exitoso, corroborando datos...'))
