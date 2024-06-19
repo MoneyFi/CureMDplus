@@ -8,6 +8,7 @@ import { uploadData } from '../../features/User/userSlice';
 import { getProdsThunk } from '../../features/prodSlice/prodThunks';
 import { Productores_Call } from '../../API/Productores/Productores';
 import LoginRegister from './LoginRegister';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const FormRegister = ({ position, setPosition, setHaveAccount }) => {
 
@@ -29,7 +30,8 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
         direccion: '',
         fecha_de_nacimiento: '',
         telefono: '',
-        dni_productor: '0'
+        dni_productor: '0',
+        capt: ''
     })
 
     const [pass, setPass] = useState(false)
@@ -55,6 +57,13 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             [e.target.name]: e.target.value
         })
     }
+
+    const handleCaptcha = (value)=>{
+        const val = value.toString()
+        setData({capt:val})
+    }
+
+    
 
     //Este useEffect va a servir cuando tengamos la ruta para verificar que no exista el correo en la base
     useEffect(() => {
@@ -86,7 +95,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
 
 
     return (
-        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[120px]  max-[400px]:p-4   ${productor && 'mt-10 max-[400px]:mt-[200px]'}`} >
+        <section className={`flex flex-col min-w-[400px]   items-center justify-center max-[800px]:mt-[180px]  max-[400px]:p-4   ${productor && 'mt-10 max-[400px]:mt-[200px]'}`} >
             <div className='formLabel label max-[800px]:flex-col '>
                 <div>
                     <input
@@ -224,6 +233,13 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                 )
             }
 
+            <>
+            <ReCAPTCHA
+            onChange={handleCaptcha}
+            sitekey='6Ld8pvwpAAAAANBQZDG2b8i-1N7ZtV9MMDAmoOjs'
+            />
+            </>
+
             <div className='w-full flex items-center justify-center p-2 mt-4'>
                 <button
                     onClick={() => handleConfirmar()}
@@ -231,7 +247,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
                     className='bg-primary-blue font-bold text-white py-2 px-6 rounded w-full disabled:bg-[#c7c7c7]'>Confirmar</button>
             </div>
 
-            
+         
 
             <div className='p-2'>
                 <p className='text-sm font-light'>Lea nuestros <strong className='text-primary-blue font-semibold'><Link to="/terminosycondiciones">Términos y Condiciones</Link></strong></p>

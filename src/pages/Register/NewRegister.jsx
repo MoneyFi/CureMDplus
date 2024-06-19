@@ -26,17 +26,17 @@ const NewRegister = () => {
     }
 
     return (
-        <div className='layout background min-h-[100vh] pt-10 flex items-center justify-start flex-col  '>
+        <div className='layout background  min-h-[100vh] pt-10 flex items-center justify-start flex-col  '>
             <div className='w-[200px] '>
                 <img src={logo} alt='logo' />
             </div>
             {
                 !haveAccount && position === 1 &&
-                <div className='p-2 flex items-center justify-center text-[#000000] z-20 mb-5'>
-                    <button onClick={() => setHaveAccount(true)}>
-                        <p className='text-sm font-light'>¿Tienes una cuenta en CureMd? <strong className='font-bold text-primary-blue'> Inicia sesión aquí.</strong></p>
-                    </button>
-                </div>
+            <div className='p-2 flex items-center justify-center text-[#000000] z-20 mb-14'>
+                <button onClick={() => setHaveAccount(true)}>
+                    <p className='text-sm font-light'>¿Tienes una cuenta en CureMd? <strong className='font-bold text-primary-blue'> Inicia sesión aquí.</strong></p>
+                </button>
+            </div>
             }
             <section className='w-full flex items-center justify-around relative '>
                 {haveAccount ? (
