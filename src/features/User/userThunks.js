@@ -128,3 +128,26 @@ export const updateUserThunk = createAsyncThunk(
     }
   }
 );
+
+export const uploadPdfThunk = createAsyncThunk(
+  "uploadPdf",
+  async (file, { rejectWithValue }) => {
+    try {
+      const uploadinfo = new FormData();
+      uploadinfo.append("file", file);
+      const { data } = await axios.post(
+        `${apiCall}?action=curemd_plus_upload_pdf`,
+        uploadinfo,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data.response;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
