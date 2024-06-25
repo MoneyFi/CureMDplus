@@ -7,6 +7,7 @@ import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
 import { sendEmailConfirmation } from '../../API/Mails/emailjs'
 import { getProdsThunk } from '../../features/prodSlice/prodThunks'
+import { createScheduler } from '../../API/Cron/Cron'
 
 const Success = () => {
   const { upload } = useSelector(state => state.user)
@@ -16,11 +17,16 @@ const Success = () => {
   const { productores } = useSelector(state => state.prod)
   const registerData= localStorage.getItem('register')
   const register = JSON.parse(registerData)
+  const loginData = JSON.parse(localStorage.getItem('login'))
+  console.log(loginData)
+  const plan = JSON.parse(localStorage.getItem('plan'))
   const login = () => {
-    dispatch(loginUserThunk({
-      email: register.mail,
-      password: register.contraseña
-    }))
+    if(register){
+      dispatch(loginUserThunk({
+        email: register.mail,
+        password: register.contraseña
+      }))
+    }
     createToast('Cargando datos de usuario...')
     setTimeout(() => {
       dispatch(uploadData({}))
@@ -29,17 +35,29 @@ const Success = () => {
   }
 
   useEffect(() => {
+    plan.comprado = true
+    localStorage.setItem('plan', JSON.stringify(plan))
     if (loading) {
-      dispatch(getProdsThunk())
+      // dispatch(getProdsThunk())
       // const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'curemd_plus@moneyfi.io'
       // dispatch(registerUserThunk(upload))
       // let productor = prod_email || ''
-      
-      dispatch(registerUserThunk(register))
-      sendEmailConfirmation([register.mail, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
-      setTimeout(() => {
-        setLoading(false)
-      }, 3000)
+      if(loginData){
+        sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
+        createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
+        setTimeout(() => {
+          setLoading(false)
+        }, 2000)
+        return;
+      }if(register) {
+        dispatch(registerUserThunk(register))
+        sendEmailConfirmation([register?.mail, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
+        createScheduler(register?.mail, plan.startDate, plan.facturacion)
+        setTimeout(() => {
+          setLoading(false)
+        }, 2000)
+        return;
+      }
     }
   }, [loading])
 

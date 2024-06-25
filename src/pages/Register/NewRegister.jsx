@@ -8,15 +8,14 @@ import FormData from './FormData'
 import FormJurada from './FormJurada'
 
 const NewRegister = () => {
-    const payInformation = useSelector((state) => state.payment.price)
-
+    const plan = JSON.parse(localStorage.getItem('plan'))
     const [position, setPosition] = useState(1)
     const [haveAccount, setHaveAccount] = useState(false)
     const [jurada, setJurada] = useState(true)
 
     useEffect(() => {
 
-    }, [position, payInformation])
+    }, [position, plan])
 
     function formatearMonto(numero) {
         return numero.toLocaleString('es-AR', {
@@ -46,9 +45,9 @@ const NewRegister = () => {
                     </article>
                 ) : (
                     <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : jurada ? 'mr-[470px] transition duration-1500 max-[500px]:mr-[390px]  max-[375px]:mr-[390px]' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
-                        <FormRegister position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} />
+                        <FormRegister position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} haveAccount={haveAccount} />
                         {jurada ? <FormJurada setJurada={setJurada} position={position} setPosition={setPosition} /> :
-                            <Payment setJurada={setJurada} formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={payInformation} />
+                            <Payment setJurada={setJurada} formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={plan.amount} />
                         }
                     </article>
                 )}

@@ -17,6 +17,7 @@ const FormJurada = ({ setJurada }) => {
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null);
     const [page, setPage] = useState(0);
+    const [upload, setUpload] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const dispatch = useDispatch()
     const handleDownload = () => {
@@ -58,6 +59,7 @@ const FormJurada = ({ setJurada }) => {
             if(response === 'success'){
                 dispatch(createToast('Archivo subido correctamente'))
                 setDisabled(false)
+                setUpload(true)
             }
             if(response === 'fail'){
                 dispatch(createToast('Error al subir archivo, volver a intentar'))
@@ -88,9 +90,9 @@ const FormJurada = ({ setJurada }) => {
                     <p className='text-xs text-wrap w-2/3 text-center px-4 md:text-sm font-roboto text-[#5c5b5c]'>Solo se aceptan archivos en formato PDF y su tamaño no debe ser mayor a 5 MB.</p>
                     <input type="file" name="pdf" id="pdf" onChange={(e) => setFile(e.target.files[0])} accept="application/pdf"  max={1} className='text-[#5c5b5c] font-bold px-5 py-3 bg-white rounded-lg border border-primary-blue file:bg-primary-blue file:text-white file:outline-none file:border-0 file:px-3 file:py-1 cursor-pointer w-2/3' />
                     <p className='text-xs text-wrap w-2/3 text-center px-4 md:text-sm font-roboto text-[#5c5b5c]' id='response'></p>
-                    <button onClick={handleUploadFile} disabled={file === null} className='py-3 px-5 text-lg bg-primary-blue rounded-lg text-white flex gap-3 justify-center items-center disabled:cursor-not-allowed'>
+                    <button onClick={handleUploadFile} disabled={file === null} className={`py-3 px-5 text-lg bg-primary-blue rounded-lg flex gap-3 justify-center items-center ${upload ? ' cursor-not-allowed bg-white text-[#5c5b5c] border border-[#5c5b5c] ' : ' bg-primary-blue text-white '} disabled:cursor-not-allowed`}>
                         <FaFileArrowUp size={20} />
-                        <p>Subir Declaración Jurada</p>
+                        <p>{!upload ? 'Subir Declaración Jurada' : 'Declaración Jurada Subida'}</p>
                     </button>
                     <button className='py-3 px-5 text-lg text-primary-blue rounded-lg bg-white border border-secondary-blue flex justify-center items-center gap-2 hover:bg-primary-blue hover:text-white transition-colors disabled:cursor-not-allowed disabled:text-[#5c5b5c] disabled:hover:bg-white disabled:border-[#5c5b5c]' disabled={disabled} onClick={() => setJurada(false)}>Continuar con el pago</button>
                 </section>

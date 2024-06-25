@@ -23,7 +23,8 @@ const Product = ({ product, index }) => {
         dispatch(planToPay(product.title))
         const plan = {
             amount: product.price,
-            plan: product.title
+            plan: product.title,
+            comprado: false
         }
         const planData = JSON.stringify(plan)
         localStorage.setItem('plan', planData)
