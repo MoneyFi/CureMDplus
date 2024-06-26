@@ -37,7 +37,7 @@ const FormJurada = ({ setJurada }) => {
     }
 
     useEffect(() => {
-        if(login){
+        if(login &&login.data_user){
             setUser({
                 nombre: login?.data_user.first_name,
                 apellido: login?.data_user.last_Name,

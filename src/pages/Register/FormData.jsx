@@ -26,7 +26,7 @@ const FormData = ({ setPosition, position }) => {
     const handleSubmit = () => {
         dispatch(updateUserThunk({
             cuil: data.cuil,
-            dni_productor: data.dni_productor,
+            dni_productor: productor ? data.dni_productor : '0',
             id: login.user_id,
             token: login.token
         }))
@@ -70,7 +70,7 @@ const FormData = ({ setPosition, position }) => {
                     className='formLabel input w-full' placeholder='Cuil:' />
             </div>
             <div className='p-2 flex items-center justify-center'>
-                <p className='text-sm font-light'>¿ya estas en contacto con un productor? (opcional)</p>
+                <p className='text-sm font-light'>¿Estás en contacto con un productor? (opcional)</p>
                 <input onClick={() => setProductor(!productor)} className='ml-3' type='checkbox' />
             </div>
 
@@ -83,9 +83,9 @@ const FormData = ({ setPosition, position }) => {
                                 defaultValue=""
                                 onChange={(e) => handleData(e)}
                                 className='w-full py-[.3em] px-[.1em] border border-[#c7c7c7] rounded-[5px] max-[800px]:w-full max-[800px]:mb-[.5rem]'>
-                                <option disabled value="">Elige tu productor</option>
+                                <option disabled value="">Selecciona el codigo de tu productor</option>
                                 {productores ? productores?.map((p) => (
-                                    <option value={p.prod_dni}>{p.prod_broker}</option>
+                                    <option value={p.prod_dni}>{p.prod_dni}</option>
                                 )) : <option disabled>No hay productores disponibles</option>}
                             </select>
                         </div>
