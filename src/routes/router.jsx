@@ -8,6 +8,7 @@ import TermsConditions from "../pages/Terms&Conditions/TermsConditions";
 import UserDashboard from "../pages/Client/UserPage/UserDashboard";
 import NewRegister from "../pages/Register/NewRegister";
 import LandingCureMd from "../pages/Landingpage/LandingCureMd";
+import RegisterProductor from "../pages/Productor/RegisterProductor/RegisterProductor";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
     {
         path: '/register',
         element: <NewRegister/>
+    },
+    {
+        path:'/registerproductor',
+        element: <RegisterProductor/>
     },
     {
         path: '/myaccount',
