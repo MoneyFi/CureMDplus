@@ -10,7 +10,7 @@ import { Productores_Call } from '../../API/Productores/Productores';
 import LoginRegister from './LoginRegister';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const FormRegister = ({ position, setPosition, setHaveAccount }) => {
+const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount }) => {
 
     const dispatch = useDispatch()
     const { response } = useSelector((state) => state.user)
@@ -41,7 +41,6 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             dispatch(getProdsThunk())
         }
         fetchProds();
-        localStorage.removeItem('login')
     }, [position, setPosition])
 
     const handleConfirmar = (e) => {
@@ -49,6 +48,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
         dispatch(createToast('Cargando...'));
         setTimeout(() => {
             setLoading(true)
+            localStorage.removeItem('login')
         }, 2000)
     }
 
@@ -235,10 +235,12 @@ const FormRegister = ({ position, setPosition, setHaveAccount }) => {
             }
 
             <>
-                <ReCAPTCHA
-                    onChange={handleCaptcha}
-                    sitekey='6Ld8pvwpAAAAANBQZDG2b8i-1N7ZtV9MMDAmoOjs'
-                />
+                {!haveAccount &&
+                    <ReCAPTCHA
+                        onChange={handleCaptcha}
+                        sitekey='6Ld8pvwpAAAAANBQZDG2b8i-1N7ZtV9MMDAmoOjs'
+                    />
+                }
             </>
 
             <div className='w-full flex items-center justify-center p-2 mt-4'>

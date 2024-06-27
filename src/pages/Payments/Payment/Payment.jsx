@@ -18,19 +18,19 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         telefono: '',
     })
     useEffect(() => {
-        if(login){
+        if (login) {
             setUser({
                 mail: login?.data_user.email,
                 telefono: login?.data_user.user_registration_input_phone_number,
             })
         }
-        if(registerData){
+        if (registerData) {
             setUser({
                 mail: registerData?.mail,
                 telefono: registerData?.telefono,
             })
         }
-    },[])
+    }, [])
     const [paymentOptions, setPaymentOptions] = React.useState({
         type: 'anual',
         discount: 'true'
@@ -50,11 +50,16 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             order_reference_id: id,
             phone_number: user.telefono
         })
+        planData.facturacion = 'anual';
+        let dateNow = new Date()
+        planData.startDate = dateNow;
+        localStorage.setItem('plan', JSON.stringify(planData))
+        return
     }
 
     const mercadoPagoHandler = () => {
         // const client_id = '';
-        if(paymentOptions.discount === 'true' && paymentOptions.type === 'anual'){
+        if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
             mercadoPago({
                 // amount: 1, //Para testear
                 amount: amount,
@@ -62,6 +67,10 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
                 producto: planData.plan,
                 facturacion: 'anual'
             })
+            planData.facturacion = 'anual';
+            let dateNow = new Date()
+            planData.startDate = dateNow;
+            localStorage.setItem('plan', JSON.stringify(planData))
             return;
         }
         mercadoPago({
@@ -71,20 +80,23 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             producto: planData.plan,
             facturacion: 'mensual'
         })
+        planData.facturacion = 'mensual';
+        let dateNow = new Date()
+        planData.startDate = dateNow;
+        localStorage.setItem('plan', JSON.stringify(planData))
         return;
     }
 
-    useEffect(()=>{
-
-    },[position, setPosition])
+    useEffect(() => {
+    }, [position, setPosition])
 
     React.useEffect(() => {
         if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
-            setAmount((price - (price * 0.1))*12)
+            setAmount((price - (price * 0.1)) * 12)
         } else if (paymentOptions.type === 'mensual') {
             setAmount(price)
         } else {
-            setAmount(price*12)
+            setAmount(price * 12)
         }
     }, [paymentOptions, handleType, price])
 
@@ -94,7 +106,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
                 <div className='w-full flex justify-between max-[400px]:flex-col-reverse'>
                     <div className='self-center'><span className='w-3/4 font-varela text-xl text-secondary-blue'>OPCIONES DE PAGO</span></div>
                     <div className='max-[400px]:mt-[-20px] max-[400px]:text-sm max-[400px]:p-2 max-[400px]:self-end'>
-                        <button className='text-secondary-blue flex justify-center items-center text-center' onClick={()=>setPosition(1)}>
+                        <button className='text-secondary-blue flex justify-center items-center text-center' onClick={() => setPosition(1)}>
                             Atras
                         </button>
                     </div>
