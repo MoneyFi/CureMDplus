@@ -3,7 +3,7 @@ import { sendRenewEmail } from "../Mails/emailjs";
 export function calculateExpiryDate(startDate, planDuration) {
   let expiryDate = new Date(startDate);
   expiryDate.setSeconds(0);
-  expiryDate.setMilliseconds(0);
+  expiryDate.setMinutes(0);
   switch (planDuration) {
     case "mensual":
       expiryDate.setMonth(expiryDate.getMonth() + 1);
@@ -23,6 +23,7 @@ export function calculateExpiryDate(startDate, planDuration) {
 
   return expiryDate;
 }
+
 export function createScheduler(email, startDate, planDuration) {
   let expiryDate = calculateExpiryDate(startDate, planDuration);
   let remind = new Date(expiryDate);

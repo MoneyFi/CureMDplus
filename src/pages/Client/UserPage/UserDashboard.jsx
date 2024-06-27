@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import logo from '../../../assets/icons/Logo_Azul.png'
-import { FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoIosLogOut } from "react-icons/io";
@@ -17,12 +16,13 @@ const UserDashboard = () => {
     const { data_user: data } = login
     let coberturaDate;
     let expired;
-    if(plan && plan.comprado){
+    if (plan && plan.comprado) {
         coberturaDate = new Date(plan?.startDate)
+        coberturaDate.setDate(coberturaDate.getDate() + 1)
         expired = calculateExpiryDate(plan?.startDate, plan?.facturacion)
     }
     let find = productores?.filter(p => p.prod_dni === data.dni_productor)[0];
-    let productor = find ||'Carlos Salinas'
+    let productor = find || 'Carlos Salinas'
     const nav = useNavigate();
     const dispatch = useDispatch()
     const logout = () => {
@@ -34,11 +34,10 @@ const UserDashboard = () => {
             dispatch(createToast('Sesion cerrada'))
         }, 3000)
     }
-    // Con el user_id se haria el fetch de los datos de la compra del producto
-    // datos del plan, vigencia, denuncia siniestros, productor, vias de contacto
+
     useEffect(() => {
         dispatch(getProdsThunk())
-    },[])
+    }, [])
 
     return (
         <section className='layout background flex flex-col items-center justify-between '>
@@ -57,6 +56,9 @@ const UserDashboard = () => {
                     <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
 
                     <div className='p-4  mt-10 '>
+                        {new Date() > expired &&
+                            <p className='p-2 text-center'><strong className='text-[#ff0000]'>Cobertura Caducada</strong></p>
+                        }
                         <p className='p-2'><strong className='text-primary-blue'>Titular: </strong>{data.first_name + ' ' + data.last_Name}</p>
                         <p className='p-2'><strong className='text-primary-blue'>Activación de cobertura: </strong> {coberturaDate.toLocaleString().split(',')[0]}</p>
                         <p className='p-2'><strong className='text-primary-blue'>Vigencia hasta: </strong> {expired.toLocaleString().split(',')[0]}</p>
@@ -65,12 +67,12 @@ const UserDashboard = () => {
                         <p className='p-2'><strong className='text-primary-blue'>Productor: </strong> {productor}</p>
 
                         <div className='p-4 flex items-center justify-center w-full'>
-                            <button onClick={() => dispatch(createToast('Descargando certificado...'))} className='bg-primary-blue font-bold text-white rounded w-full p-2'>Descargar certificado</button>
+                            <button disabled onClick={() => dispatch(createToast('Certificado a un no disponible'))} className='disabled:bg-[#7c7b7b] bg-primary-blue font-bold text-white rounded w-full p-2'>Certificado No Disponible</button>
                         </div>
                     </div>
                 </div>
             ) : (
-                <p className='font-bold text-lg text-primary-blue text-center px-4'>¡Bienvenido! <br/>Aún no ha adquirido ningún plan.</p>
+                <p className='font-bold text-lg text-primary-blue text-center px-4'>¡Bienvenido! <br />Aún no ha adquirido ningún plan.</p>
             )}
 
 

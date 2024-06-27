@@ -10,18 +10,16 @@ import { getProdsThunk } from '../../features/prodSlice/prodThunks'
 import { createScheduler } from '../../API/Cron/Cron'
 
 const Success = () => {
-  const { upload } = useSelector(state => state.user)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const nav = useNavigate()
   const { productores } = useSelector(state => state.prod)
-  const registerData= localStorage.getItem('register')
+  const registerData = localStorage.getItem('register')
   const register = JSON.parse(registerData)
   const loginData = JSON.parse(localStorage.getItem('login'))
-  console.log(loginData)
   const plan = JSON.parse(localStorage.getItem('plan'))
   const login = () => {
-    if(register){
+    if (register) {
       dispatch(loginUserThunk({
         email: register.mail,
         password: register.contraseña
@@ -35,23 +33,25 @@ const Success = () => {
   }
 
   useEffect(() => {
-    plan.comprado = true
-    localStorage.setItem('plan', JSON.stringify(plan))
-    if (loading) {
-      // dispatch(getProdsThunk())
-      // const productor = productores? productores.filter(p => p.prod_dni === register.dni_productor)[0]: 'curemd_plus@moneyfi.io'
-      // dispatch(registerUserThunk(upload))
-      // let productor = prod_email || ''
-      if(loginData){
-        sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
+    if (loading && plan.comprado === false) {
+      plan.comprado = true
+      localStorage.setItem('plan', JSON.stringify(plan))
+      dispatch(getProdsThunk())
+      if (loginData && loginData?.data_user) {
+        //Logica si los productores tienen email o no
+        const find = productores && productores?.filter(p => p.prod_dni === loginData?.data_user?.dni_productor)[0]
+        let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
+        sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', productor])
         createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
         setTimeout(() => {
           setLoading(false)
         }, 2000)
         return;
-      }if(register) {
+      } if (register) {
         dispatch(registerUserThunk(register))
-        sendEmailConfirmation([register?.mail, 'administracion@moneyfi.io', 'curemd-plus@moneyfi.io'])
+        const find = productores && productores?.filter(p => p.prod_dni === register.dni_productor)[0]
+        let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
+        sendEmailConfirmation([register?.mail, 'administracion@moneyfi.io', productor])
         createScheduler(register?.mail, plan.startDate, plan.facturacion)
         setTimeout(() => {
           setLoading(false)
