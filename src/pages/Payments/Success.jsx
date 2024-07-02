@@ -50,8 +50,8 @@ const Success = () => {
           status: '1',
           fecha_cobro,
         }))
-        // sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', productor])
-        // createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
+        sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', productor])
+        createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
         setTimeout(() => {
           setLoading(false)
         }, 2000)
