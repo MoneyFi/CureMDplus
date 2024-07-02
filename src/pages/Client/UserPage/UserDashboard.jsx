@@ -12,7 +12,7 @@ import { getProdsThunk } from '../../../features/prodSlice/prodThunks';
 const UserDashboard = () => {
     const { productores } = useSelector((state) => state.prod);
     const login = JSON.parse(localStorage.getItem('login'))
-    const plan = JSON.parse(localStorage.getItem('plan'))
+    const plan = JSON.parse(localStorage.getItem('plan_adquirido'))
     const { data_user: data } = login
     let coberturaDate;
     let expired;

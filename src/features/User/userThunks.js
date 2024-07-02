@@ -57,6 +57,9 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("base", base_s3);
       uploadData.append("dni_productor", body.dni_productor);
       uploadData.append("curemd", "curemd_plus");
+      uploadData.append("status_curemd_plus", body.status);
+      uploadData.append("nombre_plan_curemd_plus", body.plan);
+      uploadData.append("fecha_cobro_curemd_plus", body.fecha_cobro);
 
       const { data } = await axios.post(
         `${apiCall}?action=Add_user`,
@@ -108,16 +111,29 @@ export const updateUserThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const uploadinfo = new FormData();
-      uploadinfo.append("cuil", body.cuil);
       uploadinfo.append("id", body.id);
-      uploadinfo.append("dni_productor", body.dni_productor);
+      const {dni_productor, cuil, status, plan} = body;
+      if(dni_productor){
+        uploadinfo.append("dni_productor", body.dni_productor);
+      }
+      if(cuil){
+        uploadinfo.append("cuil", body.cuil);
+      }
+      if(status){
+        uploadinfo.append("status_curemd_plus", body.status);
+      }
+      if(plan){
+        uploadinfo.append("nombre_plan_curemd_plus", body.plan);
+        uploadinfo.append("fecha_cobro_curemd_plus", body.fecha_cobro);
+      }
+      const login = JSON.parse(localStorage.getItem('login'));
       const { data } = await axios.post(
         `${apiCall}?action=curemd_plus_update`,
         uploadinfo,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: 'Bearer ' + body.token
+            Authorization: 'Bearer ' + login.token
           },
         }
       );

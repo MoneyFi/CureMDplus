@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import success from '../../assets/icons/success.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUserThunk, loginUserThunk } from '../../features/User/userThunks'
+import { registerUserThunk, loginUserThunk, updateUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 import { uploadData } from '../../features/User/userSlice'
 import { sendEmailConfirmation } from '../../API/Mails/emailjs'
 import { getProdsThunk } from '../../features/prodSlice/prodThunks'
-import { createScheduler } from '../../API/Cron/Cron'
+import { calculateExpiryDate, createScheduler } from '../../API/Cron/Cron'
 
 const Success = () => {
   const dispatch = useDispatch()
@@ -36,18 +36,32 @@ const Success = () => {
     if (loading && plan.comprado === false) {
       plan.comprado = true
       localStorage.setItem('plan', JSON.stringify(plan))
+      localStorage.setItem('plan_adquirido', JSON.stringify(plan))
       dispatch(getProdsThunk())
       if (loginData && loginData?.data_user) {
         //Logica si los productores tienen email o no
         const find = productores && productores?.filter(p => p.prod_dni === loginData?.data_user?.dni_productor)[0]
         let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
-        sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', productor])
-        createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
+        //Update userdata
+        let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+        dispatch(updateUserThunk({
+          id: loginData?.user_id,
+          plan: plan.plan,
+          status: '1',
+          fecha_cobro,
+        }))
+        // sendEmailConfirmation([loginData?.data_user?.email, 'administracion@moneyfi.io', productor])
+        // createScheduler(loginData?.data_user?.email, plan.startDate, plan.facturacion)
         setTimeout(() => {
           setLoading(false)
         }, 2000)
         return;
       } if (register) {
+        let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+        register.status = '1';
+        register.plan = plan.plan;
+        register.fecha_cobro = fecha_cobro;
+        localStorage.setItem('register', JSON.stringify(register));
         dispatch(registerUserThunk(register))
         const find = productores && productores?.filter(p => p.prod_dni === register.dni_productor)[0]
         let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'

@@ -18,7 +18,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         telefono: '',
     })
     useEffect(() => {
-        if (login) {
+        if (login && login?.data_user) {
             setUser({
                 mail: login?.data_user.email,
                 telefono: login?.data_user.user_registration_input_phone_number,
