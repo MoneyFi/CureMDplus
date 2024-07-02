@@ -45,6 +45,15 @@ export default {
           paddingTop: ".3em", 
           paddingBottom: ".3em",
           borderRadius: '5px'
+        },
+        ".search":{
+          border: '1px solid #c7c7c7',
+          paddingRight: '1em',
+          paddingLeft: '1em',
+          paddingTop: ".3em", 
+          paddingBottom: ".3em",
+          borderRadius: '20px',
+          backgroundColor: '#cfcfcf'
         }
       };
       addComponents(formLabel);

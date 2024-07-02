@@ -8,7 +8,7 @@ const DashboardProductores = () => {
         <NavbarProductores/>
         <div className='w-full flex items-center justify-between flex-col'>
         <Outlet/>
-        <footer>footer</footer>
+        {/* <footer>footer</footer> */}
         </div>
     </div>
   )

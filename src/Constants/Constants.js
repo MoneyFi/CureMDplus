@@ -9,3 +9,6 @@ export const PRODUCTORES_LIST = 'http://192.168.0.9/rest_apis_argentina.php?acti
 export const MAIL_SERVICE_ID = 'service_axdv4hd';
 export const MAIL_USER_ID = 'MGu-bPeZQVTRgADoC';
 export const MAIL_TEMPLATE_ID = 'template_k5whayd';
+export const PRODUCTORES_REGISTER = `${apiCallProd}?action=curemd_plus_add_productor`
+export const PRODUCTORES_LOGIN = `${apiCallProd}?action=curemd_plus_login_productor`
+export const PRODUCTORES_CLIENTES = `${apiCallProd}action=curemd_plus_asegurados_productor`

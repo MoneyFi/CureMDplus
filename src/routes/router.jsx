@@ -11,6 +11,8 @@ import LandingCureMd from "../pages/Landingpage/LandingCureMd";
 import RegisterProductor from "../pages/Productor/RegisterProductor/RegisterProductor";
 import DashboardProductores from "./Layouts/DashboardProductores";
 import Asegurados from "../pages/Productor/Asegurados/Asegurados";
+import LoginProductor from "../pages/Productor/LoginProductor/LoginProductor";
+import SuccessProductor from "../pages/Productor/RegisterProductor/SuccessProductor";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +60,14 @@ export const router = createBrowserRouter([
     {
         path:'/registerproductor',
         element: <RegisterProductor/>
+    },
+    {
+        path: '/productorsuccess',
+        element: <SuccessProductor/>
+    },
+    {
+        path: '/loginproductor',
+        element: <LoginProductor/>
     },
     {
         path: '/myaccount',

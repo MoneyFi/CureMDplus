@@ -4,6 +4,7 @@ import { getProdsThunk } from "./prodThunks";
 const initialState = {
     status: null, //El status de la peticion (pending - success - failure).
     productores: [], //Aca se van a guardar todos los productores y sus datos.
+    clients: null,
     error: '', //Si recibimos un error.
     response: '' //Si esperamos una respuesta sin datos.
 }
