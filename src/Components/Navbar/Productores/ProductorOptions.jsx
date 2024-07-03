@@ -3,8 +3,17 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { FaUsers } from 'react-icons/fa';
 import { MdMoneyOff } from 'react-icons/md';
 import { IoSearchOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const ProductorOptions = () => {
+  const navigate = useNavigate()
+
+  const logout = ()=>{
+    localStorage.removeItem('productor')
+    navigate('/')
+  }
+
+
   return (
     <div className='w-full h-[70vh] flex flex-col items-start justify-around max-[1000px]:hidden'>
           <section className='p-2 w-full'>
@@ -20,7 +29,9 @@ const ProductorOptions = () => {
 
        
         <section className='w-full flex items-center p-2'>
-            <button className='w-full bg-primary-blue py-2 rounded-[20px] font-bold text-white text-sm'>Cerrar sesion</button>
+            <button 
+            onClick={()=>logout()}
+            className='w-full bg-primary-blue py-2 rounded-[20px] font-bold text-white text-sm'>Cerrar sesion</button>
         </section>
     </div>
   )
