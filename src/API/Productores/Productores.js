@@ -50,12 +50,21 @@ export const signInProductor = async (formData, navigate)=>{
     }
 }
 
-export const getClientes = async(code) =>{
+export const getClientes = async(e) =>{
     try{
-        const response = await axios.post(PRODUCTORES_CLIENTES,code)
+        const code = new FormData()
+        code.append("code" , e)
+        const response = await axios.post(PRODUCTORES_CLIENTES,code,
+        {    
+            headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+
         console.log(response)
 
     }catch(error){
+        console.error('Error al traer clientes:', error);
 
     }
 }
