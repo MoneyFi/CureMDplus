@@ -52,20 +52,32 @@ const Detail = ({ product, format, handleDetail }) => {
                         <span className='mt-[-.3em] font-bold font-sans self-center'>{format(product.price)}</span>
                     </header>
                     <hr className='w-full text-primary-blue' />
-                    <div className='w-full h-[500px] overflow-y-scroll '>
-                        <div className='text-pretty min-w-[100%] font-roboto font-light px-8 text-[12.5px]'>
-                            {product.essential.split('_').map((l) => (
+                    <div className='w-full h-[500px] overflow-y-scroll  '>
+                        {
+                            product.detail.map((el,i)=>{
+                                return(
+                                <div
+                                key={i}
+                                className='text-pretty min-w-[100%] font-roboto font-light px-8 text-[12.5px]'>
+                                <h3 className='font-bold py-4'>{el.title}</h3>
+                                {el.description.split('_').map((l) => (
                                 <li>{l}</li>
                             ))}
-                            {product.detail.split('_').map((l) => (
-                                <li>{l}</li>
-                            ))}
-                        </div>
+                                </div>
+                                )
+                            })
+                        }
+                            {/* {
+                            // product.essential.split('_').map((l) => (
+                            //     <li>{l}</li>
+                            // ))
+                            }
+                             */}
 
                     </div>
                     <footer className='flex flex-col justify-center items-center gap-2 max-[600px]:w-full'>
                         <button onClick={() => handlePay()} className='text-white bg-primary-blue px-12 py-3 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
-                        <Link to='/terminosycondiciones'>Terminos y Condiciones</Link>
+                        <Link to='/terminosycondiciones'>Términos y Condiciones</Link>
                     </footer>
                 </div>
             </article>

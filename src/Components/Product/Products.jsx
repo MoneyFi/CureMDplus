@@ -6,22 +6,50 @@ const Products = () => {
     const products = [
         {
             title: 'Salud Esencial',
-            essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
-            detail:'Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica_Indemninzatorias:_Renta diaria por internación, en caso de que necesites ser hospitalizado._Cobertura de ambulancias: Transporte terrestre en caso de urgencia._Gastos de internación 3 días (Asistencia terapéutica)._Máximo anual: 90 días.',
-            price: 78650
+            essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $20.000.000,00',
+            detail:[
+                {
+                    title:'Prestacional',
+                    description:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica'
+                },
+                {
+                    title:'Indemnizatoria',
+                    description:'Renta diaria por internación** en sala común (3 meses máximo anual) hasta $300.000,00_Renta diaria por internación** en terapia intermedia y cuidados especiales (3 meses máximo anual) hasta $600.000,00_Renta diaria por internación** en Unidad de Terapia Intensiva (UTI) (3 meses máximo anual) hasta $900.000,00_Intervenciones Quirúrgicas Alta Complejidad (12 cirugías - Alt. B) hasta $20.000.000,00_Intervenciones Quirúrgicas Media Complejidad (68 cirugías - Alt. B) hasta $10.000.000,00_Realización de Transplantes (Médula, Riñón, Hígado, Corazón, Pulmón, Pancreas) hasta $20.000.000,00_*Periodos de carencia: Intervenciones: 90 días/Trasplante: 120 días/Intervenciones Cardíacas: 300 días._** Internación: De 1 a 3 días, no se cubre, a partir del día 4 se abona retroactivo desde el día 1.'
+                },
+
+            ],
+            price: 80000
         },
         {
             title: 'Salud Plus',
-            essential:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $30.000)_Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)',
-            detail:'Segunda opinión casos de alta complejidad_Asistencia en viajes_50% off en farmacia, óptica y ortopedia._Visitas médicas domiciliarias._Asistencia nutricional telefónica_Indemnizatorias: _Renta diaria por internación._Cobertura de ambulancias: Transporte terrestre en caso de urgencia. _Intervenciones quirúrgicas ambulatorias: Cubre el costo de cirugías menores que no requieran internación. Gastos de internación 7 días (Asistencia terapéutica)_Máximo anual: 120 días.',
-            price: 114950
+            essential:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $30.000)_Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $50.000.000,00',
+            detail:[
+                {
+                    title:'Prestacional',
+                    description:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica'
+                },
+                {
+                    title:'Indemnizatoria',
+                    description:'Renta diaria por internación** en sala común (3 meses máximo anual) hasta $300.000,00_Renta diaria por internación** en terapia intermedia y cuidados especiales (3 meses máximo anual) hasta $600.000,00_Renta diaria por internación** en Unidad de Terapia Intensiva (UTI) (3 meses máximo anual) hasta $900.000,00_Intervenciones Quirúrgicas Alta Complejidad (12 cirugías - Alt. B) hasta $20.000.000,00_Intervenciones Quirúrgicas Media Complejidad (68 cirugías - Alt. B) hasta $10.000.000,00_Realización de Transplantes (Médula, Riñón, Hígado, Corazón, Pulmón, Pancreas) hasta $20.000.000,00_*Periodos de carencia: Intervenciones: 90 días/Trasplante: 120 días/Intervenciones Cardíacas: 300 días._** Internación: De 1 a 3 días, no se cubre, a partir del día 4 se abona retroactivo desde el día 1.'
+                },
+            ],
+            price: 115000
         },
         {
             title: 'Salud Senior',
             subtitle: 'Desde 65 hasta 74 años y 11 meses.',
-            essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 consulta al mes. Tope $20.000)._Asistencia convalecencia: Servicio de acompañante en establecimiento médico, Servicio de acompañante en domicilio, Bonificación de acompañante en Domicilio especial, Asesor Previsional.',
-            detail:'Chequeo médico anual por prevención/ control con un especialista de Gerontología para realizar una evaluación que consiste en Chequeo médico regular._Indemnizatorias:_Cobertura de internación retroactiva: Cubre los gastos de internación de hasta 3 días previos al alta, siempre que la internación esté dentro del período de vigencia de la póliza_Máximo anual de internación: 90 días._Cuidados prolongados: Cubre hasta 12 meses de cuidados en un hogar geriátrico o en el domicilio del asegurado.',
-            price: 193600
+            essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 consulta al mes. Tope $20.000)._Asistencia convalecencia: Servicio de acompañante en establecimiento médico, Servicio de acompañante en domicilio, Bonificación de acompañante en Domicilio especial, Asesor Previsional_Coberturas Indemnizatorias hasta $100.000.000,00',
+            detail:[
+                {
+                    title:'Prestacional',
+                    description:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica'
+                },
+                {
+                    title:'Indemnizatoria',
+                    description:'Renta diaria por internación** en sala común (3 meses máximo anual) hasta $300.000,00_Renta diaria por internación** en terapia intermedia y cuidados especiales (3 meses máximo anual) hasta $600.000,00_Renta diaria por internación** en Unidad de Terapia Intensiva (UTI) (3 meses máximo anual) hasta $900.000,00_Intervenciones Quirúrgicas Alta Complejidad (12 cirugías - Alt. B) hasta $20.000.000,00_Intervenciones Quirúrgicas Media Complejidad (68 cirugías - Alt. B) hasta $10.000.000,00_Realización de Transplantes (Médula, Riñón, Hígado, Corazón, Pulmón, Pancreas) hasta $20.000.000,00_*Periodos de carencia: Intervenciones: 90 días/Trasplante: 120 días/Intervenciones Cardíacas: 300 días._** Internación: De 1 a 3 días, no se cubre, a partir del día 4 se abona retroactivo desde el día 1.'
+                },
+            ],
+            price: 195000
         },
     ];
 

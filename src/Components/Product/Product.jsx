@@ -54,7 +54,7 @@ const Product = ({ product, index }) => {
                 <li className='my-1' key={index}>{l}</li>
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
-                <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver Mas</button>
+                <button onClick={handleDetail} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Ver más</button>
                 <button onClick={() => handlePay()} className='text-white bg-primary-blue px-6 py-2 rounded-3xl font-bold hover:bg-secondary-blue transition-all max-[600px]:w-full'>Adquirir</button>
             </footer>
             {
