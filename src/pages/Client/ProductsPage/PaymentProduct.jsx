@@ -35,8 +35,8 @@ const PaymentProduct = () => {
     <div className='layout background flex flex-col items-center justify-center '>
         <Icono/>
 
-        <section className='w-3/4  flex flex-col items-center'>
-            <div className='flex flex-col items-start justify-center p-4'>
+        <section className='w-3/4  flex flex-col items-center max-[800px]:w-full'>
+            <div className='flex flex-col items-start justify-center p-4 max-[800px]:w-full'>
             <h4 className='text-xl'>Plan a contratar: <strong className='text-primary-blue'>{payment.plan}</strong> </h4>
             <h5 className='text-xl'>Precio a pagar: <strong className='text-primary-blue  text-2xl'>${payment.price}</strong></h5>
             </div>
@@ -52,11 +52,11 @@ const PaymentProduct = () => {
                 className={`px-12 py-2 ${tipo === 'anual' ?'bg-primary-blue text-white' : 'bg-transparent text-primary-blue'} rounded font-bold  mr-4`}>Anual</button>
             </div>
             
-            <div className='p-8 flex flex-col items-center justify-center'>
+            <div className='p-8 flex flex-col items-center justify-center w-full max-w-[500px]'>
             <h5 className='text-xl p-4 font-bold'>Total a pagar: <strong className='text-primary-blue  text-2xl'>${amount}</strong></h5>
             <button 
             onClick={()=>mercado_pago_handler()}
-            className='flex items-center justify-center py-3 px-12 font-bold shadow rounded-[10px]'>Mercado Pago <img className='w-[80px] h-[25px] ml-2 text-sm ' src={MERCADO_PAGO_LOGO}/></button>
+            className='flex items-center justify-center py-3 px-12 font-bold shadow rounded-[10px] w-full'> <img className='w-[85px] h-[25px] ml-2 text-sm ' src={MERCADO_PAGO_LOGO}/></button>
             </div>
 
         </section>
