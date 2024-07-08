@@ -1,13 +1,23 @@
-import { useState } from 'react'
-import logo from '../../assets/icons/logo.png'
-import Detail from './Detail';
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { priceToPay, planToPay } from '../../features/paymentSlice/paymentSlice';
+import { priceToPay, planToPay } from '../../../features/paymentSlice/paymentSlice';
+import Detail from '../../../Components/Product/Detail';
+import logo from '../../../assets/icons/logo.png'
 
-const Product = ({ product, index }) => {
+const ProductosCards = ({product,index}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const userData = localStorage.getItem('login')
+    const userParse = JSON.parse(userData)
+    const userId = userData ? userParse.user_id : ''
+
+
+    useEffect(()=>{
+        
+    },[userId])
+
+
     function formatearMonto(numero) {
         return numero.toLocaleString('es-AR', {
             style: 'currency',
@@ -28,7 +38,13 @@ const Product = ({ product, index }) => {
         }
         const planData = JSON.stringify(plan)
         localStorage.setItem('plan', planData)
-        navigate('/register')
+
+        if(!userData){
+            navigate(`/register`)
+        }else{
+            navigate(`/paymentproduct/${userId}`)
+
+        }
     }
     const handleForm = () => {
         setForm(!form)
@@ -38,7 +54,7 @@ const Product = ({ product, index }) => {
     }
 
     return (
-        <article className='flex flex-col justify-around items-center py-2 px-9 w-[340px] h-[480px]  bg-white text-[#000000] rounded-xl text-sm font-roboto shadow-2xl max-[500px]:w-[98%] ' key={index}>
+        <article className='flex flex-col justify-around items-center py-2 px-9 w-[340px] h-[460px]  bg-white text-[#000000] rounded-xl text-sm font-roboto shadow-2xl max-[500px]:w-[98%] ' key={index}>
             <header className='flex flex-col justify-center items-start text-2xl w-full gap-2'>
                 <div className='text-primary-blue flex items-center gap-2'>
                     <img src={logo} alt="" width={55} className='rounded-full' />
@@ -49,8 +65,8 @@ const Product = ({ product, index }) => {
                 </div>
                 <span className='font-bold font-sans self-center'>{formatearMonto(product.price)}</span>
             </header>
-            <hr className='w-full text-primary-blue mt-[-20px]' />
-            <div className='p-2 text-pretty min-w-[100%] h-60 font-roboto font-light mt-[-30px] mb-5'>{product.essential.split('_').map((l, index) => (
+            <hr className='w-full text-primary-blue mt-[-10px] max-[800px]:mt-0' />
+            <div className='p-2 text-pretty min-w-[100%] h-60 font-roboto font-light  mb-5'>{product.essential.split('_').map((l, index) => (
                 <li className='my-1 text-left mb-2' key={index}>{l}</li>
             ))}</div>
             <footer className='flex justify-center items-center gap-3 max-[600px]:flex-col max-[600px]:w-full'>
@@ -67,4 +83,5 @@ const Product = ({ product, index }) => {
     )
 }
 
-export default Product
+
+export default ProductosCards

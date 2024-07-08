@@ -9,6 +9,10 @@ import { useDispatch } from 'react-redux';
 const Detail = ({ product, format, handleDetail }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const userData = localStorage.getItem('login')
+    const userParse = JSON.parse(userData)
+    const userId = userData ? userParse.user_id : ''
+
     const style = {
         backgroundImage: `url(${doctores})`,
         backgroundPosition: 'center',
@@ -18,6 +22,8 @@ const Detail = ({ product, format, handleDetail }) => {
     useEffect((() => {
 
     }), [product])
+
+    
 
     const handlePay = () => {
         // dispatch(changePay({amount: product.price, plan: product.title}))
@@ -30,7 +36,13 @@ const Detail = ({ product, format, handleDetail }) => {
         }
         const planData = JSON.stringify(plan)
         localStorage.setItem('plan', planData)
-        navigate('/register')
+
+        if(!userData){
+            navigate(`/register`)
+        }else{
+            navigate(`/paymentproduct/${userId}`)
+
+        }
     }
 
     return (
@@ -67,12 +79,6 @@ const Detail = ({ product, format, handleDetail }) => {
                                 )
                             })
                         }
-                            {/* {
-                            // product.essential.split('_').map((l) => (
-                            //     <li>{l}</li>
-                            // ))
-                            }
-                             */}
 
                     </div>
                     <footer className='flex flex-col justify-center items-center gap-2 max-[600px]:w-full'>

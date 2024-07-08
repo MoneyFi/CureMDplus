@@ -13,6 +13,8 @@ import DashboardProductores from "./Layouts/DashboardProductores";
 import Asegurados from "../pages/Productor/Asegurados/Asegurados";
 import LoginProductor from "../pages/Productor/LoginProductor/LoginProductor";
 import SuccessProductor from "../pages/Productor/RegisterProductor/SuccessProductor";
+import ProductsPage from "../pages/Client/ProductsPage/ProductsPage";
+import PaymentProduct from "../pages/Client/ProductsPage/PaymentProduct";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +54,14 @@ export const router = createBrowserRouter([
     {
         path: '/terminosycondiciones',
         element: <TermsConditions/>
+    },
+    {
+        path:'/adquirirproducto/:id',
+        element: <ProductsPage/>
+    },
+    {
+        path: '/paymentproduct/:id',
+        element: <PaymentProduct/>
     },
     {
         path: '/register',

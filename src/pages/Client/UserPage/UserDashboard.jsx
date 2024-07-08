@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import logo from '../../../assets/icons/Logo_Azul.png'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoIosLogOut } from "react-icons/io";
 import { logoutUser } from '../../../features/User/userSlice';
@@ -72,7 +72,12 @@ const UserDashboard = () => {
                     </div>
                 </div>
             ) : (
-                <p className='font-bold text-lg text-primary-blue text-center px-4'>¡Bienvenido! <br />Aún no ha adquirido ningún plan.</p>
+                <div className='flex flex-col items-center justyfy-center '>
+                    <p className='font-bold text-lg text-primary-blue text-center px-4'>¡Bienvenido! <br />Aún no ha adquirido ningún plan.</p>
+                    <div className='p-4'>
+                        <p>Adquiere tu plan <Link to={'/adquirirproducto/todos'} className='text-primary-blue font-bold'>Aqui</Link></p>
+                    </div>
+                </div>
             )}
 
 
