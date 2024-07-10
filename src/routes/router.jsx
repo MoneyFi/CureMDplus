@@ -15,6 +15,8 @@ import LoginProductor from "../pages/Productor/LoginProductor/LoginProductor";
 import SuccessProductor from "../pages/Productor/RegisterProductor/SuccessProductor";
 import ProductsPage from "../pages/Client/ProductsPage/ProductsPage";
 import PaymentProduct from "../pages/Client/ProductsPage/PaymentProduct";
+import DashboardAdmin from "./Layouts/DashboardAdmin";
+import TransfersPending from "../pages/Admin/Transferencias/TransfersPending";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +36,16 @@ export const router = createBrowserRouter([
             {
                 element: <Asegurados/>,
                 path: '/productores/home'
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <DashboardAdmin/>,
+        children:[
+            {
+                element: <TransfersPending/>,
+                path: '/admin/'
             }
         ]
     },

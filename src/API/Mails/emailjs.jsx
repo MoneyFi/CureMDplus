@@ -1,6 +1,5 @@
 import emailjs from '@emailjs/browser';
 import { mailPrincipal } from './mailPrincipal';
-import { mailRenovacion } from './mailRenovacion';
 import { MAIL_SERVICE_ID, MAIL_USER_ID, MAIL_TEMPLATE_ID } from '../../Constants/Constants';
 
 export const sendEmailConfirmation = (emails) => {
@@ -59,4 +58,20 @@ Equipo CureMD+
         console.log('SUCCESS!', response.status, response.text);
     })
     .catch(err => console.log('FAILED...', err));
+}
+
+export const sendComprobanteDePago = (email, file) => {
+    emailjs.init(MAIL_USER_ID);
+    emailjs
+    .send(MAIL_SERVICE_ID,MAIL_TEMPLATE_ID, {
+        to_email: 'leandromaxi2014@gmail.com',
+        // to_email: 'administracion@moneyfi.io',
+        subject: 'CureMD+ - Comprobante de pago',
+        message: `Comprobante de pago enviado por ${email}
+        ${file}`,
+    })
+    .then((response) => {
+        console.log('Mail con comprobante enviado', response.status)
+    })
+    .catch(err => console.log('Error al enviar comprobante', err))
 }

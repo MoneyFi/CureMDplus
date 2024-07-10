@@ -24,6 +24,7 @@ const Product = ({ product, index }) => {
         const plan = {
             amount: product.price,
             plan: product.title,
+            descuento: product.discount,
             comprado: false
         }
         const planData = JSON.stringify(plan)

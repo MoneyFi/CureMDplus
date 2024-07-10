@@ -51,6 +51,13 @@ const UserDashboard = () => {
                 </button>
             </div>
 
+            {login && login?.data_user?.status_curemd_plus === '0' && (
+                <div className='flex flex-col justify-center items-center py-2 px-4 bg-white shadow-md rounded-lg '>
+                    <span className='text-2xl text-[#ff0000] font-varela font-bold'>Cuenta Inactiva</span>
+                    <p className='font-roboto text-sm text-[#7a7a7a]'>Pendiente de aprobacion de pago.</p>
+                </div>
+            )}
+
             {plan && plan?.comprado ? (
                 <div className='w-full flex flex-col items-center justify-center'>
                     <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
