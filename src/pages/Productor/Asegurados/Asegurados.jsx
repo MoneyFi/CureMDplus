@@ -8,9 +8,9 @@ const Asegurados = () => {
   const productor_parse = JSON.parse(id_productor_local)
 
 
-  useEffect(()=>{
-    getClientes(productor_parse.code)
-  },[productor_parse])
+  // useEffect(()=>{
+  //   getClientes(productor_parse.code)
+  // },[productor_parse])
 
 
   return (
