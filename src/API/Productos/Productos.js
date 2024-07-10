@@ -13,7 +13,8 @@ export const products = [
             },
 
         ],
-        price: 80000
+        price: 80000,
+        discount: 20000
     },
     {
         title: 'Salud Plus',
@@ -28,7 +29,8 @@ export const products = [
                 description:'Renta diaria por internación** en sala común (3 meses máximo anual) hasta $300.000,00_Renta diaria por internación** en terapia intermedia y cuidados especiales (3 meses máximo anual) hasta $600.000,00_Renta diaria por internación** en Unidad de Terapia Intensiva (UTI) (3 meses máximo anual) hasta $900.000,00_Intervenciones Quirúrgicas Alta Complejidad (12 cirugías - Alt. B) hasta $20.000.000,00_Intervenciones Quirúrgicas Media Complejidad (68 cirugías - Alt. B) hasta $10.000.000,00_Realización de Transplantes (Médula, Riñón, Hígado, Corazón, Pulmón, Pancreas) hasta $20.000.000,00_*Periodos de carencia: Intervenciones: 90 días/Trasplante: 120 días/Intervenciones Cardíacas: 300 días._** Internación: De 1 a 3 días, no se cubre, a partir del día 4 se abona retroactivo desde el día 1.'
             },
         ],
-        price: 115000
+        price: 115000,
+        discount: 30000
     },
     {
         title: 'Salud Senior',
@@ -44,6 +46,7 @@ export const products = [
                 description:'Renta diaria por internación** en sala común (3 meses máximo anual) hasta $300.000,00_Renta diaria por internación** en terapia intermedia y cuidados especiales (3 meses máximo anual) hasta $600.000,00_Renta diaria por internación** en Unidad de Terapia Intensiva (UTI) (3 meses máximo anual) hasta $900.000,00_Intervenciones Quirúrgicas Alta Complejidad (12 cirugías - Alt. B) hasta $20.000.000,00_Intervenciones Quirúrgicas Media Complejidad (68 cirugías - Alt. B) hasta $10.000.000,00_Realización de Transplantes (Médula, Riñón, Hígado, Corazón, Pulmón, Pancreas) hasta $20.000.000,00_*Periodos de carencia: Intervenciones: 90 días/Trasplante: 120 días/Intervenciones Cardíacas: 300 días._** Internación: De 1 a 3 días, no se cubre, a partir del día 4 se abona retroactivo desde el día 1.'
             },
         ],
-        price: 195000
+        price: 195000,
+        discount: 20000
     },
 ];

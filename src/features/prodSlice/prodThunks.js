@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { apiCallProd } from "../../Constants/Constants";
+import { apiCallProd, apiCallTest } from "../../Constants/Constants";
+
+const API_CALL = apiCallProd;
 
 export const getProdsThunk = createAsyncThunk(
     "getProds",

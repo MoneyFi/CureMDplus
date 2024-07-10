@@ -59,6 +59,7 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("curemd", "curemd_plus");
       uploadData.append("status_curemd_plus", body.status);
       uploadData.append("nombre_plan_curemd_plus", body.plan);
+      uploadData.append("descuento_curemd_plus", body.descuento);
       uploadData.append("fecha_cobro_curemd_plus", body.fecha_cobro);
 
       const { data } = await axios.post(
@@ -87,15 +88,11 @@ export const loginUserThunk = createAsyncThunk(
       uploadinfo.append("email", body.email);
       uploadinfo.append("password", body.password);
 
-      const { data } = await axios.post(
-        `${apiCall}?action=login`,
-        uploadinfo,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const { data } = await axios.post(`${apiCall}?action=login`, uploadinfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       const userData = JSON.stringify(data);
       localStorage.setItem("login", userData);
       return data;
@@ -112,28 +109,30 @@ export const updateUserThunk = createAsyncThunk(
     try {
       const uploadinfo = new FormData();
       uploadinfo.append("id", body.id);
-      const {dni_productor, cuil, status, plan} = body;
-      if(dni_productor){
+      const { dni_productor, cuil, status, plan } = body;
+      if (dni_productor) {
         uploadinfo.append("dni_productor", body.dni_productor);
       }
-      if(cuil){
+      if (cuil) {
         uploadinfo.append("cuil", body.cuil);
       }
-      if(status){
+      if (status) {
         uploadinfo.append("status_curemd_plus", body.status);
       }
-      if(plan){
-        uploadinfo.append("nombre_plan_curemd_plus", body.plan);
+      if (plan) {
+        uploadinfo.append("nombre_plan", body.plan);
         uploadinfo.append("fecha_cobro_curemd_plus", body.fecha_cobro);
+        uploadinfo.append("descuento_curemd_plus", body.descuento);
       }
-      const login = JSON.parse(localStorage.getItem('login'));
+      const login = JSON.parse(localStorage.getItem("login"));
+      let token = login?.token || body.user_token;
       const { data } = await axios.post(
         `${apiCall}?action=curemd_plus_update`,
         uploadinfo,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: 'Bearer ' + login.token
+            Authorization: "Bearer " + token,
           },
         }
       );
