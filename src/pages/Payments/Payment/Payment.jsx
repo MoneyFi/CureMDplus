@@ -135,11 +135,11 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
                             className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                             <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                         </button>
-                        <button
+                        {/* <button
                             onClick={() => goCuotasHandler()}
                             className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                             <img src={GO_CUOTAS_LOGO} alt="" width={100} />
-                        </button>
+                        </button> */}
                     </>
                 }
                 {paymentOptions.discount === 'false' && paymentOptions.type === 'anual' &&
