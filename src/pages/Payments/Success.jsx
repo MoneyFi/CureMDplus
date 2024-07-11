@@ -17,7 +17,9 @@ const Success = () => {
   const registerData = localStorage.getItem('register')
   const register = JSON.parse(registerData)
   const loginData = JSON.parse(localStorage.getItem('login'))
-  const plan = JSON.parse(localStorage.getItem('plan'))
+  const planData = localStorage.getItem('plan')
+  const plan = JSON.parse(planData)
+  
   const login = () => {
     if (register) {
       dispatch(loginUserThunk({
@@ -31,6 +33,10 @@ const Success = () => {
       nav('/')
     }, 2000)
   }
+
+  useEffect(()=>{
+
+  },[plan])
 
   useEffect(() => {
     if (loading && plan.comprado === false) {

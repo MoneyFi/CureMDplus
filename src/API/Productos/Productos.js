@@ -1,11 +1,11 @@
 export const products = [
     {
         title: 'Salud Esencial',
-        essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $20.000.000,00',
+        essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, atención por telemedicina con diversas especialidades mediante CureMD _Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $20.000.000,00',
         detail:[
             {
                 title:'Prestacional',
-                description:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $20.000)_Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica'
+                description:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, atención por telemedicina con diversas especialidades mediante CureMD _Atención por urgencias (Incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Segunda opinión casos de alta complejidad_Asistencia en viajes_50% de descuento en farmacias, ópticas y ortopedias (Red PAMI)_Visitas médicas domiciliarias_Asistencia nutricional telefónica'
             },
             {
                 title:'Indemnizatoria',
@@ -18,7 +18,7 @@ export const products = [
     },
     {
         title: 'Salud Plus',
-        essential:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 por mes. Tope $30.000)_Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $50.000.000,00',
+        essential:'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, atención por telemedicina con diversas especialidades mediante CureMD _Atención por urgencias (incluye odontológicas)_Prevención anual mujer (Pap y colpo) hombres, (Antígeno Prostático)_Coberturas Indemnizatorias hasta $50.000.000,00',
         detail:[
             {
                 title:'Prestacional',
@@ -35,7 +35,7 @@ export const products = [
     {
         title: 'Salud Senior',
         subtitle: 'Desde 65 hasta 74 años y 11 meses.',
-        essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, (1 consulta al mes. Tope $20.000)._Asistencia convalecencia: Servicio de acompañante en establecimiento médico, Servicio de acompañante en domicilio, Bonificación de acompañante en Domicilio especial, Asesor Previsional_Coberturas Indemnizatorias hasta $100.000.000,00',
+        essential: 'Consultas médicas de atención primaria en CureMD, incluyendo asistencia psicológica, atención por telemedicina con diversas especialidades mediante CureMD ._Asistencia convalecencia: Servicio de acompañante en establecimiento médico, Servicio de acompañante en domicilio, Bonificación de acompañante en Domicilio especial, Asesor Previsional_Coberturas Indemnizatorias hasta $100.000.000,00',
         detail:[
             {
                 title:'Prestacional',
