@@ -193,10 +193,12 @@ const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount }) =>
                     className='formLabel input w-full' placeholder='Dirección:' />
             </div>
 
-            <div className='formLabel label'>
+            <div className='formLabel label flex flex-col'>
+                <label className='py-1 text-sm font-bold text-primary-blue'>Fecha de nacimiento:</label>
                 <input className='formLabel input w-full'
                     type='date'
                     onChange={(e) => dataHandler(e)}
+                    
                     name='fecha_de_nacimiento'
                     value={data.fecha_de_nacimiento}
                     placeholder='Fecha de nacimiento:' />
