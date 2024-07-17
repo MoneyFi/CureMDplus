@@ -51,6 +51,7 @@ const Login = ({ handleAction, nextStep, prevStep }) => {
             }
             if(response === 'success') {
                 dispatch(createToast('Inicio de sesion exitoso'))
+                localStorage.setItem('para_actualizar', JSON.stringify(body))
                 setLoading(false)
                 handleAction()
                 nav('/myaccount')
