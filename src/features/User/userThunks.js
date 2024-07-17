@@ -61,7 +61,6 @@ export const registerUserThunk = createAsyncThunk(
       uploadData.append("nombre_plan_curemd_plus", body.plan);
       uploadData.append("descuento_curemd_plus", body.descuento);
       uploadData.append("fecha_cobro_curemd_plus", body.fecha_cobro);
-      uploadData.append("declaracion_jurada", body.declaracion_jurada);
 
       const { data } = await axios.post(
         `${apiCall}?action=Add_user`,
@@ -110,7 +109,7 @@ export const updateUserThunk = createAsyncThunk(
     try {
       const uploadinfo = new FormData();
       uploadinfo.append("id", body.id);
-      const { dni_productor, cuil, status, plan, declaracion_jurada } = body;
+      const { dni_productor, cuil, status, plan } = body;
       if (dni_productor) {
         uploadinfo.append("dni_productor", body.dni_productor);
       }
@@ -123,9 +122,7 @@ export const updateUserThunk = createAsyncThunk(
       if (plan) {
         uploadinfo.append("nombre_plan", body.plan);
         uploadinfo.append("fecha_cobro_curemd_plus", body.fecha_cobro);
-      }
-      if (declaracion_jurada) {
-        uploadinfo.append("declaracion_jurada", body.declaracion_jurada);
+        uploadinfo.append("descuento_curemd_plus", body.descuento);
       }
       const login = JSON.parse(localStorage.getItem("login"));
       let token = login?.token || body.user_token;
@@ -162,7 +159,6 @@ export const uploadPdfThunk = createAsyncThunk(
           },
         }
       );
-      localStorage.setItem("d_jurada", data.url)
       return data.response;
     } catch (error) {
       console.log(error);
@@ -170,59 +166,3 @@ export const uploadPdfThunk = createAsyncThunk(
     }
   }
 );
-
-export const uploadCertificateThunk = createAsyncThunk(
-  "uploadCertificate",
-  async (body, { rejectWithValue }) => {
-    try {
-      const filesArray = Array.from(body.files);
-
-      const uploadPromises = filesArray.map(async (file) => {
-        const uploadinfo = new FormData();
-        uploadinfo.append("file", file); // Asegúrate de que la clave sea 'file'
-        uploadinfo.append("month", body.month);
-        uploadinfo.append("year", body.year);
-
-        const { data } = await axios.post(
-          `${apiCall}?action=curemd_plus_upload_certificado_pdf`,
-          uploadinfo,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        return data;
-      });
-
-      const results = await Promise.all(uploadPromises);
-      console.log(results);
-      //Recorrer el array de resultados para comprobar que se han subido correctamente los archivos
-      const findError = results.filter((result) => result.response === "fail");
-      if (findError.length > 0) {
-        return { response: "fail", files: findError };
-      } else {
-        return { response: "success" };
-      }
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const getNominasThunk = createAsyncThunk(
-  "getNominas",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get(`${apiCall}?action=curemd_plus_nominas`);
-      const dataJson = JSON.stringify(data.data);
-      localStorage.setItem("nominas", dataJson);
-      return data;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
-    }
-  }
-)

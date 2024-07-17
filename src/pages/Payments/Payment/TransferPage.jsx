@@ -18,7 +18,6 @@ const TransferPage = ({ setBankTransfer, price,
     const login = JSON.parse(localStorage.getItem('login'))
     const register = JSON.parse(localStorage.getItem('register'))
     const plan = JSON.parse(localStorage.getItem('plan'))
-    const d_jurada = localStorage.getItem('d_jurada')
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text);
         dispatch(createToast('Copiado al portapapeles'))
@@ -105,56 +104,54 @@ const TransferPage = ({ setBankTransfer, price,
             localStorage.setItem('plan_adquirido', JSON.stringify(plan))
             dispatch(getProdsThunk())
             if (login && login?.data_user) {
-                //Logica si los productores tienen email o no
-                const find = productores && productores?.filter(p => p.prod_dni === login?.data_user?.dni_productor)[0]
-                let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
-                //Update userdata
-                let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion);
-                fecha_cobro = fecha_cobro.toLocaleDateString('en-CA');
-                dispatch(updateUserThunk({
-                    id: login?.user_id,
-                    plan: plan.plan,
-                    status: '0',
-                    declaracion_jurada: d_jurada,
-                    fecha_cobro,
-                }))
-                dispatch(addTransferThunk({
-                    user_email: login?.data_user?.email,
-                    n_referencia: data.num_referencia,
-                    monto: data.monto,
-                    fecha_pago: data.fecha_pago
-                }))
-                sendEmailConfirmation([login?.data_user?.email, 'administracion@moneyfi.io', productor])
-                createScheduler(login?.data_user?.email, plan.startDate, plan.facturacion)
-                setTimeout(() => {
-                    setStep(3)
-                }, 2000)
-                return;
+              //Logica si los productores tienen email o no
+              const find = productores && productores?.filter(p => p.prod_dni === login?.data_user?.dni_productor)[0]
+              let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
+              //Update userdata
+              let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+              dispatch(updateUserThunk({
+                id: login?.user_id,
+                plan: plan.plan,
+                status: '0',
+                fecha_cobro,
+                descuento: plan.descuento
+              }))
+              dispatch(addTransferThunk({
+                user_email: login?.data_user?.email,
+                n_referencia: data.num_referencia,
+                monto: data.monto,
+                fecha_pago: data.fecha_pago
+              }))
+            //   sendEmailConfirmation([login?.data_user?.email, 'administracion@moneyfi.io', productor])
+            //   createScheduler(login?.data_user?.email, plan.startDate, plan.facturacion)
+              setTimeout(() => {
+                setStep(3)
+              }, 2000)
+              return;
             } if (register) {
-                let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion);
-                fecha_cobro = fecha_cobro.toLocaleDateString('en-CA');
-                register.status = '0';
-                register.plan = plan.plan;
-                register.fecha_cobro = fecha_cobro;
-                register.declaracion_jurada = d_jurada;
-                localStorage.setItem('register', JSON.stringify(register));
-                dispatch(addTransferThunk({
-                    user_email: register?.mail,
-                    n_referencia: data.num_referencia,
-                    monto: data.monto,
-                    fecha_pago: data.fecha_pago
-                }))
-                dispatch(registerUserThunk(register))
-                const find = productores && productores?.filter(p => p.prod_dni === register.dni_productor)[0]
-                let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
-                sendEmailConfirmation([register?.mail, 'administracion@moneyfi.io', productor])
-                createScheduler(register?.mail, plan.startDate, plan.facturacion)
-                setTimeout(() => {
-                    setStep(3)
-                }, 2000)
-                return;
+              let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+              register.status = '0';
+              register.plan = plan.plan;
+              register.fecha_cobro = fecha_cobro;
+              register.descuento = plan.descuento;
+              localStorage.setItem('register', JSON.stringify(register));
+              dispatch(addTransferThunk({
+                user_email: register?.mail,
+                n_referencia: data.num_referencia,
+                monto: data.monto,
+                fecha_pago: data.fecha_pago
+              }))
+              dispatch(registerUserThunk(register))
+              const find = productores && productores?.filter(p => p.prod_dni === register.dni_productor)[0]
+              let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
+              sendEmailConfirmation([register?.mail, 'administracion@moneyfi.io', productor])
+              createScheduler(register?.mail, plan.startDate, plan.facturacion)
+              setTimeout(() => {
+                setStep(3)
+              }, 2000)
+              return;
             }
-        }
+          }
     }
 
     return (
@@ -226,7 +223,7 @@ const TransferPage = ({ setBankTransfer, price,
                         <h1 className='text-primary-blue text-xl md:text-3xl font-varela font-bold'>PAGO CONFIRMADO</h1>
                         <span className='text-sm w-2/3 md:w-full text-center'>Su cobertura quedará vigente cuando revisemos los datos del pago.</span>
                         <p className='text-sm w-2/3 md:w-full text-center'>Si tiene alguna consulta escribanos a <strong>administracion@moneyfi.io</strong></p>
-                        <button onClick={() => { setStep(1); navigate('/myaccount') }} className='w-2/4 mt-3 bg-primary-blue text-white font-roboto font-bold text-sm rounded-lg px-3 py-2'>Ir a mi Cuenta</button>
+                        <button onClick={() => {setStep(1); navigate('/myaccount')}} className='w-2/4 mt-3 bg-primary-blue text-white font-roboto font-bold text-sm rounded-lg px-3 py-2'>Ir a mi Cuenta</button>
                     </div>
                 </article>
             )}
