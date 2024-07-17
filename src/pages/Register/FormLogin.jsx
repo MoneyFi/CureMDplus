@@ -35,6 +35,7 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
         if (loading) {
             if (response === 'success') {
                 dispatch(createToast('Inicio exitoso, corroborando datos...'))
+                localStorage.setItem('para_actualizar', JSON.stringify(data))
                 setTimeout(() => {
                     if (login.data_user.cuil === '0') {
                         setPosition(2)
