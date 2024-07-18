@@ -28,9 +28,9 @@ const PaymentProduct = () => {
 
     useEffect(() => {
         if (tipo === 'mensual') {
-            setAmount(payment.price)
+            setAmount(plan.amount)
         } else {
-            setAmount(payment.price * 12)
+            setAmount(plan.amount * 12)
         }
     }, [tipo])
 
@@ -67,8 +67,8 @@ const PaymentProduct = () => {
 
                         <section className='w-3/4  flex flex-col items-center max-[800px]:w-full'>
                             <div className='flex flex-col items-start justify-center p-4 max-[800px]:w-full'>
-                                <h4 className='text-xl'>Plan a contratar: <strong className='text-primary-blue'>{payment.plan}</strong> </h4>
-                                <h5 className='text-xl'>Precio a pagar: <strong className='text-primary-blue  text-2xl'>${payment.price}</strong></h5>
+                                <h4 className='text-xl'>Plan a contratar: <strong className='text-primary-blue'>{plan.plan}</strong> </h4>
+                                <h5 className='text-xl'>Precio a pagar: <strong className='text-primary-blue  text-2xl'>${plan.amount}</strong></h5>
                             </div>
 
                             <div className='w-full max-w-[300px] p-4 flex items-center justify-center'>

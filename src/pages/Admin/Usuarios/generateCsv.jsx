@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getNominasThunk } from '../../../features/User/userThunks';
-import { CSVLink } from 'react-csv';
-import { saveAs } from 'file-saver';
-import Papa from 'papaparse';
 
 const GenerateCsv = () => {
     const [loading, setLoading] = useState(false);
@@ -12,9 +9,12 @@ const GenerateCsv = () => {
     const dispatch = useDispatch();
     const nominas = JSON.parse(localStorage.getItem('nominas'));
     const onClick = () => {
-        reformatData(nominas);
-        setLoading(true);
-        setExtended(true);
+        dispatch(getNominasThunk());
+        setTimeout(() => {
+            reformatData(nominas);
+            setLoading(true);
+            setExtended(true);
+        }, 2000);
     };
 
     const reformatData = (data) => {
@@ -50,19 +50,40 @@ const GenerateCsv = () => {
         { label: 'Declaracion Jurada', key: 'declaracion_jurada' },
     ];
 
-    const csvReport = {
-        filename: 'Altas-CureMD+.csv',
-        headers: headers,
-        data: data,
+    const generateCSV = (data, headers) => {
+        const csvRows = [];
+        const headerRow = headers.map(header => header.label).join(',');
+        csvRows.push(headerRow);
+
+        data.forEach(row => {
+            const values = headers.map(header => {
+                const escape = (value) => `"${value.replace(/"/g, '""')}"`;
+                return escape(row[header.key] || '');
+            });
+            csvRows.push(values.join(','));
+        });
+
+        return csvRows.join('\n');
+    };
+
+    const downloadCSV = (csv, filename) => {
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+
+        link.setAttribute('href', url);
+        link.setAttribute('download', filename);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     const generateAndDownloadCSV = () => {
-        const csv = Papa.unparse(data);
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        saveAs(blob, 'Altas-CureMD+.csv');
+        const csv = generateCSV(data, headers);
+        downloadCSV(csv, 'Altas-CureMD+.csv');
     };
+
     useEffect(() => {
-        dispatch(getNominasThunk());
         if (loading) {
             setTimeout(() => {
                 generateAndDownloadCSV();
@@ -72,16 +93,16 @@ const GenerateCsv = () => {
                 setExtended(false);
             }, 3000);
         }
-    }, [loading])
+    }, [loading]);
+
     return (
-        <div className={`w-full flex flex-col justify-start overflow-hidden items-start my-3 ${extended ? ' h-[150px] ' : ' h-[52px] '}`}>
+        <div className={`w-full flex flex-col justify-start overflow-hidden items-start my-3 ${extended ? ' h-[150px] ' : 'h-[50px] max-[400px]:h-[75px] md:h-[55px] '}`}>
             <div className='bg-primary-blue text-white font-varela text-base md:text-lg flex justify-between items-center px-5 py-2 w-full'>
                 <span>Altas de CureMD+</span>
                 <button onClick={onClick} className='font-bold bg-white text-primary-blue px-3 py-1'>Generar archivo csv</button>
             </div>
             <div className='bg-[#f2f2f2] w-full flex justify-center items-center min-h-[100px]'>
                 {loading && <p className='animate-pulse'>Generando...</p> }
-                <CSVLink {...csvReport}/>
             </div>
         </div>
     )

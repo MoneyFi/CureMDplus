@@ -66,8 +66,7 @@ const UsuarioSection = () => {
                     <input onChange={handleChange} type="file" name="files[]" multiple className="shadow appearance-none bg-secondary-blue rounded w-full py-2 px-3 file:appearance-none file:bg-white file:px-4 file:py-2 file:outline-none file:border-none file:rounded-sm file:shadow-sm file:font-roboto text-white leading-tight focus:outline-none focus:shadow-outline file:hover:cursor-pointer" />
                 </div>
                 </> 
-                : 
-                <></>
+                : ''
             }
             <GenerateCsv/>
         </div>

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoIosLogOut } from "react-icons/io";
 import { logoutUser } from '../../../features/User/userSlice';
 import { createToast } from '../../../features/toastSlice/toastSlice';
-import { calculateExpiryDate } from '../../../API/Cron/Cron';
 import { getProdsThunk } from '../../../features/prodSlice/prodThunks';
 import { loginUserThunk } from '../../../features/User/userThunks';
 
@@ -16,9 +15,10 @@ const UserDashboard = () => {
     const para_actualizar = JSON.parse(localStorage.getItem('para_actualizar'))
     const plan = JSON.parse(localStorage.getItem('plan_adquirido'))
     const { data_user: data } = login
-    let coberturaDate = new Date(data?.fecha_cobro_curemd_plus);
-    let expired;
+    let coberturaDate = '';
+    let expired = '';
     if (data && data.nombre_plan_curemd_plus) {
+        coberturaDate = new Date(data?.fecha_cobro_curemd_plus);
         let now = new Date()
         expired = now > coberturaDate ? true : false
     }
@@ -30,6 +30,7 @@ const UserDashboard = () => {
         dispatch(createToast('Cerrando sesion...'))
         setTimeout(() => {
             localStorage.removeItem('login')
+            localStorage.removeItem('para_actualizar')
             dispatch(logoutUser())
             nav('/')
             dispatch(createToast('Sesion cerrada'))
@@ -53,20 +54,29 @@ const UserDashboard = () => {
                 </button>
             </div>
 
-            {login && login?.data_user?.status_curemd_plus === '0' && login?.data_user?.nombre_plan_curemd_plus !== '0' && (
+            {login && (login?.data_user?.status_curemd_plus === '0') && (login?.data_user?.nombre_plan_curemd_plus !== '0') ? (
                 <div className='flex flex-col justify-center items-center py-2 px-4 bg-white shadow-md rounded-lg '>
                     <span className='text-2xl text-[#ff0000] font-varela font-bold'>Cuenta Inactiva</span>
                     <p className='font-roboto text-sm text-[#7a7a7a]'>Pendiente de aprobacion de pago.</p>
                 </div>
-            )}
+            ) : ''}
 
             {login && login?.data_user?.nombre_plan_curemd_plus ? (
                 <div className='w-full flex flex-col items-center justify-center'>
                     <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
 
+                    <div className='p-4'>
+                        <p className='text-xs md:text-sm text-[#7a7a7a] font-roboto text-center'>Su certificado estará disponible el primer dia habíl de cada mes.</p>
+                    </div>
+
                     <div className='p-4  mt-10 '>
                         {expired &&
-                            <p className='p-2 text-center'><strong className='text-[#ff0000]'>Cobertura Caducada</strong></p>
+                            <>
+                                <p className='p-2 text-center'><strong className='text-[#ff0000]'>Cobertura Caducada</strong></p>
+                                <div className='p-2 text-center'>
+                                    <p>Renueva tu plan aqui <Link to={'/adquirirproducto/todos'} className='text-primary-blue font-bold'>Aqui</Link></p>
+                                </div>
+                            </>
                         }
                         <p className='p-2'><strong className='text-primary-blue'>Titular: </strong>{data.first_name + ' ' + data.last_Name}</p>
                         {/* <p className='p-2'><strong className='text-primary-blue'>Activación de cobertura: </strong> {coberturaDate.toLocaleString().split(',')[0]}</p> */}
@@ -76,8 +86,8 @@ const UserDashboard = () => {
                         <p className='p-2'><strong className='text-primary-blue'>Productor: </strong> {productor}</p>
 
                         <div className='p-4 flex items-center justify-center w-full'>
-                            <a href={data?.certificado_url} target='_blank' onClick={() => dispatch(createToast(`${data?.certificado_url ? 'Descargando Certificado...' : 'Certificado no disponible'}`))} className='disabled:bg-[#7c7b7b] bg-primary-blue font-bold text-white rounded w-full p-2 text-center'>
-                                {data?.certificado_url ? 'Descargar Certificado' : 'Certificado no disponible'}
+                            <a href={data?.certificado_url} target='_blank' onClick={() => dispatch(createToast(`${data?.certificado_url ? 'Descargando Certificado...' : 'Certificado aún no disponible'}`))} className='disabled:bg-[#7c7b7b] bg-primary-blue font-bold text-white rounded w-full p-2 text-center'>
+                                {data?.certificado_url ? 'Descargar Certificado' : 'Certificado aún no disponible'}
                             </a>
                         </div>
                     </div>
