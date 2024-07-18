@@ -96,7 +96,7 @@ const FormJurada = ({ setJurada }) => {
                     </button>
                     <button className='py-3 px-5 text-lg text-primary-blue rounded-lg bg-white border border-secondary-blue flex justify-center items-center gap-2 hover:bg-primary-blue hover:text-white transition-colors disabled:cursor-not-allowed disabled:text-[#5c5b5c] disabled:hover:bg-white disabled:border-[#5c5b5c]' disabled={disabled} onClick={() => setJurada(false)}>Continuar con el pago</button>
                 </section>
-            )}
+            )};
         </>
     )
 }

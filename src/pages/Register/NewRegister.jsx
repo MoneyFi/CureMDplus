@@ -11,7 +11,7 @@ const NewRegister = () => {
     const plan = JSON.parse(localStorage.getItem('plan'))
     const [position, setPosition] = useState(1)
     const [haveAccount, setHaveAccount] = useState(false)
-    const [jurada, setJurada] = useState(true)
+    const [jurada, setJurada] = useState(false)
 
     useEffect(() => {
 
@@ -40,12 +40,12 @@ const NewRegister = () => {
             <section className='w-full flex items-center justify-around relative '>
                 {haveAccount ? (
                     <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1600px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : 'mr-[1600px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
-                        <FormLogin position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} />
+                        <FormLogin position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} setJurada={setJurada} />
                         <FormData position={position} setPosition={setPosition} />
                     </article>
                 ) : (
                     <article className={`w-[2000px] min-h-screen mt-[500px] flex items-center justify-between  absolute ${position === 1 ? 'ml-[1550px] transition duration-1500  max-[400px]:ml-[1600px] max-[500px]:ml-[1600px] ' : jurada ? 'mr-[470px] transition duration-1500 max-[500px]:mr-[390px]  max-[375px]:mr-[390px]' : 'mr-[1400px] transition duration-1500 max-[500px]:mr-[1580px]  max-[375px]:mr-[1620px]'}`}>
-                        <FormRegister position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} haveAccount={haveAccount} />
+                        <FormRegister position={position} setPosition={setPosition} setHaveAccount={setHaveAccount} haveAccount={haveAccount} setJurada={setJurada} />
                         {jurada ? <FormJurada setJurada={setJurada} position={position} setPosition={setPosition} /> :
                             <Payment setJurada={setJurada} formatearMonto={formatearMonto} position={position} setPosition={setPosition} price={plan.amount} />
                         }

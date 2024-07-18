@@ -10,7 +10,7 @@ import { Productores_Call } from '../../API/Productores/Productores';
 import LoginRegister from './LoginRegister';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount }) => {
+const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount, setJurada }) => {
 
     const dispatch = useDispatch()
     const { response } = useSelector((state) => state.user)
@@ -73,6 +73,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount }) =>
                 dispatch(uploadData(data));
                 const registerdata = JSON.stringify(data)
                 localStorage.setItem('register', registerdata)
+                setJurada(true)
                 setPosition(2)
                 setLoading(false)
                 return;
@@ -198,7 +199,7 @@ const FormRegister = ({ position, setPosition, setHaveAccount, haveAccount }) =>
                 <input className='formLabel input w-full'
                     type='date'
                     onChange={(e) => dataHandler(e)}
-                    
+
                     name='fecha_de_nacimiento'
                     value={data.fecha_de_nacimiento}
                     placeholder='Fecha de nacimiento:' />

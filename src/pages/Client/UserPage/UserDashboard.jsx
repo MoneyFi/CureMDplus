@@ -6,13 +6,11 @@ import { IoIosLogOut } from "react-icons/io";
 import { logoutUser } from '../../../features/User/userSlice';
 import { createToast } from '../../../features/toastSlice/toastSlice';
 import { getProdsThunk } from '../../../features/prodSlice/prodThunks';
-import { loginUserThunk } from '../../../features/User/userThunks';
 
 
 const UserDashboard = () => {
     const { productores } = useSelector((state) => state.prod);
     const login = JSON.parse(localStorage.getItem('login'))
-    const para_actualizar = JSON.parse(localStorage.getItem('para_actualizar'))
     const plan = JSON.parse(localStorage.getItem('plan_adquirido'))
     const { data_user: data } = login
     let coberturaDate = '';
@@ -39,7 +37,6 @@ const UserDashboard = () => {
 
     useEffect(() => {
         dispatch(getProdsThunk())
-        dispatch(loginUserThunk(para_actualizar))
     }, [])
 
     return (
@@ -61,7 +58,7 @@ const UserDashboard = () => {
                 </div>
             ) : ''}
 
-            {login && login?.data_user?.nombre_plan_curemd_plus ? (
+            {plan && plan?.comprado ? (
                 <div className='w-full flex flex-col items-center justify-center'>
                     <h3 className='font-bold text-3xl text-primary-blue'>¡Bienvenido!</h3>
 
@@ -79,10 +76,10 @@ const UserDashboard = () => {
                             </>
                         }
                         <p className='p-2'><strong className='text-primary-blue'>Titular: </strong>{data.first_name + ' ' + data.last_Name}</p>
-                        {/* <p className='p-2'><strong className='text-primary-blue'>Activación de cobertura: </strong> {coberturaDate.toLocaleString().split(',')[0]}</p> */}
-                        <p className='p-2'><strong className='text-primary-blue'>Vencimiento de Cobertura: </strong> {coberturaDate.toLocaleString().split(',')[0]}</p>
-                        <p className='p-2'><strong className='text-primary-blue'>Plan:</strong> {data.nombre_plan_curemd_plus}</p>
-                        {/* <p className='p-2'><strong className='text-primary-blue'>Facturacion: </strong> {plan.facturacion.split("")[0].toUpperCase() + plan.facturacion.slice(1)}</p> */}
+                        <p className='p-2'><strong className='text-primary-blue'>Activación de cobertura: </strong> {coberturaDate.toLocaleString().split(',')[0]}</p>
+                        <p className='p-2'><strong className='text-primary-blue'>Vigencia hasta: </strong> {expired.toLocaleString().split(',')[0]}</p>
+                        <p className='p-2'><strong className='text-primary-blue'>Plan:</strong> {plan.plan}</p>
+                        <p className='p-2'><strong className='text-primary-blue'>Facturacion: </strong> {plan.facturacion.split("")[0].toUpperCase() + plan.facturacion.slice(1)}</p>
                         <p className='p-2'><strong className='text-primary-blue'>Productor: </strong> {productor}</p>
 
                         <div className='p-4 flex items-center justify-center w-full'>
