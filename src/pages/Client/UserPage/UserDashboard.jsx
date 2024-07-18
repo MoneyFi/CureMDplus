@@ -8,12 +8,11 @@ import { createToast } from '../../../features/toastSlice/toastSlice';
 import { getProdsThunk } from '../../../features/prodSlice/prodThunks';
 import { loginUserThunk } from '../../../features/User/userThunks';
 
-
 const UserDashboard = () => {
     const { productores } = useSelector((state) => state.prod);
-    const login = JSON.parse(localStorage.getItem('login'))
-    const para_actualizar = JSON.parse(localStorage.getItem('para_actualizar'))
-    const plan = JSON.parse(localStorage.getItem('plan_adquirido'))
+    const login = JSON.parse(localStorage.getItem('login'));
+    const para_actualizar = JSON.parse(localStorage.getItem('para_actualizar'));
+    const plan = JSON.parse(localStorage.getItem('plan_adquirido'));
     const { data_user: data } = login
     let coberturaDate = '';
     let expired = '';
@@ -37,9 +36,10 @@ const UserDashboard = () => {
         }, 3000)
     }
 
+
     useEffect(() => {
-        dispatch(getProdsThunk())
-        dispatch(loginUserThunk(para_actualizar))
+        dispatch(getProdsThunk());
+        dispatch(loginUserThunk(para_actualizar));
     }, [])
 
     return (
