@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { goCuotas, mercadoPago } from '../../../API/Payment/payment'
+import axios from 'axios'
+import { createPaymentIntent, mercadoPago } from '../../../API/Payment/payment'
 import Anual from './Anual'
-import { GO_CUOTAS_LOGO, MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
-import uuid from 'react-uuid'
+import {  MERCADO_PAGO_LOGO } from '../../../Constants/Constants'
 import { RiBankFill } from "react-icons/ri";
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import TransferPage from './TransferPage'
 
 const Payment = ({ price, formatearMonto, position, setPosition }) => {
@@ -18,6 +17,8 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         mail: '',
         telefono: '',
     })
+    const [accessToken,setAccessToken] = useState('')
+
     const [bankTransfer, setBankTransfer] = useState(false);
     useEffect(() => {
         if (login && login?.data_user) {
@@ -44,50 +45,28 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
             type: e.target.value
         })
     }
-
-    const goCuotasHandler = () => {
-        const id = uuid()
-        goCuotas({
-            amount_in_cents: amount * 100,
-            order_reference_id: id,
-            phone_number: user.telefono
-        })
-        planData.facturacion = 'anual';
-        let dateNow = new Date()
-        planData.startDate = dateNow;
-        localStorage.setItem('plan', JSON.stringify(planData))
-        return
-    }
-
-    const mercadoPagoHandler = () => {
-        // const client_id = '';
-        if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
-            mercadoPago({
-                // amount: 1, //Para testear
-                amount: amount,
-                mail: user.mail,
-                producto: planData.plan,
-                facturacion: 'anual'
+    
+    const handlerPago = async () =>{
+        const nombre = registerData.nombre + ' ' + registerData.apellido
+        
+        const precio = amount.toString()
+        try{
+            const response =  await axios.post('http://199.192.30.130:8080/create-payment-intent',{
+                name: nombre,
+                email: user.mail,
+                amount: '1',
+                product: planData.plan,
+                description: 'facturacion anual'
+                
             })
-            planData.facturacion = 'anual';
-            let dateNow = new Date()
-            planData.startDate = dateNow;
-            localStorage.setItem('plan', JSON.stringify(planData))
-            return;
+            window.location.href = response.data.checkout_url
+           
+
+        }catch(error){
+            console.error('error al generar el token')
         }
-        mercadoPago({
-            // amount: 1, //Para testear
-            amount: price,
-            mail: user.mail,
-            producto: planData.plan,
-            facturacion: 'mensual'
-        })
-        planData.facturacion = 'mensual';
-        let dateNow = new Date()
-        planData.startDate = dateNow;
-        localStorage.setItem('plan', JSON.stringify(planData))
-        return;
     }
+    
 
     useEffect(() => {
     }, [position, setPosition])
@@ -137,7 +116,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
                         {paymentOptions.discount === 'true' && paymentOptions.type === 'anual' &&
                             <>
                                 <button
-                                    onClick={() => mercadoPagoHandler()}
+                                    onClick={() => handlerPago()}
                                     className='px-3 py-1 font-bold font-sans text-2xl rounded-md shadow-md w-full text-secondary-blue flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
                                     <img src={MERCADO_PAGO_LOGO} alt="" width={130} />
                                 </button>
@@ -160,15 +139,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
                                 </button>
                             </>
                         }
-                        {/* {paymentOptions.discount === 'false' && paymentOptions.type === 'anual' &&
-                            <>
-                                <button
-                                    onClick={() => goCuotasHandler()}
-                                    className='px-3 py-1 font-bold font-sans text-lg rounded-md shadow-md w-full flex justify-center items-center bg-white hover:bg-[#cac8c8] transition-all'>
-                                    <img src={GO_CUOTAS_LOGO} alt="" width={100} />
-                                </button>
-                            </>
-                        } */}
+
                         {paymentOptions.type === 'mensual' &&
                             <>
                                 <button

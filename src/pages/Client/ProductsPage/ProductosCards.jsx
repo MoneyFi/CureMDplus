@@ -11,6 +11,8 @@ const ProductosCards = ({product,index}) => {
     const userData = localStorage.getItem('login')
     const userParse = JSON.parse(userData)
     const userId = userData ? userParse.user_id : ''
+    const [token, setToken] = useState('');
+    const [paymentLink, setPaymentLink] = useState('');
 
 
     useEffect(()=>{

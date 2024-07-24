@@ -99,3 +99,126 @@ export const mercadoPago = async ({ amount, producto, facturacion, mail }) => {
         console.log('Error al realizar la solicitud:', error);
     }
 };
+
+
+// const CLIENT_ID = 'r7lAUUZNNuQFOYLe3v9LGyfLBagDinq2';
+// const CLIENT_SECRET = 'GFiOS-cG3p--Vo_nuKdYpXdmy8Ze-l4iTNE6wHylYdSNTBzQtqso8OQeaCMmlTJF';
+// const AUDIENCE = 'https://naranja.com/ranty/merchants/api';
+// const BASE_URL = 'https://homoservices.apinaranja.com';
+
+// let accessToken = '';
+
+// export const getAccessToken = async () => {
+//     try {
+//         const response = await axios.post(`${BASE_URL}/security-ms/api/security/auth0/b2b/m2ms`, {
+//             "client_id": CLIENT_ID,
+//             "client_secret": CLIENT_SECRET,
+//             audience: AUDIENCE,
+//             cache: true
+//         }, {
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+//         accessToken = response.data.access_token;
+//         console.log(accessToken)
+//     } catch (error) {
+//         console.error('Error obteniendo el token de acceso:', error);
+//     }
+// };
+
+export const createPaymentIntent = async ({amount, mail, producto,facturacion, accessToken}) => {
+   console.log(typeof(accessToken))
+    try {
+        const response = await axios.post('https://e3-api.ranty.io/ecommerce/payment_request/external', {
+            platform: 'platform-x',
+            store_id: 'store1-platform-x',
+            callback_url: 'https://tu-sitio.com/../order/1234',
+            order_id: '1234',
+            mobile: false,
+            payment_request: {
+                transactions: [{
+                    products: [{
+                        id: '883627',
+                        name: 'Salud ESENCIAL',
+                        description: 'Salud ESENCIAL',
+                        quantity: 1,
+                        unit_price: {
+                            currency: 'ARS',
+                            value: amount
+                        }
+                    }],
+                    amount: {
+                        currency: 'ARS',
+                        value: amount
+                    }
+                }],
+                buyer: {
+                    user_id: mail,
+                    doc_type: 'DNI',
+                    doc_number: 'N/A',
+                    user_email: mail,
+                    name: 'Nahuel Cempellin',
+                    phone: 'N/A',
+                    billing_address: {
+                        street_1: 'Cliente',
+                        street_2: 'N/A',
+                        city: '1',
+                        region: 'Buenos Aires',
+                        country: 'AR',
+                        zipcode: '5000'
+                    }
+                }
+            }
+        }, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        return {
+            success: true,
+            checkout_url: response.data.data.checkout_url
+        };
+    } catch (error) {
+        console.error('Error creando la intención de pago:', error);
+        return { success: false, message: 'Error al crear la intención de pago' };
+    }
+};
+
+
+
+
+// funciones descartadas en payment.jsx
+
+
+// const mercadoPagoHandler = () => {
+//     // const client_id = '';
+//     if (paymentOptions.discount === 'true' && paymentOptions.type === 'anual') {
+//         mercadoPago({
+//             // amount: 1, //Para testear
+//             amount: amount,
+//             mail: user.mail,
+//             producto: planData.plan,
+//             facturacion: 'anual'
+//         })
+//         planData.facturacion = 'anual';
+//         let dateNow = new Date()
+//         planData.startDate = dateNow;
+//         localStorage.setItem('plan', JSON.stringify(planData))
+//         return;
+//     }
+//     mercadoPago({
+//         // amount: 1, //Para testear
+//         amount: price,
+//         mail: user.mail,
+//         producto: planData.plan,
+//         facturacion: 'mensual'
+//     })
+//     planData.facturacion = 'mensual';
+//     let dateNow = new Date()
+//     planData.startDate = dateNow;
+//     localStorage.setItem('plan', JSON.stringify(planData))
+//     return;
+// }
