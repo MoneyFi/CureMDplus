@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUserThunk, registerUserThunk, updateUserThunk, uploadPdfThunk } from "./userThunks";
+import { getNominasThunk, loginUserThunk, registerUserThunk, updateUserThunk, uploadCertificateThunk, uploadPdfThunk } from "./userThunks";
 
 const initialState = {
   token: null, //Aca iria el token de inicion de sesion.
@@ -8,6 +8,7 @@ const initialState = {
   role: null, //Aca iria el rol del usuario cuando inicia sesion.
   status: null, //El status de la peticion (pending - success - failure).
   upload: {}, //Aca se van a guardar los datos del usuario para luego de la compra registrarlo.
+  errorFiles: [],
   error: "", //Si recibimos un error.
   response: "", //Si esperamos una respuesta sin datos.
 };
@@ -83,6 +84,33 @@ export const userSlice = createSlice({
         state.status = "failure";
         state.error = action;
         state.response = action.payload;
+      })
+      // Upload Certificado ADMIN
+      .addCase(uploadCertificateThunk.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(uploadCertificateThunk.fulfilled, (state, action) => {
+        state.status = "success";
+        state.response = action.payload.response;
+        state.errorFiles = action.payload.files;
+      })
+      .addCase(uploadCertificateThunk.rejected, (state, action) => {
+        state.status = "failure";
+        state.error = action.payload;
+        state.response = 'error';
+      })
+      // Nominas
+      .addCase(getNominasThunk.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getNominasThunk.fulfilled, (state, action) => {
+        state.status = "success";
+        state.response = action.payload.response;
+      })
+      .addCase(getNominasThunk.rejected, (state, action) => {
+        state.status = "failure";
+        state.error = action;
+        state.response = action.payload.response;
       });
   },
 });

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { loginUserThunk } from '../../features/User/userThunks'
 import { createToast } from '../../features/toastSlice/toastSlice'
 
-const FormLogin = ({ setHaveAccount, position, setPosition }) => {
+const FormLogin = ({ setHaveAccount, position, setPosition, setJurada }) => {
     const [loading, setLoading] = useState(false);
     const { response, data: data_user } = useSelector((state) => state.user);
     const login = JSON.parse(localStorage.getItem('login'))
@@ -35,6 +35,8 @@ const FormLogin = ({ setHaveAccount, position, setPosition }) => {
         if (loading) {
             if (response === 'success') {
                 dispatch(createToast('Inicio exitoso, corroborando datos...'))
+                localStorage.setItem('para_actualizar', JSON.stringify(data))
+                setJurada(true)
                 setTimeout(() => {
                     if (login.data_user.cuil === '0') {
                         setPosition(2)

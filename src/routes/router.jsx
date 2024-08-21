@@ -17,6 +17,9 @@ import ProductsPage from "../pages/Client/ProductsPage/ProductsPage";
 import PaymentProduct from "../pages/Client/ProductsPage/PaymentProduct";
 import DashboardAdmin from "./Layouts/DashboardAdmin";
 import TransfersPending from "../pages/Admin/Transferencias/TransfersPending";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import UsuarioSection from "../pages/Admin/Usuarios/UsuarioSection";
+import AdminHome from "../pages/Admin/AdminHome";
 
 export const router = createBrowserRouter([
     {
@@ -44,8 +47,17 @@ export const router = createBrowserRouter([
         element: <DashboardAdmin/>,
         children:[
             {
+                element: <AdminHome/>,
+                path: ''
+            },
+            {
                 element: <TransfersPending/>,
-                path: '/admin/'
+                path: 'transfers'
+            },
+            {
+                element: <UsuarioSection/>,
+                path: 'users'
+
             }
         ]
     },
@@ -98,5 +110,9 @@ export const router = createBrowserRouter([
     {
         path: '/telemedicina',
         element: <LandingCureMd/>
+    },
+    {
+        path: '*',
+        element: <ErrorPage/>
     }
 ]);

@@ -50,6 +50,7 @@ const Success = () => {
         let productor = find && find?.prod_email || 'curemd-plus@moneyfi.io'
         //Update userdata
         let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+        fecha_cobro = fecha_cobro.toLocaleDateString('en-CA');
         dispatch(updateUserThunk({
           id: loginData?.user_id,
           plan: plan.plan,
@@ -63,7 +64,8 @@ const Success = () => {
         }, 2000)
         return;
       } if (register) {
-        let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion)
+        let fecha_cobro = calculateExpiryDate(plan.startDate, plan.facturacion);
+        fecha_cobro = fecha_cobro.toLocaleDateString('en-CA');
         register.status = '1';
         register.plan = plan.plan;
         register.fecha_cobro = fecha_cobro;
