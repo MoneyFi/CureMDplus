@@ -77,7 +77,7 @@ const Payment = ({ price, formatearMonto, position, setPosition }) => {
         }
         mercadoPago({
             // amount: 1, //Para testear
-            amount: price,
+            amount: 1,
             mail: user.mail,
             producto: planData.plan,
             facturacion: 'mensual'

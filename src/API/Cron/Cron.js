@@ -19,6 +19,7 @@ export function calculateExpiryDate(startDate, planDuration) {
       break;
     default:
       throw new Error("Duración del plan no válida");
+
   }
 
   return expiryDate;
