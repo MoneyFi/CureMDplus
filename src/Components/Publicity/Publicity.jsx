@@ -18,9 +18,9 @@ const Publicity = () => {
 
         {
            location.pathname !== '/telemedicina' && (
-            <Link to="/telemedicina" className='px-4 py-2 mb:px-6 mb:py-3 hover:bg-secondary-blue rounded-xl shadow-xl hover:text-white text-secondary-blue bg-white transition-colors'>
+            <a href="https://curemd.io" className='px-4 py-2 mb:px-6 mb:py-3 hover:bg-secondary-blue rounded-xl shadow-xl hover:text-white text-secondary-blue bg-white transition-colors'>
             <h2 className='text-xl mb:text-xl  font-sans font-light text-center'>Más <b className='font-bold'>información</b></h2>
-          </Link>
+          </a>
           )
 
         }
