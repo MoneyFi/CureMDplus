@@ -13,7 +13,7 @@ export const products = [
             },
 
         ],
-        price: 80000,
+        price: 49000,
         discount: 20000
     },
     {
